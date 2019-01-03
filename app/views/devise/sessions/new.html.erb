@@ -1,29 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 landing-left">
-      <div class="dummy-phone">
-        <div class="screen-shot">
-          <div class="carousel carousel-fade" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active"> 
-                  <%= image_tag "screenshot-1.jpg", height: '427', width: '248' %>
-                </div>
-                <div class="carousel-item"> 
-                    <%= image_tag "screenshot-2.jpg", height: '427', width: '248' %>
-                </div>
-                <div class="carousel-item">
-                    <%= image_tag "screenshot-3.jpg", height: '427', width: '248' %> 
-                </div>
-                <div class="carousel-item">
-                    <%= image_tag "screenshot-4.jpg", height: '427', width: '248' %> 
-                </div>
-                <div class="carousel-item"> 
-                    <%= image_tag "screenshot-5.jpg", height: '427', width: '248' %>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
+      <%= render "devise/shared/phone" %>
    </div>
 
    <div class="col-lg-6 landing-right text-center d-flex align-items-center"> 
@@ -56,7 +34,7 @@
      </div>
       <div class="redirect-links box">
          <%= render "devise/shared/links" %>
-       </div>
+     </div>
    </div>
    </div>
  </div>
