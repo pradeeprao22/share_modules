@@ -12,10 +12,14 @@
   <body>
       <%= render "shared/navbar" if current_user %>
    <br>
+   
+   <div class="container">
     <%= yield %>
-    <%= render "shared/footer" %>
+   </div>
+   
+   <%= render "shared/footer" %>
 
-    <% if flash.any? %>
+   <% if flash.any? %>
       <script type="text/javascript">
         <% flash.each do |key, value| %>
           <% type = key.to_s.gsub('alert', 'error').gsub('notice', 'success') %>
