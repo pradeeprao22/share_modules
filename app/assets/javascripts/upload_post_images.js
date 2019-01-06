@@ -5,8 +5,8 @@ $(document).ready(function(){
         addRemoveLinks: true,
         maxFilesize: 1,
         autoProcessQueue: false,
-        uploadMultipke: true,
-        parallelUploades: 100,
+        uploadMultiple: true,
+        parallelUploads: 100,
         maxFiles: 100,
         paramName: "images",
         previewsContainer: ".dropzone-previews",
@@ -17,19 +17,19 @@ $(document).ready(function(){
         init: function(){
            var myDropzone = this;
 
-           this.element.querySelector("imput[type=submit]").addEventListener("click", function(e){
-             e.preventDefault();
-             e.stopPropagation();
-             myDropzone.processQueue();
+           this.element.querySelector("input[type=submit]").addEventListener("click", function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                myDropzone.processQueue();
            });
 
-           this.on("successmultiple", function( files, response){
-            window.location.reload();
+           this.on("successmultiple", function(files, response){
+             window.location.reload();
            });
            
            this.on("errormultiple", function(files, response){
-             TransformStream.error(response)
+             toastr.error(response);
            });
         }
     })
-})
+});
