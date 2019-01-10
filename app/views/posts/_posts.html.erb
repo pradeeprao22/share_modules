@@ -1,12 +1,15 @@
 <% @posts.each do |post| %>
   <div class="card mt-3 post">
-    <div class="card-header">
+    <div class="card-header d-flex alifn-items-center">
       <%= link_to user_path(post.user), class: "no-text-decoration" do %>
         <%= image_tag avatar_url(post.user), class: "post-author-icon" %>
       <% end %>
       <%= link_to user_path(post.user), class: "normal-color no-text-decoration", title: post.user.name do %>
           <strong><%= post.user.name %></strong>
-      <% end %>     
+      <% end %>  
+      <%= link_to post_path(post), method: :delete, class: "ml-auto delete-post-icon mx-0 my-auto" do %>
+        <i class="far fa-trash-alt" aria-hidden="true"></i>
+      <% end %>
     </div>
      
     <% if post.photos.size == 1 %>
@@ -33,7 +36,7 @@
                  <span class="sr-only">Next</span>
               </a>
         </div>
-    <% end %>
+     <% end %>
 
       <div class="card-body">
         <div class="row actions">
@@ -46,7 +49,9 @@
           <span><strong><%= post.user.name %></strong></span>
           <span><%= post.content %></span>
         </div>
-        <div class="light-color post-time"><%= time_ago_in_words(post.created_at).upcase %> AGO </div>
+        <!-- <div class="light-color post-time"><%= time_ago_in_words(post.created_at).upcase %> AGO </div> -->
+        <%= link_to time_ago_in_words(post.created_at).upcase + " AGD", post_path(post),
+        class: "light-color post-time no-text-decoration" %>
         <hr>
         <div class="row actions">
           <form action="#" class="w-100">

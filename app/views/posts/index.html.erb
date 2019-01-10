@@ -5,7 +5,7 @@
         Post Idea
       </div>
       <div class="card-body">
-        <%= form_for @post, :html => {:multipart => true, :class => "dropzone upload-images p-0 border-0"} do |f| %>
+        <%= form_for @post, :html => { :multipart => true } do |f| %>
           <div class="form-group row mt-2">
             <div class="col-auto pr-0">
                <%= image_tag avatar_url(current_user), class: "post-author-icon" %>
@@ -24,7 +24,7 @@
                <i class="fa fa-plus fa-2x" aria-hidden="true" style="color:#dddfe2"></i>
              </div>
           </div>
-          <%= f.submit "Post", class: "btn btn-primary" %>
+          <%= f.submit "Submit", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
