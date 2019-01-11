@@ -12,6 +12,6 @@ class Post < ApplicationRecord
   end
 
   def is_liked user
-    Link.find_by(user_id: user.id, post_id: id)
+    Like.find_by(user_id: user.id, post_id: id)
   end
 end
