@@ -40,32 +40,18 @@
 
       <div class="card-body">
         <div class="row actions">
-          <!-- <a href="#" class="love"><i class="far fa-heart fa-2x"></i></a> --> 
-          <% if post.is_liked(current_user).present? %>
-            <%= link_to "Love", like_path(post.is_liked(current_user)), method: :delete, remote: true %>
-          <% else %>
-            <%= link_to "Loved", post_likes_path(post), method: :post, remote: true %>
-          <% end %>  
+        <div class="like-icon-post-<%= post.id.to_s %>">
+          <%= render 'likes/like', {is_liked: post.is_liked(current_user), post: post} %>
+        </div>
           <a href="#" class="comment"><i class="far fa-comment fa-2x"></i></a>
           <a href="#" class="bookmark ml-auto"><i class="far fa-bookmark fa-2x"></i></a>
         </div>
-          <strong>
-          <% post.likes.each.with_index do |like, index| %>
-            <% if post.likes.size == 1 %>
-                <% like.user.name %> </strong> like this
-            <% elsif like == post.like.last %>
-              <strong>and</strong>
-              <%= + like.user.name %></strong> like this
-            <% elsif index > 1 %>
-              </strong><%= "and" +(post.likes.size-index).to_s + "others" %> like this  
-              <% break %>
-            <% elsif index==post.like.size-2 || index == 1 %>
-              <% like.user.name %>
-            <% else %>
-              <% like.user.name + "," %>
-            <% end %>    
-          <% end %>
-          </strong>
+        <div id="like-text-post-<%= post.id.to_s %>">
+          <%= render "likes/like_text", {likes: post.likes}%>
+        </div>
+        <div>
+          <span><strong> <%= post.user.name %> </strong></span>
+          <span><%= post.content %></span> 
         </div>
         <!-- <div class="light-color post-time"><%= time_ago_in_words(post.created_at).upcase %> AGO </div> -->
         <%= link_to time_ago_in_words(post.created_at).upcase + " AGD", post_path(post),
