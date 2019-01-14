@@ -30,18 +30,12 @@
             <span><%= @post.content %></span>
           </div>
         <% end %>
+        
         <!-- Comment -->
         <div id="comment-post-<%= @post.id.to_s %>">
-          <% @post.comments.each do |comment| %>
-             <div class="mb-2">
-               <% if comment.user == current_user %>
-                 <%= link_to "Delete Comment", comment_path(comment), method: :delete, remote: true, class: "delete-comment" %>
-               <% end %>
-               <span><strong><%= comment.user.name %></strong></span>
-               <span><%= comment.content %></span>     
-             </div>
-          <% end %>
+          <%= render "comment_list", {post: @post} %>
         </div>
+
         <hr class="mt-0">
            
             <div class="row actions">
@@ -63,12 +57,7 @@
             <div class="light-color post-time"><%= time_ago_in_words(@post.created_at).upcase %> AGO </div>
             <hr>
             <div class="row actions" id="comment-form-post-<%= @post.id.to_s %>">
-            <%= form_for [@post, Comment.new], :html => {:class => "w-100"}, remote: true do |f| %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.hidden_field :post_id, value: @post.id %>
-              <%= f.text_field :content, class: "form-control comment-input border-0",
-                placeholder: "Add a comment ...", autocomplete: :off %>
-            <% end %>
+              <%= render "comments", {post: @post} %>
             </div>
     </div>
   </div>
