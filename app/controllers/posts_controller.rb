@@ -15,7 +15,6 @@ class PostsController < ApplicationController
                   @post.photos.create(image: img)
                 end
             end
-
             
             redirect_to posts_path
             flash[:notice] = "Saved ..."
@@ -28,6 +27,7 @@ class PostsController < ApplicationController
   def show
     @photos = @post.photos
     @likes = @post.likes.includes(:user)
+    @comment = Comment.new
     @is_liked = @post.is_liked(current_user)
   end
 
