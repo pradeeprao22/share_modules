@@ -37,16 +37,23 @@
         </div>
 
         <hr class="mt-0">
-           
             <div class="row actions">
-              
               <!-- Likes button render -->
              <div class="like-post-<%= @post.id.to_s %>">
                <%= render 'likes/like', {is_liked: @is_liked, post: @post} %>
              </div>
 
               <a href="#" class="comment"><i class="far fa-comment fa-2x"></i></a>
-              <a href="#" class="bookmark ml-auto"><i class="far fa-bookmark fa-2x"></i></a>
+
+              <div id="bookmark-icon-post-<% @post.id.to_s %>" class="ml-auto">
+               <% if @is_bookmarked.present? %>
+<%= link_to "Bookmarked", bookmark_path(is_bookmarked), method: :delete, remote: true,
+class: "bookmarked"  %>
+                  <% else %>
+                  <%= link_to "Bookmark", post_bookmarks_path(@post), method: :post, remote: true,
+                  class: "bookmark" %>
+               <% end %>
+              </div>
             </div>
 
             <!-- Likes Text -->

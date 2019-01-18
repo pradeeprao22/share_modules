@@ -257,6 +257,11 @@ footer .nav-item {
     background-position: -150px -353px;
 }
 
+.bookmarked {
+    @extend .love;
+    background-position: -35px -273px;
+}
+
 .comment-list {
    height: 310px;
    overflow: auto;
