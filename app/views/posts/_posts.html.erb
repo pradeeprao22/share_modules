@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
-  <div class="card mt-3 post">
+  <div class="card mt-3 posts">
     <div class="card-header d-flex align-items-center">
       <%= link_to user_path(post.user), class: "no-text-decoration" do %>
         <%= image_tag avatar_url(post.user), class: "post-author-icon" %>

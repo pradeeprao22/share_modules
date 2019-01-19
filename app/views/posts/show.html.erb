@@ -1,7 +1,7 @@
 <div class="d-flex flex-column align-items-center mt-3">
- <div class="row post box col-xl-10 col-lg-11 col-xs-12">
+ <div class="row posts box col-xl-10 col-lg-11 col-xs-12">
    
-    <div class="col-lg-0 col-md-7 px-0 d-flex post-show-img">
+    <div class="col-lg-8 col-md-7 px-0 d-flex post-show-img">
         <!-- Render Photos  -->
         <div class="align-self-center">
           <%= render "photos", {post: @post} %>
@@ -22,7 +22,7 @@
           <% end %>
        </div>
 
-        <hr class="mt-0">
+        <hr class="mb-0">
         <div class="comment-list py-2">
         <% if @post.content.present? %> 
           <div>
@@ -45,15 +45,10 @@
 
               <a href="#" class="comment"><i class="far fa-comment fa-2x"></i></a>
 
-              <div id="bookmark-icon-post-<% @post.id.to_s %>" class="ml-auto">
-               <% if @is_bookmarked.present? %>
-<%= link_to "Bookmarked", bookmark_path(is_bookmarked), method: :delete, remote: true,
-class: "bookmarked"  %>
-                  <% else %>
-                  <%= link_to "Bookmark", post_bookmarks_path(@post), method: :post, remote: true,
-                  class: "bookmark" %>
-               <% end %>
+              <div id="bookmark-icon-post-<%= @post.id.to_s %>" class="ml-auto">
+                 <%= render "bookmark_icon", {is_bookmarked: @is_bookmarked, post: @post}  %>
               </div>
+              
             </div>
 
             <!-- Likes Text -->
