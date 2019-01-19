@@ -2,9 +2,10 @@ class BookmarksController < ApplicationController
     before_action :authenticate_user!
   
     def create
-      @bookmark = current_user.bookmark.build(bookmark_params)
+      @bookmark = current_user.bookmarks.build(bookmark_params)
       if @bookmark.save
         @post = @bookmark.post
+        @is_bookmarked = @bookmark
         respond_to :js 
       else 
         flash[:alert] = "Something went..."
