@@ -72,13 +72,13 @@ body {
 // landing page css
 .landing-left {
     .dummy-phone {
-        background-image: image-url("dummy-phones.png");
+        background-image: image-url("ideas-transparent-logo.png");
         background-repeat: no-repeat;
         background-position: right 0;
-        background-size: 454px 618px;
+        background-size: 550px 590px;
         position: relative;
-        height: 618px;
-        margin-left: -35px;
+        height: 700px;
+        margin-left: -30px;
         margin-right: -15px;
     }
 
@@ -240,7 +240,7 @@ footer .nav-item {
     }
 
     .previous-btn {
-        background-position: -201px -200px;
+        background-position: -281px -280px;
         height: 30px;
         opacity: 1;
         width: 30px;
@@ -262,18 +262,23 @@ footer .nav-item {
 
 .loved {
     @extend .love;
-    background-position: -200px -330px;
+    background-position: -182px -336px;
 }
 
 .comment {
     @extend .love;
-    background-position: -25px -175px;
+    background-position: -258px -175px;
     margin-left: 8px;
 }
 
 .bookmark {
     @extend .love;
     background-position: -150px -353px;
+}
+
+.bookmarked {
+    @extend .love;
+    background-position: -35px -273px;
 }
 
 .comment-list {
@@ -284,4 +289,30 @@ footer .nav-item {
 .post-show-img {
     background-color: #fafafa;
     margin: -10px 0;
+}
+
+.delete-comment {
+    width: 45px;
+    height: 11px;
+    background-position: -216px -112px;
+    float: right;
+    margin: 5px 0 0 10px;
+}
+
+// serach 
+.search-result-item {
+    padding: 15px;
+}
+
+.search-result-item:hover {
+    background-color: #fafafa;
+}
+
+.popover {
+    border-radius: 0;
+}
+
+.popover-body {
+    background: #fff;
+    padding: 0;
 }

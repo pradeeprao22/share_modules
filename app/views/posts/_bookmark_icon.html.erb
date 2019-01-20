@@ -1,0 +1,5 @@
+<% if @is_bookmarked.present? %>
+ <%= link_to "Bookmarked", bookmark_path(@is_bookmarked), method: :delete, remote: true, class: "bookmarked"  %>
+<% else %>
+ <%= link_to "Bookmark", post_bookmarks_path(@post), method: :post, remote: true, class: "bookmark" %>
+<% end %>
