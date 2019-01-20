@@ -1,4 +1,4 @@
-            <% post.comments.each do |comment| %>
+          <% post.comments.each do |comment| %>
              <div class="mb-2">
                <% if comment.user == current_user %>
                  <%= link_to "Delete", comment_path(comment), method: :delete, remote: true, class: "delete-comment" %>
