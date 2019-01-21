@@ -18,7 +18,7 @@
         <div class="row actions">
           <!-- Likes button render -->
           <div class="like-post-<%= post.id.to_s %>">
-            <%= render 'likes/like', {is_liked: post.is_liked(current_user), post: post} %>
+            <%= render 'like', {is_liked: post.is_liked(current_user), post: post} %>
           </div>
 
           <a href="#" class="comment"><i class="far fa-comment fa-2x"></i></a>
@@ -28,7 +28,7 @@
 
         <!-- Likes Text -->
         <div id="like-text-post-<%= post.id.to_s %>">
-          <%= render "likes/like_text", {likes: post.likes} %>
+          <%= render "like_text", {likes: post.likes} %>
         </div>
 
         <div>

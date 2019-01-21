@@ -1,5 +1,5 @@
 $('#like-post-<%= @post.id.to_s %>').
   html('<%= link_to "Loved", post_likes_path(@post), method: :post, remote: true, class: "love" %>');
 $('#like-text-post-<%= @post.id.to_s %>').
-  html('<%= j render "like_text", {likes: @post.likes } %>');
+  html('<%= j render "posts/like_text", {likes: @post.likes } %>');
 console.log("delete like success");
