@@ -317,3 +317,29 @@ footer .nav-item {
     background: #fff;
     padding: 0;
 }
+
+// profile tabs
+.profile-tab {
+ margin-top: 60px;
+
+    .nav-tabs {
+        border: 0;
+        border-top: 1px solid #ddd;
+
+        .nav-item {
+            border-radius: 0;
+            border: 0;
+            border-top: 1px solid transparent;
+            margin-top: -1px;
+            padding: 10px 0;
+            background: transparent;
+            font-size: bold;
+            color: #999;
+        } 
+        
+        .nav-item.active {
+            color: #262626;
+            border-top: 1px solid #262626;
+        }
+    }
+}
