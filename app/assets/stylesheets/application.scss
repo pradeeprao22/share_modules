@@ -320,6 +320,7 @@ footer .nav-item {
 
 // profile tabs
 .profile-tab {
+    
  margin-top: 60px;
 
     .nav-tabs {
@@ -342,4 +343,70 @@ footer .nav-item {
             border-top: 1px solid #262626;
         }
     }
+
+    .post-stat {
+        position: absolute;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
+        top: 0;
+        opacity: 0;
+    }
+
+    .col-4:hover .post-stat {
+        background-color: rgba(0,0,0,.3);
+        opacity: 1;
+    }
+
+    image-preview {
+        margin-bottom: 30px;
+    }
+}
+
+.profile-wrapper {
+    padding: 60px 0;
+    border-bottom: 1px solid #efefef;
+
+    .username {
+        font-size: 32px;
+        line-height: 40px;
+        font-weight: 200;
+    }
+
+    .email {
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+.round-img {
+    border-radius: 50%;
+}
+
+.common-btn{
+    height: 20px;
+    line-height: 24px;
+    padding: 0 24px;
+    border-color: #dbdbdb;
+    font-size: 14px;
+}
+
+.edit-profile-btn {
+    margin: 5px 0 0 15px;
+    font-weight: bold;
+}
+
+.setting {
+    margin: 7px 0 0 10px;
+    background-color: transparent;
+    background-position: -125px -355px;
+    height: 24px;
+    width: 24px;
+    border: none;
+}
+
+.setting:hover {
+    cursor: pointer;
 }
