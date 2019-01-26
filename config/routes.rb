@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'posts#index'
   get 'pages/about'
-  devise_for :users
+  devise_for :users,
+    path: '',
+    path_name: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
+    controllers: {registration: 'registration'}
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:index, :show]
