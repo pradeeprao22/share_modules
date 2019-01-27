@@ -18,7 +18,7 @@ class BookmarksController < ApplicationController
       if @bookmark.destroy
         respond_to :js
       else
-        flash[:alert] ="Something went wrong ..."
+        flash[:alert] = "Something went wrong ..."
       end
     end
   
