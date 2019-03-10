@@ -1,6 +1,7 @@
 $('#like-post-<%= @post.id.to_s %>').
   html('<%= link_to "Love", like_path(@like), method: :delete, remote: true, class: "loved" %>');
-$('#like-text-post-<%= @post.id.to_s %>').
+  
+$('#like-post-<%= @post.id.to_s %>').
   html('<%= j render "posts/like_text", {likes: @post.likes} %>');
 console.log("create like success");
     

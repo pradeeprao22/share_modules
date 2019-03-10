@@ -4,6 +4,7 @@ class LikesController < ApplicationController
   def create
     @like = current_user.likes.build(likes_params)
     @post = @like.post
+    #byebug
     if @like.save
         respond_to :js
     else
