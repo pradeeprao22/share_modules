@@ -1,0 +1,5 @@
+class AddInstructionToPost < ActiveRecord::Migration[5.2]
+  def change
+    add_column :posts, :instruction, :string
+  end
+end

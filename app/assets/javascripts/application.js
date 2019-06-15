@@ -18,3 +18,4 @@
 //= require dropzone
 //= require_tree .
 //= require toastr
+//= require codemirror

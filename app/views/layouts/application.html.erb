@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Share Your Ideas</title>
+    <title>Share Your Module</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.47.0/codemirror.css">
   </head>
 
   <body>
@@ -15,6 +16,7 @@
    <br>
    
    <div class="container">
+   <textarea class="codemirror-textarea"></textarea>
     <%= yield %>
    </div>
    
@@ -28,5 +30,6 @@
         <% end %>
       </script>
    <% end %>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.47.0/codemirror.js"></script>
   </body>
 </html>
