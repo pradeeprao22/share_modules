@@ -6,7 +6,7 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use Puma as the app server
-gem 'pg'
+  gem 'pg'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -71,4 +71,3 @@ gem 'cloudinary', '~> 1.11', '>= 1.11.1'
 gem 'figaro'
 gem 'dropzonejs-rails'
 gem 'mini_magick', '~> 4.2', '>= 4.2.4'
-gem 'byebug'
