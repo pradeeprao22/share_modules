@@ -1,4 +1,6 @@
+<div class="row">
 <% @posts.each do |post| %>
+  <div class="col-md-4">
   <div class="card mt-3 posts">
     <div class="card-header d-flex align-items-center">
       <%= link_to user_path(post.user), class: "no-text-decoration" do %>
@@ -39,15 +41,10 @@
         <!-- <div class="light-color post-time"><%= time_ago_in_words(post.created_at).upcase %> AGO </div> -->
         <%= link_to time_ago_in_words(post.created_at).upcase + " AGO", post_path(post),
         class: "light-color post-time no-text-decoration" %>
-        <hr>
-        <div class="row actions">
-          <form action="#" class="w-100">
-            <div>
-              <textarea class="form-control comment-input border-0" placeholder="Add a comment ..." row="1"></textarea>
-            </div>
-          </form>
-        </div>
       </div>
       
   </div>
+  </div>
+
 <% end %>
+</div>

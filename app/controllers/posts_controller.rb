@@ -4,7 +4,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.limit(100).includes(:photos, :user, :likes, :bookmarks).order('created_at desc')
-    @post = Post.new
   end
 
   def create
@@ -43,6 +42,10 @@ class PostsController < ApplicationController
       flash[:notice] = "You don't have permission to do that!"
     end
     redirect_to root_path
+  end
+
+  def module_post
+    @post = Post.new
   end
 
   private

@@ -15,4 +15,7 @@ Rails.application.routes.draw do
      resources :comments, only: [:index, :create, :destroy], shallow: true
      resources :bookmarks, only: [:create, :destroy], shallow: true
   end
+
+  #custom route defined
+  get 'post/module_post', :to => 'posts#module_post', as: 'module'
 end
