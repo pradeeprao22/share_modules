@@ -1,8 +1,22 @@
-<textarea class="codemirror-textarea"><%= @post.backend %></textarea>
+<div class="d-flex flex-column mt-3">
+<h6>Backend Code</h6>
+ <textarea class="codemirror-textarea"><%= @post.backend %></textarea>
+</div> 
 <br>
-<textarea class="codemirror-textarea"><%= @post.frontend %></textarea>
+<div class="d-flex flex-column mt-3">
+  <h6>Frontend Code</h6>
+ <textarea class="code-textarea"><%= @post.frontend %></textarea>
+</div>
+<div class="d-flex flex-column mt-3">
+<h6>Instructions</h6>
+  <section class="section" style="background-color: #DCDBD7;">
+      <div class="caption">
+          <p><%= @post.instruction %></p>
+      </div>    
+  </section>
+</div>
 <div class="d-flex flex-column align-items-center mt-3">
-<h6>Module Snapshot</h6>
+  <h6>Module Snapshot</h6>
  <div class="row posts box col-xl-10 col-lg-11 col-xs-12">
     <div class="col-lg-8 col-md-7 px-0 d-flex post-show-img">
         <!-- Render Photos  -->
