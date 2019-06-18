@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'posts#index'
   get 'pages/about'
+  get 'pages/contact'
+  get 'pages/innovation'
   devise_for :users,
     path: '',
     path_name: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
