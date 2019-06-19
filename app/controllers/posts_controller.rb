@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    byebug
         @post = current_user.posts.build(post_params)
         if @post.save
             if params[:images]
@@ -59,6 +60,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :frontend, :backend)
   end
 end
