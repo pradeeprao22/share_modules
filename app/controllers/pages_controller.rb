@@ -13,4 +13,7 @@ class PagesController < ApplicationController
 
   def innovation
   end
+
+  def help
+  end
 end

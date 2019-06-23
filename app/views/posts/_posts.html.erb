@@ -19,8 +19,8 @@
       <div class="card-body">
         <div class="row actions">
           <!-- Likes button render -->
-          <div class="like-post-<%= post.id.to_s %>">
-            <%= render 'like', {is_liked: post.is_liked(current_user), post: post} %>
+          <div id="like-post-<%= post.id.to_s %>">
+            <%= render "like", {is_liked: post.is_liked(current_user), post: post} %>
           </div>
 
           <a href="#" class="comment"><i class="far fa-comment fa-2x"></i></a>
