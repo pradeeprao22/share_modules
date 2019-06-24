@@ -16,3 +16,12 @@ $(document).ready(function(){
         tabMode: "indent"
     });
 });
+
+$(document).ready(function(){
+    var code = $(".code-backend")[0];
+    var editor = CodeMirror.fromTextArea(code, {
+        lineNumbers : true,
+        mode: "css",
+        tabMode: "indent"
+    });
+});

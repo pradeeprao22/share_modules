@@ -23,16 +23,12 @@
             <%= render "like", {is_liked: post.is_liked(current_user), post: post} %>
           </div>
 
-          <a href="#" class="comment"><i class="far fa-comment fa-2x"></i></a>
           <a href="#" class="bookmark ml-auto"><i class="far fa-bookmark fa-2x"></i></a>
-
         </div>
-
         <!-- Likes Text -->
         <div id="like-text-post-<%= post.id.to_s %>">
           <%= render "like_text", {likes: post.likes} %>
         </div>
-
         <div>
           <span><strong> <%= post.user.name %> </strong></span>
           <span><%= post.content %></span> 
