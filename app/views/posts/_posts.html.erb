@@ -23,7 +23,9 @@
             <%= render "like", {is_liked: post.is_liked(current_user), post: post} %>
           </div>
 
-          <a href="#" class="bookmark ml-auto"><i class="far fa-bookmark fa-2x"></i></a>
+          <div id="bookmark-icon-post-<%= post.id.to_s %>", class="ml-auto">
+            <%= render "bookmark_icon", {is_bookmarked: post.is_bookmarked(current_user), post: post} %>
+          </div>
         </div>
         <!-- Likes Text -->
         <div id="like-text-post-<%= post.id.to_s %>">

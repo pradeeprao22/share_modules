@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'pages/contact'
   get 'pages/innovation'
   get 'pages/help'
+  get 'pages/userlanding'
   devise_for :users,
     path: '',
     path_name: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},

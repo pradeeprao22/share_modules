@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  def userlanding
+  end
+
   def home
     if !user_signed_in?
       redirect_to new_user_session_path

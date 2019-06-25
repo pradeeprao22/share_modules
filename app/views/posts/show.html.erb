@@ -59,7 +59,6 @@
                 <%= render 'like', {is_liked: @is_liked, post: @post} %>
               </div>
 
-                <a href="#" class="comment"><i class="far fa-comment fa-2x"></i></a>
 
                 <div id="bookmark-icon-post-<%= @post.id.to_s %>" class="ml-auto">
                   <%= render "bookmark_icon", {is_bookmarked: @is_bookmarked, post: @post}  %>

@@ -1,4 +1,3 @@
-<!-- <a href="#" class="love"><i class="far fa-heart fa-2x"></i></a> --> 
 <% if is_liked.present? %>
   <%= link_to "Loved", like_path(is_liked), method: :delete, remote: true, class: "loved" %>
 <% else %>
