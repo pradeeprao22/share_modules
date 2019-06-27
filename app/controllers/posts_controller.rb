@@ -7,12 +7,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    byebug
         @post = current_user.posts.build(post_params)
         if @post.save
             if params[:images]
+              byebug
                 params[:images].each do |img|
-                  @post.photos.create(image: img)
+                  @post.photos.create(image: params[:images][img])
                 end
             end
             

@@ -6,7 +6,7 @@
         Post your module
       </div>
       <div class="card-body">
-        <%= form_for @post, :html => { :multipart => true } do |f| %>
+        <%= form_for @post, :html => { :multipart => true, :class => "dropzone upload-images p-0 border-0" } do |f| %>
           <div class="form-group row mt-2">
             <div class="col-auto pr-0">
                <%= image_tag avatar_url(current_user), class: "post-author-icon" %>
