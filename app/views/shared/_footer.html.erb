@@ -1,17 +1,96 @@
 <% if user_signed_in? %>
-<footer>
-    <nav class="navbar navbar-expand-lg  navbar-fixed-bottam navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navabr">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar">
-            <div class="navbar-nav mx-auto">
-            <%= link_to "ABOUT US", pages_about_path, :class => "nav-item nav-link" %>
-            <%= link_to "CONTACT", pages_contact_path, :class => "nav-item nav-link" %>
-            <%= link_to "INNOVATION", pages_innovation_path, :class => "nav-item nav-link" %>
-            <%= link_to "HELP", pages_help_path, :class => "nav-item nav-link" %>
-            <div>
-        </div>
-    </nav>
-</footer>
+<!-- footer start -->
+    <footer class="bg-dark text-light py-5 mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <h3>Modulerrr</h3>
+                            <small class="d-block text-muted">© 2018-2019</small>
+                            <small class="text-muted">All Rights Reserved.</small>
+                        </div>
+                        <!--end of col-->
+                        <div class="col-12 col-md-9">
+                            
+                            <div class="row no-gutters">
+                                <div class="col-6 col-lg-3">
+                                     <h5>Features</h5>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="#" class="text-muted">Ready to ship</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">Light weight</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted"> Responsive</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">Inner Pages</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--end of col-->
+                                <div class="col-6 col-lg-3">
+                                    <h5>Resources</h5>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="#" class="text-muted">Python</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">Ruby</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">Java</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">NodeJs</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--end of col-->
+                                <div class="col-6 col-lg-3">
+                                     <h5>Help</h5>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="#" class="text-muted">Forum</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">FAQ</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">Projects</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">Site map</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--end of col-->
+                                <div class="col-6 col-lg-3">
+                                    <h5>About</h5>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="#" class="text-muted">Team</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">Privact</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">Terms</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="text-muted">Investment</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--end of col-->
+                            </div>
+                            <!--end of row-->
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </footer>
 <% end %>

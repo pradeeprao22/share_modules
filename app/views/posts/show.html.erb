@@ -1,3 +1,4 @@
+<div class="container">
 <div class="d-flex flex-column mt-3">
   <h6>HTML/JAVASCRIPT</h6>
  <textarea class="code-textarea"><%= @post.frontend %></textarea>
@@ -80,13 +81,16 @@
     </div>
     <div class="row posts box col-xl-4 col-lg-4 col-xs-4">
     <div class="d-flex flex-column">
-    <h6>Instruction</h6><br>
-    <% if @post.instruction.present? %>
-       <%= @post.instruction %>
-    <% else %>
-       <p>Instructions is not posted</p>
-    <% end %>       
+      <div class="container">
+      <h6>Instructions</h6><br>
+        <% if @post.instruction.present? %>
+          <%= @post.instruction %>
+        <% else %>
+          <p>Instructions is not posted by module owner</p>
+        <% end %>
+      </div>       
     </div>
     </div>
   </div>
+</div>
 </div>
