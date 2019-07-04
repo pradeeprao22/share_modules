@@ -1,16 +1,17 @@
+<div class="container">
 <div class="row">
   <div class="col-lg-4">
   </div>
-    <div class="col-lg-6 landing-right text-center d-flex align-items-center"> 
+    <div class="col-lg-6 landing-right text-center d-flex align-items-center signup"> 
       <div>
       <div class="form-login box">
-        <h2>modulerrr</h2>
+        <h2><i>modulerrr</i></h2>
         <h5 class="light-color"><strong>Signup to see and modules <br> for people.</strong></h5> 
          
          <hr>
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= devise_error_messages! %>
+            <%= render 'shared/devisemes' %>
 
               <div class="form-group">
                 <%= f.text_field :name, autofocus: true, placeholder: "Name", class: "form-control" %>
@@ -45,4 +46,5 @@
       </div>
      </div>
    </div>
+</div>
 </div>
