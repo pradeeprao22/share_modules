@@ -10,8 +10,10 @@
          
          <hr>
 
+         <%= render 'shared/devisemes' %>
+
+
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render 'shared/devisemes' %>
 
               <div class="form-group">
                 <%= f.text_field :name, autofocus: true, placeholder: "Name", class: "form-control" %>
