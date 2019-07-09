@@ -13,8 +13,9 @@
         <i class="far fa-trash-alt" aria-hidden="true"></i>
       <% end %>
     </div>
-     
+    <%= link_to post_path(post) do %>
     <%= render "photos", {post: post} %>
+    <% end %>
 
       <div class="card-body">
         <div class="row actions">
