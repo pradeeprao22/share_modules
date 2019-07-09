@@ -8,7 +8,7 @@ class BookmarksController < ApplicationController
         @is_bookmarked = @bookmark
         respond_to :js 
       else 
-        flash[:alert] = "Something went..."
+        flash[:alert] = "Something went wrong..."
       end  
     end
   
