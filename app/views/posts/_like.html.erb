@@ -1,5 +1,5 @@
 <% if is_liked.present? %>
-  <%= link_to "Loved", like_path(is_liked), method: :delete, remote: true, class: "loved" %>
+  <%= link_to "Claped", like_path(is_liked), method: :delete, remote: true, class: "claped" %>
 <% else %>
-  <%= link_to "Love", post_likes_path(post), method: :post, remote: true, class: "love" %>
+  <%= link_to "Clap", post_likes_path(post), method: :post, remote: true, class: "clap" %>
 <% end %>

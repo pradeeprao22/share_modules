@@ -256,30 +256,30 @@ footer .nav-item {
     }
 }
 
-.love {
+.clap {
     background-position: -325px -329px;
     height: 24px;
     width: 24px;
 }
 
-.loved {
-    @extend .love;
+.claped {
+    @extend .clap;
     background-position: -182px -336px;
 }
 
 .comment {
-    @extend .love;
+    @extend .clap;
     background-position: -258px -175px;
     margin-left: 8px;
 }
 
 .bookmark {
-    @extend .love;
+    @extend .clap;
     background-position: -150px -353px;
 }
 
 .bookmarked {
-    @extend .love;
+    @extend .clap;
     background-position: -35px -273px;
 }
 
