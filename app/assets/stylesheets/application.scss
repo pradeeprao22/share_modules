@@ -473,7 +473,7 @@ footer .nav-item {
     color: #000;
 }
 .aboutus-title::after {
-    background: #fdb801 none repeat scroll 0 0;
+    background: #000 none repeat scroll 0 0;
     bottom: 0;
     content: "";
     height: 2px;
@@ -489,9 +489,9 @@ footer .nav-item {
 }
 
 .aboutus-more {
-    border: 1px solid #fdb801;
+    border: 1px solid #000;
     border-radius: 25px;
-    color: #fdb801;
+    color: #000;
     display: inline-block;
     font-size: 14px;
     font-weight: 700;
@@ -506,7 +506,7 @@ footer .nav-item {
     width: 18%;
 }
 .feature .feature-box .iconset::after {
-    background: #fdb801 none repeat scroll 0 0;
+    background: #000 none repeat scroll 0 0;
     content: "";
     height: 150%;
     left: 43%;
@@ -542,12 +542,12 @@ footer .nav-item {
     line-height: 22px;
 }
 .icon {
-    color : #f4b841;
+    color : #000;
     padding:0px;
     font-size:40px;
-    border: 1px solid #fdb801;
+    border: 1px solid #000;
     border-radius: 100px;
-    color: #fdb801;
+    color: #000;
     font-size: 28px;
     height: 70px;
     line-height: 70px;
@@ -584,14 +584,14 @@ footer .nav-item {
     margin-bottom: 8%;
     margin-top: -10%;
     text-align: center;
-    color: #0062cc;
+    color: #000;
 }
 .contact-form .btnContact {
     width: 50%;
     border: none;
     border-radius: 1rem;
     padding: 1.5%;
-    background: #dc3545;
+    background: #000;
     font-weight: 600;
     color: #fff;
     cursor: pointer;
@@ -602,7 +602,7 @@ footer .nav-item {
     border-radius: 1rem;
     padding: 1.5%;
     color: #fff;
-    background-color: #0062cc;
+    background-color: #000;
     border: none;
     cursor: pointer;
 }
@@ -635,4 +635,36 @@ footer .nav-item {
 }
 .profile-post-tabs {
     margin-bottom: 20px;
+}
+.faqHeader {
+    font-size: 27px;
+    margin: 20px;
+}
+
+.panel-heading [data-toggle="collapse"]:after {
+    font-family: 'fontawesome';
+    content: "\f054"; /* "play" icon */
+    float: right;
+    color: #000;
+    font-size: 18px;
+    line-height: 22px;
+    /* rotate "play" icon from > (right arrow) to down arrow */
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.panel-heading [data-toggle="collapse"].collapsed:after {
+    /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    color: #454444;
+}
+.name-color{
+    color: #000;
 }

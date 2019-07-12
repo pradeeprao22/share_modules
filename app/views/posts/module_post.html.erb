@@ -5,7 +5,7 @@
     <!--Post Form-->
     <div class="card">
       <div class="card-header">
-        Post your module
+        <b>Post your module:</b>
       </div>
       <div class="card-body">
         <%= form_for @post, :html => { :multipart => true } do |f| %>
@@ -14,7 +14,7 @@
                <%= image_tag avatar_url(current_user), class: "post-author-icon" %>
             </div>
             <div class="col pl-0">
-              <%= f.text_field :content, class: "form-control border-0", 
+              <%= f.text_field :content, class: "form-control border-0", required: "true", 
               placeholder: "Title of your module" %>
             </div>
           </div>
@@ -23,7 +23,7 @@
           <div class="fileUpload btn btn-danger">
             <span>UPLOAD SNAPSHOT</span>
             <div class="fallback">
-                <%= file_field_tag "images[]", type: :file, multiple: true, class: "upload form-control border-0", id: "file" %>
+                <%= file_field_tag "images[]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
             </div>
             <!--SHOW RESULT HERE-->
           </div>
@@ -55,7 +55,7 @@
           <div class="form-group row mt-2">
             <div class="col">
             <h6>INSTRUCTIONS</h6>
-            <%= f.text_area :instruction, rows: "10", style: "white-space: pre-wrap;", class: "form-control border-0"%>
+            <%= f.text_area :instruction, rows: "10", style: "white-space: pre-wrap;", class: "form-control border-0", required: "true" %>
             </div>
           </div>
       

@@ -28,7 +28,7 @@
           <%= link_to user_path(@post.user), class: "no-text-decoration" do %>
               <%= image_tag avatar_url(@post.user), class: "post-author-icon" %>
           <% end %>
-          <%= link_to user_path(@post.user), class: "normal-color no-text-decoration d-flex align-self-center", 
+          <%= link_to user_path(@post.user), class: "normal-color no-text-decoration d-flex align-self-center name-color", 
           title: @post.user.name do %>
           <strong><%= @post.user.name %></strong>
           <% end %>
