@@ -1,0 +1,28 @@
+<!-- navbar starts -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark nav-masthead">
+<div class="container">
+  <a class="navbar-brand" href="#"> <h3 class="masthead-brand mb-0">Modulerrr</h3></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link p-2 font-weight-bold text-white" href="#">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-2 font-weight-bold text-white" href="#">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link font-weight-bold p-2 text-white" href="#">Blog</a>
+      </li>
+    </ul>
+  
+    <%= link_to "Login", new_user_session_path, :class => "nav-link text-white p-2 font-weight-bold" %>
+
+    <%= link_to "Register", new_user_registration_path, :class => "nav-link text-white p-2 font-weight-bold" %>        
+
+  </div>
+  </div>
+</nav>
+<!-- nav bar ends -->

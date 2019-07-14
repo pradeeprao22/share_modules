@@ -15,6 +15,7 @@
 
   <body>
       <%= render "shared/navbar" if current_user %>
+      <%= render "shared/navbarg" if !current_user %>
    
     <%= yield %>
    
