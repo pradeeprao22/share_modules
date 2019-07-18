@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+login_user
 RSpec.describe Post, type: :model do
   context "with 2 or more comments" do
     it "orders them in reverse chronologically" do
