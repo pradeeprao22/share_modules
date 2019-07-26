@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_post, only: [:show, :destroy]
+  before_action :find_post, only: [:show, :destroy, :build_module]
 
   def index
     @posts = Post.paginate(:page => params[:page], :per_page => 9).includes(:photos, :user, :likes, :bookmarks).order('created_at desc')
@@ -46,6 +46,14 @@ class PostsController < ApplicationController
 
   def module_post
     @post = Post.new
+  end
+
+  def build_module
+    @photos = @post.photos
+    @likes = @post.likes.includes(:user)
+    @comment = Comment.new
+    @is_liked = @post.is_liked(current_user)
+    @is_bookmarked = @post.is_bookmarked(current_user)
   end
 
   private

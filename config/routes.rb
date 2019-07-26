@@ -20,4 +20,5 @@ Rails.application.routes.draw do
 
   #custom route defined
   get 'post/module_post', :to => 'posts#module_post', as: 'module'
+  get 'posts/build_module/:id', :to => 'posts#build_module', as: 'building'
 end
