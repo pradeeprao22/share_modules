@@ -4,12 +4,12 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   has_many :photos, dependent: :destroy
-  has_many :likes, -> {order(:created_at => :desc)}
-  has_many :comments, -> {order(:created_at => :desc)}
-  has_many :bookmarks
-  has_one :language
-  has_many :tags
-  has_many :categories
+  has_many :likes, -> {order(:created_at => :desc)}, dependent: :destroy
+  has_many :comments, -> {order(:created_at => :desc)}, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_one :language, dependent: :destroy
+  has_many :tags, dependent: :destroy
+  has_many :categories, dependent: :destroy
 
   def is_belongs_to? user
     Post.find_by(user_id: user.id, id: id)
