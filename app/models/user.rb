@@ -10,6 +10,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   validates :name, presence: true, length: {maximum: 50}
+  validates :email, presence: true
 
   def self.search(term)
      if term
