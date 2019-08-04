@@ -7,3 +7,8 @@ Features this application will contain
 Technology Blog.
 Module Sharing Feature
 Free Project Page(User can download free projects from this application)
+
+Process Of Building
+Every coding laungage(technology) is going to have different process or worker.
+
+
