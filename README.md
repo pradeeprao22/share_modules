@@ -7,9 +7,14 @@ Features this application will contain
 Technology Blog.
 Module Sharing Feature
 Free Project Page(User can download free projects from this application)
+___________________________________________________________________________________________________
 
 Process Of Building
 Every coding laungage(technology) is going to have different process or worker
 Making UI more friendly
 Try to understand the product as much as you can
 Write down user use cases
+Building the module running, module
+Intigration of Rspec unit testing
+
+
