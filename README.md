@@ -17,4 +17,8 @@ Write down user use cases
 Building the module running, module
 Intigration of Rspec unit testing
 
+______________________________________________________________________________________________________
+
+User can run multiple modules according to the technologey they want
+
 
