@@ -21,7 +21,7 @@ $(document).ready(function(){
     var code = $(".code-backend")[0];
     var editor = CodeMirror.fromTextArea(code, {
         lineNumbers : true,
-        mode: "ruby",
+        mode: "javascript",
         tabMode: "indent"
     });
 });
