@@ -19,6 +19,4 @@ Intigration of Rspec unit testing
 
 ______________________________________________________________________________________________________
 
-User can run multiple modules according to the technologey they want
-
-
+User can run multiple modules using different technologies they want
