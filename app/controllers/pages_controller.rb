@@ -14,12 +14,19 @@ class PagesController < ApplicationController
   def about
   end
 
-  def contact
+  def contact_table
+      @contact_table = ContactTable.new(contact_table_params)
+      @contact_table.save
   end
 
   def innovation
   end
 
   def help
+  end
+
+  private
+  def contact_table_params
+    params.permit(:name, :number, :phonenumber, :message)
   end
 end

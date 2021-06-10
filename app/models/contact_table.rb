@@ -1,0 +1,2 @@
+class ContactTable < ApplicationRecord
+end

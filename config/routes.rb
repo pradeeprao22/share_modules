@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#userlanding'
   get 'pages/about'
-  get 'pages/contact'
   get 'pages/innovation'
   get 'pages/help'
   devise_for :users,
@@ -11,6 +10,8 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :show]
 
+  resource :contact_tables, only: [:create]
+
   resources :posts, only: [:index, :show, :create, :destroy] do
      resources :photos, only: [:create]
      resources :likes, only: [:create, :destroy], shallow: true
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   #custom route defined
+  get 'pages/contact_table'
   get 'post/module_post', :to => 'posts#module_post', as: 'module'
   get 'posts/build_module/:id', :to => 'posts#build_module', as: 'building'
 end
