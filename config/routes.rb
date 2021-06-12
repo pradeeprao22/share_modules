@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'pages/about'
   get 'pages/innovation'
   get 'pages/help'
+  get 'pages/success'
   devise_for :users,
     path: '',
     path_name: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
@@ -20,7 +21,8 @@ Rails.application.routes.draw do
   end
 
   #custom route defined
-  get 'pages/contact_table'
+  get 'pages/contact_get'
+  post 'pages/contact_get/:id', :to => 'pages#contact_get'
   get 'post/module_post', :to => 'posts#module_post', as: 'module'
   get 'posts/build_module/:id', :to => 'posts#build_module', as: 'building'
 end
