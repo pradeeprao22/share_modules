@@ -25,3 +25,12 @@ $(document).ready(function(){
         tabMode: "indent"
     });
 });
+
+$(document).ready(function(){
+    var code = $(".code-backend-2")[0];
+    var editor = CodeMirror.fromTextArea(code, {
+        lineNumbers : true,
+        mode: "javascript",
+        tabMode: "indent"
+    });
+});

@@ -11,7 +11,7 @@ class ContactTablesController < ApplicationController
           @contact_table.save!
           flash[:notice] = "Your message is saved we will contact you in 2HRS..."
           redirect_to pages_success_path
-        else 
+        else
           flash[:alert] = "Something went wrong we are working on it...."
         end
     end
