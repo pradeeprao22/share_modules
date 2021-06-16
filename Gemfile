@@ -73,3 +73,8 @@ gem 'figaro'
 gem 'dropzonejs-rails'
 gem 'mini_magick', '~> 4.2', '>= 4.2.4'
 gem 'will_paginate-bootstrap4'
+
+gem 'activeadmin'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
