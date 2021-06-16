@@ -9,10 +9,10 @@ ActiveAdmin.register Bookmark do
   #
   # or
   #
-  # permit_params do
-  #   permitted = [:post_id, :user_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  permit_params do
+    permitted = [:post_id, :user_id]
+    permitted << :other if params[:action] == 'create' && current_user.admin?
+    permitted
+  end
   
 end
