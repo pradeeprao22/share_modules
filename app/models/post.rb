@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
+  extend FriendlyId
+
   belongs_to :user
 
+  friendly_id :content, use: :slugged
   validates :content, presence: true
 
   has_many :photos, dependent: :destroy
