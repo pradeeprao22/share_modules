@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resource :contact_tables, only: [:create]
 
-  resources :posts, only: [:index, :show, :create, :destroy] do
+  resources :posts, param: :slug, only: [:index, :show, :create, :destroy] do
      resources :photos, only: [:create]
      resources :likes, only: [:create, :destroy], shallow: true
      resources :comments, only: [:index, :create, :destroy], shallow: true
