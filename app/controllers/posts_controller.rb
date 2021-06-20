@@ -59,7 +59,7 @@ class PostsController < ApplicationController
   private
 
   def find_post
-    @post = Post.friendly.find_by slug: params[:id]
+    @post = Post.friendly.find_by_slug(params[:slug])
 
     return if @post
     flash[:danger] = "Post not exist!"
@@ -67,6 +67,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :frontend, :backend, :frontend_css, :instruction)
+    params.require(:post).permit(:content, :frontend, :backend, :frontend_css, :instruction, :slug)
   end
 end
