@@ -4,7 +4,6 @@ class LikesController < ApplicationController
   def create
     @post = Post.find_by_slug(params[:post_slug])
     post_id = @post.id
-    byebug
     @like = current_user.likes.new(post_id: post_id, post_slug: params[:post_slug])
     if @like.save
         respond_to :js

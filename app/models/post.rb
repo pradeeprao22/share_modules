@@ -3,7 +3,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  friendly_id :content, use: :slugged
+  friendly_id :content, use: [:slugged, :finders]
   validates :content, presence: true
 
   has_many :photos, dependent: :destroy
