@@ -2,7 +2,9 @@ class BookmarksController < ApplicationController
     before_action :authenticate_user!
   
     def create
-      @bookmark = current_user.bookmarks.build(bookmark_params)
+      post = Post.find_by_slug(params[:post_slug])
+      post_id = post.id
+      @bookmark = current_user.bookmarks.build(post_id: post_id, post_slug: params[:post_slug])
       if @bookmark.save
         @post = @bookmark.post
         @is_bookmarked = @bookmark
@@ -24,6 +26,6 @@ class BookmarksController < ApplicationController
   
     private
     def bookmark_params
-      params.permit :user_id, :post_id
+      params.permit :user_id, :post_id, :post_slug
     end
   end
