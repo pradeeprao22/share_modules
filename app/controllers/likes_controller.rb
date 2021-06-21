@@ -2,8 +2,10 @@ class LikesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @like = current_user.likes.build(likes_params)
-    @post = @like.post
+    @post = Post.find_by_slug(params[:post_slug])
+    post_id = @post.id
+    byebug
+    @like = current_user.likes.new(post_id: post_id, post_slug: params[:post_slug])
     if @like.save
         respond_to :js
     else
@@ -23,6 +25,6 @@ class LikesController < ApplicationController
 
   private
   def likes_params
-    params.permit :post_id
+    params.permit :post_id, :post_slug
   end
 end

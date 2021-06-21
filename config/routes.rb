@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resource :contact_tables, only: [:create]
 
-  resources :posts, only: [:index, :show, :create, :destroy] do
+  resources :posts, param: :slug, only: [:index, :show, :create, :destroy] do
      resources :photos, only: [:create]
      resources :likes, only: [:create, :destroy], shallow: true
      resources :comments, only: [:index, :create, :destroy], shallow: true
@@ -26,5 +26,5 @@ Rails.application.routes.draw do
   get 'pages/contact_get'
   post 'pages/contact_get/:id', :to => 'pages#contact_get'
   get 'post/module_post', :to => 'posts#module_post', as: 'module'
-  get 'posts/build_module/:id', :to => 'posts#build_module', as: 'building'
+  get 'posts/build_module/:slug', :to => 'posts#build_module', as: 'building'
 end
