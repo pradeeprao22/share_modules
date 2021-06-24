@@ -1,23 +1,28 @@
 <div class="container">
 <div class="d-flex flex-column mt-3">
   <h6>HTML</h6>
- <textarea class="code-textarea"><%= @post.frontend %></textarea>
+ <textarea class="codemirror-textarea"><%= @post.frontend %></textarea>
 </div>
 <br>
 <div class="d-flex flex-column mt-3">
 <h6>CSS</h6>
- <textarea class="codemirror-textarea"><%= @post.frontend_css %></textarea>
+ <textarea class="code-textarea"><%= @post.frontend_css %></textarea>
 </div>
 <div class="d-flex flex-column mt-3">
 <h6>JAVASCRIPT</h6>
  <textarea class="code-backend"><%= @post.javascript %></textarea>
 </div>
+<br>
+<br>
+<hr>
 <div class="d-flex flex-column mt-3">
-<h6>BACKEND</h6>
+<h6><i>BACKEND</i> [comming soon][Runs in Ruby, Python, Java]</h6>
  <textarea class="code-backend-2"><%= @post.backend %></textarea>
 </div>
+<hr>
 
 <div class="text-center">
+<i><p6>Beta</p6></i>
  <%= link_to "BUILD MODULE", building_path, :class => "btn btn-lg btn-success btn-circle my-4 mr-3" %>
 </div>
 
