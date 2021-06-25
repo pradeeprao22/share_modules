@@ -26,4 +26,8 @@ class PagesController < ApplicationController
 
   def help
   end
+
+  def term
+  end
+  
 end
