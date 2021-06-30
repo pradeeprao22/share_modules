@@ -1,0 +1,12 @@
+<% @messages.each do |message| %>
+ <% if message.body %>
+  <% user = User.find(message.user_id) %>
+  <%= user.email %><%= message.message_time %>
+  <%= message.body %>
+ <% end %>
+<% end %>
+<%= form_for [@conversation, @message] do |f| %>
+ <%= f.text_area :body %>
+ <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+ <%= f.submit "Send Reply" %>
+<% end %>
