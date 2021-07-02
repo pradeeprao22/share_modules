@@ -1,7 +1,7 @@
 <% @messages.each do |message| %>
  <% if message.body %>
   <% user = User.find(message.user_id) %>
-  <%= user.email %><%= message.message_time %>
+  <%= user.email %><%= message.created_at %>
   <%= message.body %>
  <% end %>
 <% end %>

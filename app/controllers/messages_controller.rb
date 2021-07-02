@@ -7,17 +7,20 @@ class MessagesController < ApplicationController
         @messages = @conversation.messages
         @message = @conversation.messages.new
       end
+
       def new
         @message = @conversation.messages.new
       end
+      
       def create
-        @message = @conversation.messages.new(conversations_id: params[:conversation_id], user_id: params[:user_id])
+        @message = @conversation.messages.new(conversation_id: params[:conversation_id], user_id: params[:message][:user_id], body: params[:message][:body])
         if @message.save
-          redirect_to conversation_message_path(@conversation)
+          redirect_to conversations_path
         end
       end
+      
       private
       def message_params
-        params.permit(:body, :user_id, :conversations_id)
+        params.permit(:body, :user_id, :conversation_id)
       end
 end

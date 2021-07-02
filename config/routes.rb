@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :messages
-  resources :conversations
+  
+  resources :conversations do
+    resources :messages
+  end
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'pages#userlanding'
