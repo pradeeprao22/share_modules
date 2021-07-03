@@ -7,4 +7,9 @@ class FeedsController < ApplicationController
     @posts = Post.all
   end
 
+
+  def new
+
+  end
+
 end
