@@ -1,5 +1,5 @@
-<h1>My Inbox</h1>
-<h1>All Conversations:</h1>
+<h1>Inbox</h1>
+<h1>Conversations</h1>
 <% @conversations.each do |conversation| %>
  <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
   <% if conversation.sender_id == current_user.id %>
@@ -10,9 +10,9 @@
   <h3><%= link_to recipient.email, conversation_messages_path(conversation)%></h3>
  <% end %>
 <% end %>
-<h1>All Users:</h1>
+<h1>All Users</h1>
 <% @users.each do |user| %>
- <% if user.id != current_user.id %><h3>
- <%= link_to user.email, conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%></h3>
- <% end %>
+ <% if user.id != current_user.id %>
+ <h3><%= link_to user.email, conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%></h3>
+<% end %>
 <% end %>
