@@ -4,7 +4,7 @@ describe "GET posts#index" do
   context "when the user is not admin" do
     it "should list titles of all stories" do
       user = user = User.new(
-        name: "Sumner",
+        name: "Summery",
         email: "tester@example.com",
         password: "dottle-nouveau-pavilion-tights-furze",)
       posts = create_list(:post, 10, user: user)
