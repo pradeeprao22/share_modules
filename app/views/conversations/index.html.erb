@@ -2,7 +2,6 @@
 <h1>Inbox</h1>
 <div class="form-login box">
 <h4>Conversations</h4>
-
         <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
         <% if conversation.sender_id == current_user.id %>

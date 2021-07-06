@@ -16,7 +16,7 @@ class PostsController < ApplicationController
             end
             
             redirect_to posts_path
-            flash[:notice] = "Saved ..."
+            flash[:notice] = "Your Post iS Saved ..."
         else
             flash[:alert] = "Something went wrong ..."
             redirect_to posts_path
