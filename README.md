@@ -1,4 +1,5 @@
 ai.londevs.com
+_______________
 1. User can post his module ideas using moduler platform
 2. User also have option to copy any module to their application
 3. Back-end, front-end should work together feature
@@ -25,7 +26,6 @@ Try to understand the product as much as you can?
 Write down user use cases
 Building the module running, module
 Intigration of Rspec unit testing
-
 _____________________________________________________________________________________________________
 
 User can run multiple modules according to the technologey they want applying the system anaysis thinking:
@@ -34,12 +34,14 @@ ________________________________________________________________________________
 System Analyis For Bussiness
 _____________________________________________________________________________________________________
 
-
-
 StalkHolders and Percipitives
 Knowledge Management
 System Thinking
 Information Systems
+_______________________________________________________________________________________________________
 
+Better Email Management System With Secure Connection
+cookies intigratiion
+User mail send acquazation
 
 
