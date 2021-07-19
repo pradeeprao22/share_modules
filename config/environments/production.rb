@@ -95,4 +95,14 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.default_url_options = { :host => 'londevs.com' }
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:       'smtpout.secureserver.net',
+    port:           80,
+    user_name:     'pradeep.rao@londevs.com',
+    password:      'toftiQ-9mugka-jarboq',
+    authentication: :login,
+    enable_starttls_auto: true
+  }
 end
