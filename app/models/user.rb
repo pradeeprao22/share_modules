@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
   has_many :bookmarks
+  has_many :follows
   
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
