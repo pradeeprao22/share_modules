@@ -1,28 +1,25 @@
 <div class="container">
 <h1>Inbox</h1>
-<div class="form-login box">
 <% @messages.each do |message| %>
- <% if message.body %>
+  <% if message.body %>
   
-    <% user = User.find(message.user_id) %>
-        <%= user.email %><%= message.created_at %>
+    <% user = User.find(message.user_id) %><br>
+        <%= user.name %>|<%= message.created_at %>
         <%= message.body %>
     <% end %>
-
-    <% end %>
+  <% end %>
 <div class="form-control">
+<p><h6>Message To:</h6><b><%= Conversation.find(params[:conversation_id]).recipient.name %></b></p>
     <%= form_for [@conversation, @message] do |f| %>
      <div class="form-group">
-       <%= f.text_area :body  %>
-     </div>   
+       <%= f.text_area :body, class: "form-control"  %>
+     </div>
      <div class="form-group">
        <%= f.text_field :user_id, value: current_user.id, type: "hidden", required: true %>
      </div>  
      <div class="form-group">
-
        <%= f.submit "Send Reply", class: "btn btn-success"%>
     </div 
     <% end %>
-</div>
 </div>
 </div>

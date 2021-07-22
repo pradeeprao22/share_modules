@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
       def create
         @message = @conversation.messages.new(conversation_id: params[:conversation_id], user_id: params[:message][:user_id], body: params[:message][:body])
         if @message.save
-          redirect_to conversations_path
+          redirect_to conversation_messages_path(@conversation)
         end
       end
       

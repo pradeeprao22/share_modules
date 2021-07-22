@@ -2,7 +2,7 @@ class ConversationsController < ApplicationController
     before_action :authenticate_user! # if followed step 2
   
   def index
-    @users = User.all
+    # @users = User.all
     @follows = Follow.all
     @conversations = Conversation.all
   end
