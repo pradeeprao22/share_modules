@@ -1,13 +1,14 @@
 <div class="container">
-<h1>Inbox</h1>
+<h1>Messages Inbox</h1>
+<div class="form-control">
 <% @messages.each do |message| %>
   <% if message.body %>
-  
     <% user = User.find(message.user_id) %><br>
         <%= user.name %>|<%= message.created_at %>
         <%= message.body %>
     <% end %>
   <% end %>
+</div>  
 <div class="form-control">
 <p><h6>Message To:</h6><b><%= Conversation.find(params[:conversation_id]).recipient.name %></b></p>
     <%= form_for [@conversation, @message] do |f| %>
