@@ -79,4 +79,7 @@ gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 gem 'friendly_id', '~> 5.1.0'
+gem 'sidekiq', '~> 6.2', '>= 6.2.1'
+
+# FOR ML
 gem 'decisiontree', '~> 0.5.0'
