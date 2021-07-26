@@ -1,0 +1,10 @@
+$.ajax({
+    url: "/posts",
+    method: "post",
+    data: {
+    },
+    dataType: "json",
+    success: function(data){
+        $("#alert_message").text(data.message);
+    }
+});
