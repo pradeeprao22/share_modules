@@ -7,10 +7,17 @@
        <div class="row">
          <p class="username"><%= @user.name %></p>
        <% if @user == current_user %>
-       <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %>  
+       <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %> 
          <!-- Button trigger modal -->
          <button type="button" class="setting" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-cog"></i></button>
        <% end %>
+      
+       <% if @user != current_user %>
+       
+       <%= link_to "Follow Coder", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %> 
+
+       <% end %>
+
          <!-- Hover Modal -->
          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
