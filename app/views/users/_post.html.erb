@@ -7,7 +7,7 @@
       <% end %>
     </div>
     <%= link_to post_path(post) do %>
-     <% if post.photos != nil %>
+     <% if post.photos[0] != nil %>
     <%= image_tag post.photos.first.image.url(:standard), class: "post-stats card-img-top image-preview" %>
      <% end %>
     <% end %>
