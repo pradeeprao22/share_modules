@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+
+  resources :follows, only: [:create]
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -31,6 +33,6 @@ Rails.application.routes.draw do
   #custom route defined
   get 'pages/contact_get'
   post 'pages/contact_get/:id', :to => 'pages#contact_get'
-  # get 'post/module_post', :to => 'posts#module_post', as: 'module'
+  get 'post/module_post', :to => 'posts#module_post', as: 'module'
   get 'posts/build_module/:slug', :to => 'posts#build_module', as: 'building'
 end
