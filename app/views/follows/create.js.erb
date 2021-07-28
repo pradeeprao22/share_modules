@@ -1,0 +1,4 @@
+$('#follow-user-<%= @post.id.to_s %>').
+ html('<%= j render "users/follow", {is_bookmarked: @is_bookmarked, post: @post} %>');
+
+ console.log("create bookmark success");
