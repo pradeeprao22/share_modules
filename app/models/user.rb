@@ -14,6 +14,10 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: 50}
   validates :email, presence: true
 
+  def is_followed user
+    User.find_by(id: user.id, id: id)
+  end
+
   def self.search(term)
      if term
       where('name LIKE ?', "%#{term}%")

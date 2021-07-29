@@ -3,6 +3,7 @@
     <div class="col-md-4 text-center">
       <%= image_tag avatar_url(@user), width: '152', height: '152', class: "round-img" %>
     </div>
+    
     <div class="col-md-8">
        <div class="row">
          <p class="username"><%= @user.name %></p>
@@ -11,13 +12,11 @@
          <!-- Button trigger modal -->
          <button type="button" class="setting" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-cog"></i></button>
        <% end %>
-      
+
        <% if @user != current_user %>
-         <%= form_for(@follow, as: @follow, url: follows_path(@user), html: { method: :post }) do |f| %>
-            <%= f.text_field :follower_id, value: current_user.id, type: "hidden", required: true %>
-            <%= f.text_field :following_id, value: @user.id, type: "hidden", required: true %>
-            <%= f.submit "Follow Coder", class: "btn btn-outline common-btn edit-profile-btn"%>
-         <% end %>
+       <div id="follow-user-<%= @user.id.to_s %>">
+         <%= render 'follow', {is_followed: @is_followed, user: @user} %>
+       </div>
        <% end %>
 
          <!-- Hover Modal -->

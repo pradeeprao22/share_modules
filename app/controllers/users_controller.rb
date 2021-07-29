@@ -3,11 +3,13 @@ class UsersController < ApplicationController
         @users = User.search(params[:term])
         respond_to :js
     end
+
     def show
         @user = User.find(params[:id])
-        @follow = Follow.new
+        @is_followed = @user.follows.last
+        @follow = Follow.new(following_id: @user.id, follower_id: current_user.id)
         @posts = @user.posts.includes(:photos, :likes, :comments)
-        @saved = Post.joins(:bookmarks).where(user_id: current_user.id).
-           includes(:photos, :likes, :comments) if @user == current_user
+        @saved = Post.joins(:bookmarks).where(user_id: current_user.id).includes(:photos, :likes, :comments) if @user == current_user
     end
+
 end

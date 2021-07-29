@@ -1,10 +1,24 @@
 class FollowsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
-    @follow = Follow.new(follower_id: params[:follow][:follower_id], following_id: params[:follow][:following_id])
-    if @follow.save!
-      flash[:alert] = "You have succesfully followed this user"
+    @user = User.find(params[:format])
+    user_id = @user.id
+    @follow = current_user.follows.new(following_id: current_user.id, follower_id: user_id)
+    if @follow.save
+        respond_to :js
+    else
+        flash[:alert] = "Something went wrong ..."
+    end
+  end
+
+  def destroy
+    @follow = Follow.find(params[:id])
+    @user = @follow.follower
+    if @follow.destroy
+        respond_to :js
+    else
+        flash[:alert] = "Something went wrong ...."
     end
   end
 
