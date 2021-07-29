@@ -1,0 +1,5 @@
+<% if @user.follows.present? %>
+ <%= link_to "Followed", follows_path(@is_followed), method: :delete, remote: true, class: "followed" %>
+<% else %>
+ <%= link_to "Follow", follows_path(@user), method: :post, remote: true, class: "follow" %>
+<% end %>
