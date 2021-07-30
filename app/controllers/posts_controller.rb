@@ -9,18 +9,30 @@ class PostsController < ApplicationController
   def create
         @post = current_user.posts.build(post_params)
         if @post.save
+          invoke_cables
             if params[:images]
                 params[:images].each do |img|
                   @post.photos.create(image: img)
                 end
             end
-            
-            redirect_to posts_path
-            flash[:notice] = "Your Post iS Saved ..."
+            # redirect_to posts_path
+            respond_to do |format|
+              format.html { render "module_post" }
+              format.js { render "module_post" }
+              # format.json { render json: { message: "Invalid Credentials!" } }
+              flash[:notice] = "Your module is saved. Thanks for sharing..."
+            end
         else
             flash[:alert] = "Something went wrong ..."
+            respond_to :js
             redirect_to posts_path
         end
+  end
+
+  def update
+     @post = current_user.posts.find(params[:id])
+     @post.update(post_params)
+     redirect_to posts_path
   end
 
   def show
@@ -68,5 +80,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :instruction, :slug)
+  end
+
+  def invoke_cables
+    CableServices::NotifyJobsService.(
+      post: @post,
+      action: action_name.to_sym,
+      user: current_user
+    )
   end
 end
