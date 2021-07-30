@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   end
 
   def update
-     @post = current_user.posts.find(params[:id])
+     @post = current_user.posts.find_by(slug: params[:slug])
      @post.update(post_params)
      redirect_to posts_path
   end

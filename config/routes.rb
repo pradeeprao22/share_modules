@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  resources :follows, only: [:create]
+  resources :follows, only: [:create, :destroy]
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resource :contact_tables, only: [:create]
 
-  resources :posts, param: :slug, only: [:index, :show, :create, :destroy] do
+  resources :posts, param: :slug, only: [:index, :show, :update, :create, :destroy] do
      resources :photos, only: [:create]
      resources :likes, only: [:create, :destroy], shallow: true
      resources :comments, only: [:index, :create, :destroy], shallow: true
@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   post 'pages/contact_get/:id', :to => 'pages#contact_get'
   get 'post/module_post', :to => 'posts#module_post', as: 'module'
   get 'posts/build_module/:slug', :to => 'posts#build_module', as: 'building'
+
+  mount ActionCable.server, at: '/cable'
 end
