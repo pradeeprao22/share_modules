@@ -32,7 +32,8 @@ class PostsController < ApplicationController
   def update
      @post = current_user.posts.find_by(slug: params[:slug])
      @post.update(post_params)
-     redirect_to posts_path
+     redirect_to post_path
+     flash[:notice] = "Module updated succesfully."
   end
 
   def show
