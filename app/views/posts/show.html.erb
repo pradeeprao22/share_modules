@@ -30,9 +30,13 @@
   <%= f.text_area :instruction, rows: "10", style: "white-space: pre-wrap;", value: (@post.instruction), class: "form-control border-0" %>
 </div>
 
+<br>
+<br>
+<% if @post.user == current_user %>
 <div class="d-flex flex-column">
   <%= f.submit "Update Module", class: "btn btn-success form-control border-0" %>
 </div>
+<% end %>
 
 <% end %>
 <hr>
