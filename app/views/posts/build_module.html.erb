@@ -1,12 +1,11 @@
-<br>
-    <html>
+    <style>
+    <%=raw @post.frontend_css %>
+    </style>
+
     <%=raw @post.frontend %>
+    
     <script>
       <%=raw @post.javascript %>  
     </script>
-    </html>
-    <style>
-      <%=raw @post.frontend_css %>
-    <style>
     
-
+    <%= @post.backend %>
