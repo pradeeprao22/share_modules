@@ -2,14 +2,21 @@ class FeedsController < ApplicationController
     before_action :authenticate_user!
   
   def index
-    #if else according to the user activity
-    @users = User.all
-    @posts = Post.all
+    @feeds = Feed.all
   end
 
+  def create
+    @feed = Feed.new(feeds_params)
+    if @feed.save
+      flash[:notice] = "Feeds"
+    end
+  end
 
   def new
-
+    @feed = Feed.new
   end
+
+  private
+  permit.params(:user_id, :post_id)
 
 end
