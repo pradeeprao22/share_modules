@@ -14,6 +14,10 @@ class Post < ApplicationRecord
   has_many :tags, dependent: :destroy
   has_many :categories, dependent: :destroy
 
+  after_create_commit { PostBroadcastJob.perform_later self }  
+  after_update_commit { PostBroadcastJob.perform_later self }  
+  after_destroy { PostBroadcastJob.perform_later self }  
+
   def is_belongs_to? user
     Post.find_by(user_id: user.id, id: id)
   end
