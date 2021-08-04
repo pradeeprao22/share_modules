@@ -19,6 +19,8 @@
 //= require_tree .
 //= require toastr
 //= require codemirror
+//= require cable
+//= require_tree ./channels
 
 /*global toastr*/
 toastr.options = {
