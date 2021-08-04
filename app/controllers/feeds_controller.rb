@@ -17,7 +17,8 @@ class FeedsController < ApplicationController
   end
 
   private
-  
-  params.permit :user_id, :post_id
+  def feeds_params
+    params.permit :user_id, :post_id
+  end
 
 end
