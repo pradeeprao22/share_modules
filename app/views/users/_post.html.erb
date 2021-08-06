@@ -1,6 +1,6 @@
 <% @posts.each do |post| %>
   <div class="col-md-4 ">
-  <div class="card mt-3 posts">
+  <div class="card mt-3 posts" id="posts">
     <div class="card-header d-flex align-items-center">
       <%= link_to post_path(post), method: :delete, class: "ml-auto delete-post-icon mx-0 my-auto" do %>
         <i class="far fa-trash-alt" aria-hidden="true"></i>

@@ -8,7 +8,9 @@
         <b>Post your module:</b>
       </div>
       <div class="card-body">
-        <%= form_for @post, :html => { :multipart => true } do |f| %>
+        <%= form_for @post, :html => { :multipart => true, :remote=>true } do |f| %>
+          <div id="alert_message">
+          </div>
           <div class="form-group row mt-2">
             <div class="col-auto pr-0">
                <%= image_tag avatar_url(current_user), class: "post-author-icon" %>
@@ -67,7 +69,7 @@
           </div>
       
           <div class="form-group row mt-2">
-          <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
+          <%= f.submit "Submit", class: "btn btn-success form-control border-0", data: { "disable-with": "Loading..." }%>
           </div>
         <% end %>
       </div>
