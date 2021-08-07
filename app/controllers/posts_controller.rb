@@ -4,23 +4,20 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.paginate(:page => params[:page], :per_page => 9).includes(:photos, :user, :likes, :bookmarks).order('created_at desc')
+    # redirect_to posts_path
   end
 
   def create
         @post = current_user.posts.build(post_params)
         if @post.save
-          invoke_cables
             if params[:images]
                 params[:images].each do |img|
                   @post.photos.create(image: img)
                 end
             end
-            # redirect_to posts_path
             respond_to do |format|
-              format.html { render "module_post" }
-              format.js { render "module_post" }
-              # format.json { render json: { message: "Invalid Credentials!" } }
-              flash[:notice] = "Your module is saved. Thanks for sharing..."
+              format.js 
+              # {render inline: "location.reload();" }
             end
         else
             flash[:alert] = "Something went wrong ..."
@@ -83,11 +80,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :instruction, :slug)
   end
 
-  def invoke_cables
-    CableServices::NotifyJobsService.(
-      post: @post,
-      action: action_name.to_sym,
-      user: current_user
-    )
-  end
 end
