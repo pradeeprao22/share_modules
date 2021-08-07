@@ -5,6 +5,10 @@ class PostsController < ApplicationController
   def index
     @posts = Post.paginate(:page => params[:page], :per_page => 9).includes(:photos, :user, :likes, :bookmarks).order('created_at desc')
     # redirect_to posts_path
+    respond_to do |format|
+      format.js {render layout: false}
+      format.html { render 'index'} 
+    end
   end
 
   def create
