@@ -25,4 +25,12 @@ class Post < ApplicationRecord
   def is_bookmarked user
     Bookmark.find_by(user_id: user.id, post_id: id)
   end
+
+  def self.search(term)
+    if term
+     where('content LIKE ?', "%#{term}%")
+    else
+      nil
+    end
+ end
 end

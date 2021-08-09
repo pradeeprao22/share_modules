@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   def self.search(term)
      if term
-      where('name LIKE ?', "%#{term}%")
+      where('content LIKE ?', "%#{term}%")
      else
        nil
      end

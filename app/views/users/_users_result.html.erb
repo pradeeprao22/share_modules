@@ -1,7 +1,7 @@
-<% if users.present? %>
-  <% users.each do |user| %>
-      <%= link_to user_path(user), class: "no-text-decoration normal-color" do %>
-         <div class="search-result-item"><%= user.name %></div>
+<% if posts.present? %>
+  <% posts.each do |post| %>
+      <%= link_to post_path(post), class: "no-text-decoration normal-color" do %>
+         <div class="search-result-item"><%= post.content %></div>
       <% end %>
   <% end %>
 <% else %>
