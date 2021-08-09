@@ -48,23 +48,27 @@
  <% if @user == current_user %>
    <nav>
       <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-posts-tab" data-toggle="tab" href="#nav-posts" role="tab" aria-controls="nav-posts" aria-selected="true">YOUR MODULES</a>
-     <!--<a class="nav-item nav-link" id="nav-saved-tab" data-toggle="tab" href="#nav-saved" role="tab" aria-controls="nav-saved" aria-selected="  false">saved</a>-->
+      <a class="nav-item nav-link" id="nav-posts-tab" data-toggle="tab" href="#nav-posts" role="tab" aria-controls="nav-posts" aria-selected="false">YOUR MODULES</a>
+      <br>
+      <a class="nav-item nav-link active" id="nav-saved-tab" data-toggle="tab" href="#nav-saved" role="tab" aria-controls="nav-saved" aria-selected="true">BOOKMARKED</a>
       </div>
    </nav>
  <% end %>  
-   <div class="tab-content" id="nav-tabContent">
-   <div class="tab-pane fade show active" id="nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab">
-     <div class="row">
-      <%= render "post", { posts: @posts }  %>
-     </div>
-   </div>
-   <div class="tab-pane fade" id="nav-saved" role="tabpanel" aria-labelledby="nav-saved-tab">
-      <div class= "row">
-       <% render "post", { posts: @saved } if @user == current_user %>
+      <div class="tab-content" id="nav-tabContent">
+         <div class="tab-pane fade show active" id="nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab">
+         <div class="row">
+            <%= render "post", { posts: @posts }  %>
+         </div>
+         <br>
+         <center><%= will_paginate @posts %></center>
+         </div>
+         <br>
+         <div class="tab-pane fade" id="nav-saved" role="tabpanel" aria-labelledby="nav-saved-tab">
+            <div class= "row">
+            <% render "postbookmarked", { posts: @bookmarked_posts } %>
+            </div>
+         </div>
       </div>
-   </div>
-   </div>
   </div> 
  </div>
  </div>
