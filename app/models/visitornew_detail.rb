@@ -1,0 +1,3 @@
+class VisitornewDetail < ApplicationRecord
+    
+end
