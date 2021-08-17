@@ -34,7 +34,7 @@ ________________________________________________________________________________
 System Analyis For Bussiness
 _____________________________________________________________________________________________________
 
-StalkHolders and Percipitives
+Stakeholders and Percipitives
 Knowledge Management
 System Thinking
 Information Systems
@@ -44,5 +44,6 @@ Better Email Management System With Secure Connection
 cookies intigratiion
 User mail send acquazation
 User Permissions System
+Action Cable Debugging
 
 
