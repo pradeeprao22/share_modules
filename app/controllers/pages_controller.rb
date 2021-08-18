@@ -1,9 +1,13 @@
 class PagesController < ApplicationController
   def userlanding
     ip = request.ip
-    # city = request.city
-    # country = request.country
-    VisitornewDetail.create(ip: ip)
+    @visitor_details = VisitornewDetail.create(ip: ip)
+    if request.location.city != nil
+      @visitor_details.update(city: request.location.city)
+    end
+    if request.location.country != nil
+      @visitor_details.update(country = request.location.country)
+    end
     if user_signed_in?
       redirect_to posts_path
     end
