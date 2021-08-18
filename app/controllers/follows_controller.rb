@@ -2,9 +2,9 @@ class FollowsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @user = User.find(params[:format])
+    @user = User.find(params[:user_id])
     user_id = @user.id
-    @follow = current_user.follows.new(following_id: current_user.id, follower_id: user_id)
+    @follow = current_user.follows.new(following_id: user_id)
     if @follow.save
         respond_to :js
     else

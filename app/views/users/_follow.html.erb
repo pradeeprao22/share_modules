@@ -1,5 +1,5 @@
 <% if is_followed.present?  %>
   <%= link_to "Followed", follow_path(is_followed), method: :delete, remote: true, class: "btn btn-outline-dark common-btn edit-profile-btn" %>
 <% else %>
-  <%= link_to "Follow", follows_path(user), method: :post, remote: true, class: "btn btn-outline-dark common-btn edit-profile-btn" %>
+  <%= link_to "Follow", user_follows_path(user), method: :post, remote: true, class: "btn btn-outline-dark common-btn edit-profile-btn" %>
 <% end %>

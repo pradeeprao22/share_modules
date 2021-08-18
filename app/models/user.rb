@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   def is_followed user
-    User.find_by(id: user.id, id: id)
+    Follow.find_by(follower_id: user.id, following_id: id)
   end
 
   def self.search(term)

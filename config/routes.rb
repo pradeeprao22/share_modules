@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     path_name: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
     controllers: {registration: 'registration'}
   
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+     resource :follows, only: [:create, :destroy], shallow: true
+  end
 
   resource :contact_tables, only: [:create]
 
@@ -32,6 +34,9 @@ Rails.application.routes.draw do
   end
 
   #custom route defined
+  get 'pages/contact_get'
+  get 'users/likes/:id', :to => 'users#likes'
+  get 'users/bookmark/:id', :to => 'users#bookmark'
   get 'pages/contact_get'
   post 'pages/contact_get/:id', :to => 'pages#contact_get'
   get 'post/module_post', :to => 'posts#module_post', as: 'module'
