@@ -1,0 +1,41 @@
+<% liked_posts.each do |post| %>
+      <div class="col-md-4 ">
+      <div class="card mt-3 posts" id="posts">
+        <div class="card-header d-flex align-items-center">
+          <%= link_to post_path(post), method: :delete, class: "ml-auto delete-post-icon mx-0 my-auto" do %>
+            <i class="far fa-trash-alt" aria-hidden="true"></i>
+          <% end %>
+        </div>
+        <%= link_to post_path(post) do %>
+         <% if post.photos[0] != nil %>
+        <%= image_tag post.photos.first.image.url(:standard), class: "post-stats card-img-top image-preview" %>
+         <% end %>
+        <% end %>
+          <div class="card-body">
+            <div class="row actions">
+              <!-- Likes button render -->
+              <div id="like-post-<%= post.id.to_s %>">
+                <%= render "posts/like", {is_liked: post.is_liked(current_user), post: post} %>
+              </div>
+    
+              <div id="bookmark-icon-post-<%= post.id.to_s %>", class="ml-auto">
+                <%= render "posts/bookmark_icon", {is_bookmarked: post.is_bookmarked(current_user), post: post} %>
+              </div>
+            </div>
+            <!-- Likes Text -->
+            <div id="like-text-post-<%= post.id.to_s %>">
+              <%= render "posts/like_text", {likes: post.likes} %>
+            </div>
+            <div>
+              <span><strong> <%= post.user.name %> </strong></span>
+              <span><%= post.content %></span> 
+            </div>
+            
+            <!-- <div class="light-color post-time"><%= time_ago_in_words(post.created_at).upcase %> AGO </div> -->
+            <%= link_to time_ago_in_words(post.created_at).upcase + " AGO", post_path(post),
+            class: "light-color post-time no-text-decoration" %>
+          </div>
+          
+      </div>
+      </div>
+    <% end %>

@@ -35,8 +35,8 @@ Rails.application.routes.draw do
 
   #custom route defined
   get 'pages/contact_get'
-  get 'users/likes/:id', :to => 'users#likes'
-  get 'users/bookmark/:id', :to => 'users#bookmark'
+  get 'users/likes/:id', :to => 'users#likes', as: 'users_likes'
+  get 'users/bookmark/:id', :to => 'users#bookmark', as: 'users_bookmark'
   get 'pages/contact_get'
   post 'pages/contact_get/:id', :to => 'pages#contact_get'
   get 'post/module_post', :to => 'posts#module_post', as: 'module'
