@@ -2,8 +2,12 @@
 <div class="d-flex flex-column">
 <br>
 <center><h5><b>Modules</b></h5></center>
-<!-- <center><%= link_to "Load New Modules", @post, id: "posts", remote: true %><center> -->
-      <div id="posts">
+<!-- <div><center><%= link_to "Load New Modules", @post, id: "posts", remote: true %></center></div> -->
+
+  <div id="post"> </div>
+      <div id="posts" data-controller='post-list'>
+          <div data-target='post-list.post'>
+          </div>
         <%= render 'posts' %>
       </div>
 </div>

@@ -1,12 +1,16 @@
-ImgApp.posts = ImgApp.cable.subscriptions.create('PostsChannel', {  
-    
+ImgApp.posts = ImgApp.cable.subscriptions.create('PostChannel', {  
+
     received: function(data) {
-      $("#posts").removeClass('hidden')
-      return $('#posts').append(this.renderMessage(data));
+      // debug
+      // window.alert(data.post)
+
+      $("#post").removeClass('hidden')
+      
+      return $('#post').append(this.renderMessage(data));
     },
   
-    renderMessage: function(data) {
-      return "<p> <b>" + data.user + ": </b>" + data.content + "</p>";
+    renderMessage: function(data) {    
+      return "<p>" + data.post + "</p>";
     }
 
 });  

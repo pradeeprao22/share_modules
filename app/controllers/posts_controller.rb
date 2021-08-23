@@ -17,12 +17,14 @@ class PostsController < ApplicationController
             if params[:images]
                 params[:images].each do |img|
                   @post.photos.create(image: img)
+                  ActionCable.server.broadcast('post_channel', post: ( render @post))
+                  head :ok
+                  # PostBroadcastJob.perform_later
                 end
             end
-            respond_to do |format|
-              format.js 
-              # {render inline: "location.reload();" }
-            end
+            # respond_to do |format|
+            #   format.js
+            # end
         else
             flash[:alert] = "Something went wrong ..."
             respond_to :js
