@@ -2,29 +2,34 @@ class PagesController < ApplicationController
 include VisitorDetail
 
   def userlanding
-    getdetails
+    action = params[:action]
+    getdetails(action)
     if user_signed_in?
       redirect_to posts_path
     end
   end
 
   def home
-    getdetails
+    action = params[:action]
+    getdetails(action)
     if !user_signed_in?
       redirect_to new_user_session_path
     end
   end
 
   def about
-    getdetails
+    action = params[:action]
+    getdetails(action)
   end
 
   def success
-    getdetails
+    action = params[:action]
+    getdetails(action)
   end
 
   def contact_get
-    getdetails
+    action = params[:action]
+    getdetails(action)
     @contact_table = ContactTable.new
   end
 
@@ -35,7 +40,8 @@ include VisitorDetail
   end
 
   def term
-    getdetails
+    action = params[:action]
+    getdetails(action)
   end
   
 end
