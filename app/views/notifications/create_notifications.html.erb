@@ -193,7 +193,7 @@ hr {
 
 <div class="label-group">
 <p class="title"><%= bookmark.post.user.email %></p>
-<p class="caption">Document</p>
+<p class="caption">Bookmarked your post of <%= bookmark.post.content %> </p>
 </div>
 
 </div>
@@ -206,7 +206,6 @@ hr {
 <h4>You Got Message</h4>
  <hr>
 <% @messages_from_user.map do |m| %>
-  <% byebug %>
   <div class="border-card" draggable=true>
   <%= image_tag avatar_url(m.user), class: "card-type-icon with-border material-icons" %>
 
