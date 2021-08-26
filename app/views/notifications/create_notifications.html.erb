@@ -193,7 +193,7 @@ hr {
 
 <div class="label-group">
 <p class="title"><%= bookmark.post.user.email %></p>
-<p class="caption">Dokument</p>
+<p class="caption">Document</p>
 </div>
 
 </div>
@@ -202,6 +202,23 @@ hr {
 </div>
 
 <% end %>
+<% end %>
+<h4>You Got Message</h4>
+ <hr>
+<% @messages_from_user.map do |m| %>
+  <% byebug %>
+  <div class="border-card" draggable=true>
+  <%= image_tag avatar_url(m.user), class: "card-type-icon with-border material-icons" %>
+
+      <div class="content-wrapper">
+        <div class="label-group">
+        <p class="title"><%= m.user.name %></p>
+          <p class="title"><%= m.body %></p>
+          <p class="caption"><%= m.created_at %></p>
+        </div>
+      </div>
+    <i class="material-icons">visit</i>
+  </div>
 <% end %>
 
 <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
@@ -241,4 +258,3 @@ $('.droppable').bind('drop', function (e) {
 </script>
 
 </div>
-
