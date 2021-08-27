@@ -41,9 +41,11 @@ Information Systems
 _______________________________________________________________________________________________________
 
 Better Email Management System With Secure Connection
-cookies intigratiion
+_______________________________________________________________________________________________________
+Cookies intigratiion
 User mail send acquazation
-User Permissions System
+User Permissions System(Not Required Currently)
 Action Cable Debugging
-
+Added Notifications
+Import And Export module implementation
 
