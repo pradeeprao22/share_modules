@@ -26,8 +26,14 @@
             <%= link_to "Create", module_path, :class => "nav-link", :disabled => "disabled" %>
           </li>
 
+          <!-- data-toggle="popover" -->
+
+          <button type='button' class='btn btn-secondary' data-container='body' data-toggle='popover' data-placement='bottom' data-html='true' data-content='<%= render 'notifications/notifications' %>' >
+            Notification
+          </button>
+
           <li class="nav-item">
-            <a href="http://ai.londevs.com/notifications" class="nav-link"><i class="fa fa-bell" aria-hidden="true"></i></a>
+            <%= link_to get_notification_path, :class => "nav-link"  do %><span class="fa fa-bell"></span><% end %>
           </li> 
 
           <!-- <li class="nav-item">

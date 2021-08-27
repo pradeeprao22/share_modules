@@ -1,0 +1,46 @@
+<div id="notifications-results">
+<% current_user.posts.map do |post| %>
+    <% post.likes.map do |like| %>
+  
+  <div class="border-card">
+  
+  <div class="card-type-icon with-border"><%= like.id %></div>
+  
+  <div class="content-wrapper">
+  
+  <div class="label-group fixed">
+      <!-- user who liked the post -->
+      <p class="title">Name: <%= like.post.user.email %></p>
+      <p class="caption">Email: <%= like.post.user.name %></p>
+  </div>
+  <div class="min-gap"></div>
+  <div class="min-gap"></div>
+  
+  <div class="label-group">
+      <!-- which post user liked -->
+      <p>Claped on your module:</p>
+      <p class="title">Post: <%= like.post.content %></p>
+      <p class="caption">Date: <%= like.created_at %></p>
+  </div>
+  
+  <div class="min-gap"></div>
+  
+  <div class="label-group">
+      <p class="title">Programming Language used:</p>
+      <% if like.post.language %>
+      <p class="caption"><%= like.post.language.name %></p>
+      <% else %>
+      <p class="caption">nil</p>
+      <% end %>
+      <p>Clap Count: <%= post.likes.count %></p>
+  </div>
+  
+  </a>
+  </div>
+  
+  <i class="material-icons end-icon">more_vert</i>
+  </div>
+  
+  <% end %>
+  <% end %>
+  </div>
