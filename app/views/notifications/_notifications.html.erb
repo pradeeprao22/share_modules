@@ -1,5 +1,5 @@
 <div id="notifications-results">
-<% current_user.posts.map do |post| %>
+<% current_user.posts.last(5).map do |post| %>
     <% post.likes.map do |like| %>
   
   <div class="border-card">
@@ -34,13 +34,10 @@
       <% end %>
       <p>Clap Count: <%= post.likes.count %></p>
   </div>
-  
   </a>
   </div>
-  
-  <i class="material-icons end-icon">more_vert</i>
   </div>
-  
   <% end %>
   <% end %>
+  <center><%= link_to get_notification_path, :class => "nav-link"  do %>All Notifications<% end %></center>
   </div>
