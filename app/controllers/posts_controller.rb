@@ -1,8 +1,14 @@
 class PostsController < ApplicationController
+  include BackendRunner
+  include VisitorDetail
   before_action :authenticate_user!
   before_action :find_post, only: [:show, :destroy, :build_module]
 
   def index
+    # For getting user details
+    action = params[:action]
+    getdetails(action)
+
     @posts = Post.paginate(:page => params[:page], :per_page => 9).includes(:photos, :user, :likes, :bookmarks).order('created_at desc')
     # redirect_to posts_path
     respond_to do |format|
@@ -12,6 +18,10 @@ class PostsController < ApplicationController
   end
 
   def create
+        # For getting user details
+        action = params[:action]
+        getdetails(action)
+
         @post = current_user.posts.build(post_params)
         if @post.save
             if params[:images]
@@ -33,6 +43,10 @@ class PostsController < ApplicationController
   end
 
   def update
+    # for getting user details
+    action = params[:action]
+    getdetails(action)
+
      @post = current_user.posts.find_by(slug: params[:slug])
      @post.update(post_params)
      redirect_to post_path
@@ -40,7 +54,12 @@ class PostsController < ApplicationController
   end
 
   def show
+    # for getting user details
+    action = params[:action]
+    getdetails(action)
+
     @photos = @post.photos
+    @post = @post
     @likes = @post.likes.includes(:user)
     @comment = Comment.new
     @is_liked = @post.is_liked(current_user)
@@ -48,6 +67,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    # for getting user details
+    action = params[:action]
+    getdetails(action)
+
     if @post.user == current_user
       if @post.destroy
         flash[:notice] = "Post deleted!"
@@ -65,11 +88,28 @@ class PostsController < ApplicationController
   end
 
   def build_module
+    # for getting user details
+    action = params[:action]
+    getdetails(action)
+
+    #under dev
+    get_backend_code(@post.id)   
+
     @photos = @post.photos
     @likes = @post.likes.includes(:user)
     @comment = Comment.new
     @is_liked = @post.is_liked(current_user)
     @is_bookmarked = @post.is_bookmarked(current_user)
+  end
+
+  #under dev
+  def import_module
+    post = @post
+  end
+
+  #under dev
+  def backend_module_execution
+    code_execute
   end
 
   private
