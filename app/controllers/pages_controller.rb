@@ -33,6 +33,9 @@ include VisitorDetail
     @contact_table = ContactTable.new
   end
 
+  def howto 
+  end
+
   def innovation
   end
 
