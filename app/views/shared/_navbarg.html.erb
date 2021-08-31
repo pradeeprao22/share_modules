@@ -16,6 +16,12 @@
       <li class="nav-item">
         <a class="nav-link font-weight-bold p-2 text-white" href="https://londevs.com/services.html">Free Service</a>
       </li>
+      <li class="nav-item" id="" >
+      <%= link_to "Modules", root_path, :class => "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Create", module_path, :class => "nav-link", :disabled => "disabled" %>
+      </li>
     </ul>
   
     <%= link_to "Login", new_user_session_path, :class => "nav-link text-white p-2 font-weight-bold" %>
