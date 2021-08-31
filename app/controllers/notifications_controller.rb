@@ -16,7 +16,7 @@ class NotificationsController < ApplicationController
         # params user liked your post (user_post)
         # It should be recent
         # This users sent message to you
-        @messages_from_user = Message.all.where(user_id: current_user)
+        @messages_from_user = Message.limit(5).where(user_id: current_user)
     end
 
 end
