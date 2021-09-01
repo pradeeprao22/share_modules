@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   include BackendRunner
   include VisitorDetail
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:show, :destroy, :create, :module_post]
   before_action :find_post, only: [:show, :destroy, :build_module]
 
   def index
@@ -105,6 +105,9 @@ class PostsController < ApplicationController
   #under dev
   def import_module
     post = @post
+
+    # In Dev
+    @import = Import.create(import_client: params[:import_client], user_id: current_user.id, post_id: @post.id)
   end
 
   #under dev

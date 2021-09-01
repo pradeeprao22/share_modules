@@ -19,11 +19,15 @@ class Post < ApplicationRecord
   end
 
   def is_liked user
+    if user 
     Like.find_by(user_id: user.id, post_id: id)
+    end
   end
 
   def is_bookmarked user
+    if user
     Bookmark.find_by(user_id: user.id, post_id: id)
+    end
   end
 
   def self.search(term)
