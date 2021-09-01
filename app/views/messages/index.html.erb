@@ -1,12 +1,22 @@
+<style>
+.scroll{
+  overflow:auto;
+}
+</style>
+<% user_id = Conversation.find(params[:conversation_id]).recipient_id %>
+<% byebug %>
+<% user = User.find(user_id) %>
 <div class="container">
 <br>
-<h2>Messages Inbox</h2>
+<h2>{ <%= user.name %> } messages inbox</h2>
 <div class="form-control">
   <% @messages.each do |message| %>
     <% if message.body %>
       <% user = User.find(message.user_id) %>
-          <b><%= user.name %></b> |<%= message.created_at %>
-          <%= message.body %>
+         <div class="row">  
+           <b><%= user.name %></b> |<%= message.created_at %>
+           <%= message.body %> 
+          </div>
       <% end %>
   <% end %>
 </div>
