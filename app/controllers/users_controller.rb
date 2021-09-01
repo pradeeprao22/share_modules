@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!
+    
     def index
         @posts = Post.search(params[:term])
         respond_to :js
