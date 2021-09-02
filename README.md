@@ -48,4 +48,5 @@ User Permissions System(Not Required Currently)
 Action Cable Debugging
 Added Notifications
 Import And Export module implementation
+Drag and Drop Software Building Platform and launching through module
 
