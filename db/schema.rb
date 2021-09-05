@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_21_164723) do
+ActiveRecord::Schema.define(version: 2021_09_04_121637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2021_07_21_164723) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "app_builders", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_app_builders_on_post_id"
+    t.index ["user_id"], name: "index_app_builders_on_user_id"
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -85,6 +94,20 @@ ActiveRecord::Schema.define(version: 2021_07_21_164723) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "database_tables", force: :cascade do |t|
+    t.string "databasename"
+    t.string "databasetable"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "feeds", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "follows", force: :cascade do |t|
     t.integer "following_id"
     t.integer "follower_id"
@@ -102,6 +125,17 @@ ActiveRecord::Schema.define(version: 2021_07_21_164723) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "imports", force: :cascade do |t|
+    t.string "import_client"
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.string "desctiption"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_imports_on_post_id"
+    t.index ["user_id"], name: "index_imports_on_user_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -153,8 +187,21 @@ ActiveRecord::Schema.define(version: 2021_07_21_164723) do
     t.text "javascript"
     t.integer "status"
     t.string "slug"
+    t.integer "language_id"
+    t.integer "database_id"
+    t.integer "database_type"
+    t.index ["language_id"], name: "index_posts_on_language_id", unique: true
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.string "login_counts"
+    t.integer "lan"
+    t.integer "lon"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "suggestions_tables", force: :cascade do |t|
@@ -198,15 +245,30 @@ ActiveRecord::Schema.define(version: 2021_07_21_164723) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
+  create_table "visitornew_details", force: :cascade do |t|
+    t.string "ip"
+    t.string "city"
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "page"
+  end
+
+  add_foreign_key "app_builders", "posts"
+  add_foreign_key "app_builders", "users"
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "categories", "posts"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "imports", "posts"
+  add_foreign_key "imports", "users"
   add_foreign_key "languages", "posts"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
