@@ -4,8 +4,24 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: module_development
+  primary:
+    <<: *default
+    database: module_development
+  primary_replica:
+    <<: *default
+    database: module_development
+    replica: true
+  module:
+    <<: *default
+    # username: module_root username for different users must be different
+    database: module_backend 
+    migrations_paths: db/module_backend_migrate
+  module_replica:
+    <<: *default
+    # username: module_root username for different users must be different
+    database: module_backend
+    migrations_paths: db/module_backend_migrate
+    replica: true
 
 test:
   <<: *default
