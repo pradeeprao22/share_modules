@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_04_121637) do
+ActiveRecord::Schema.define(version: 2021_09_07_143147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 2021_09_04_121637) do
     t.string "databasetable"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "module_type_id"
+    t.index ["module_type_id"], name: "index_database_tables_on_module_type_id"
   end
 
   create_table "feeds", force: :cascade do |t|
@@ -166,6 +168,12 @@ ActiveRecord::Schema.define(version: 2021_09_04_121637) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "module_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "photos", force: :cascade do |t|
     t.string "image"
     t.bigint "post_id"
@@ -190,6 +198,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_121637) do
     t.integer "language_id"
     t.integer "database_id"
     t.integer "database_type"
+    t.string "module_type"
     t.index ["language_id"], name: "index_posts_on_language_id", unique: true
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -249,6 +258,14 @@ ActiveRecord::Schema.define(version: 2021_09_04_121637) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
+  end
+
+  create_table "visitor_details", force: :cascade do |t|
+    t.string "ip"
+    t.string "city"
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "visitornew_details", force: :cascade do |t|
