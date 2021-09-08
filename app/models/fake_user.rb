@@ -1,0 +1,3 @@
+class FakeUser < ModuleRecord
+    
+end
