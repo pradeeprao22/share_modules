@@ -28,7 +28,28 @@ test:
   database: module_test
 
 production:
-  <<: *default
-  database: module_production
-  username: module
-  password: <%= ENV['module_DATABASE_PASSWORD'] %>
+  primary:
+    <<: *default
+    database: module_production
+    username: module
+    password: <%= ENV['module_DATABASE_PASSWORD'] %>
+  primary_replica:
+    <<: *default
+    database: module_production
+    username: module
+    password: <%= ENV['module_DATABASE_PASSWORD'] %>    
+    replica: true
+  module:
+    <<: *default
+    database: module_backend
+    migrations_paths: db/module_backend_migrate
+    username: module
+    password: <%= ENV['module_DATABASE_PASSWORD'] %>
+  module_replica:
+    <<: *default
+    # username: module_root username for different users must be different
+    database: module_backend
+    migrations_paths: db/module_backend_migrate
+    username: module
+    password: <%= ENV['module_DATABASE_PASSWORD'] %>
+    replica: true
