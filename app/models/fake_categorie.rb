@@ -1,0 +1,2 @@
+class FakeCategorie < ModuleRecord
+end
