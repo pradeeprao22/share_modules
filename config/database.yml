@@ -42,6 +42,7 @@ production:
   module:
     <<: *default
     database: module_backend
+    url: <%= ENV["HEROKU_POSTGRESQL_PURPLE_URL"] %>
     migrations_paths: db/module_backend_migrate
     username: module
     password: <%= ENV['module_DATABASE_PASSWORD'] %>
@@ -49,6 +50,7 @@ production:
     <<: *default
     # username: module_root username for different users must be different
     database: module_backend
+    url: <%= ENV["HEROKU_POSTGRESQL_PURPLE_URL"] %>
     migrations_paths: db/module_backend_migrate
     username: module
     password: <%= ENV['module_DATABASE_PASSWORD'] %>
