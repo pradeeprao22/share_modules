@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'pages/success'
   get 'pages/terms'
   get 'pages/privacy'
+  get 'pages/whyjoinus'
   devise_for :users,
     path: '',
     path_name: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
