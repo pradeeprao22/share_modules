@@ -1,6 +1,7 @@
 <div id="notifications-results">
 <% current_user.posts.last(5).map do |post| %>
     <% post.likes.map do |like| %>
+  <% if like.post.user != current_user %>      
   
   <div class="border-card">
   
@@ -11,7 +12,7 @@
   <div class="label-group fixed">
       <!-- user who liked the post -->
       <p class="title">Name: <%= like.post.user.email %></p>
-      <p class="caption">Email: <%= like.post.user.name %></p>
+      <p class="caption">Email: <%= like.post.user.name %></p> 
   </div>
   <div class="min-gap"></div>
   <div class="min-gap"></div>
@@ -26,7 +27,7 @@
   <div class="min-gap"></div>
   
   <div class="label-group">
-      <p class="title">Programming Language used:</p>
+      <p class="title">Programming Language Used:</p>
       <% if like.post.language %>
       <p class="caption"><%= like.post.language.name %></p>
       <% else %>
@@ -37,7 +38,10 @@
   </a>
   </div>
   </div>
+  <% else %>
+  <div> Dont have any notifications </div> 
   <% end %>
   <% end %>
-  <center><%= link_to get_notification_path, :class => "nav-link"  do %>All Notifications<% end %></center>
+  <% end %>
+  <center><%= link_to get_notification_path, :class => "nav-link"  do %>See all notifications<% end %></center>
   </div>
