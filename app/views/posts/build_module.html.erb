@@ -1,11 +1,13 @@
-    <style>
-    <%=raw @post.frontend_css %>
-    </style>
+<style>
+  <%=raw @post.frontend_css %>
+</style>
 
-    <%=raw @post.frontend %>
-    
-    <script>
-      <%=raw @post.javascript %>  
-    </script>
-    
-    <%= @post.backend %>
+<%=raw ERB.new(@post.frontend).result_with_hash(fake_post: @fake_post) %>
+
+<% if @post.backend %>
+  <% @post.frontend %>
+<% end %>
+
+<script>
+  <%=raw @post.javascript %>  
+</script>
