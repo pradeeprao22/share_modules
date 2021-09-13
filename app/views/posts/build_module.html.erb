@@ -2,7 +2,24 @@
   <%=raw @post.frontend_css %>
 </style>
 
-<%=raw ERB.new(@post.frontend).result_with_hash(fake_post: @fake_post) %>
+  <% if @post.backend %>
+    <% if @post.backend == "FakeUser" %>
+      <% @fake_model = @fake_user.last(5) %>
+    <% elsif @post.backend == "FakePost" %>
+      <% @fake_model = @fake_post.last(5) %>
+    <% elsif @post.backend == "FakeContact" %>
+      <% @fake_model = @fake_contact.last(5) %>
+    <% elsif @post.backend == "FakeCategorie" %>
+      <% @fake_model = @fake_categorie.last(5) %>
+    <% end %>
+  <% end %>
+
+<!-- Multile model implementation -->
+<% if @post.backend %>
+  <%=raw ERB.new(@post.frontend).result_with_hash(fake_model: @fake_model) %>
+<% else %> 
+  <%=raw @post.frontend %>
+<% end %>
 
 <% if @post.backend %>
   <% @post.frontend %>
