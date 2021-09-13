@@ -1,5 +1,4 @@
 <br>
-<div class="container">
  <div class="d-flex flex-column">
   <div class="col-xl-12 col-lg-8 col-md-10 col-sm-11 post-card">
     <!--Post Form-->
@@ -62,6 +61,26 @@
           </div>
 
           <div class="form-group row mt-2">
+           <div class="col">
+            <h6>SELECT YOUR MODULE TYPE</h6>
+            <%= f.select :module_type, ModuleType.all.collect { |moduletype| [moduletype.name, moduletype.id] }, {prompt: "Select"}, {class: 'form-control'} %>
+           </div>
+
+           <!-- create database from here -->
+            <div class="col">
+            <h6>SELECT DATABASE FOR BACKEND MODULE(Select only if your module is backend)</h6>
+            <%= f.select :database_id, DatabaseTable.all.collect { |database| [database.databasetable, database.id] }, {prompt: "Select"}, {class: 'form-control'} %>
+            </div>
+
+            <!-- Create DB coloums from here -->
+            <!-- COLOUMS CANNOT SELECT 
+            <div class="col">
+            <h6>SELECT COLOUMS FOR DATABASE</h6>
+            <%= f.select :database_id, DatabaseTable.all.collect { |database| [database.databasetable, database.id] }, {class: 'form-control'} %>
+            </div> -->
+          </div>
+
+          <div class="form-group row mt-2">
             <div class="col">
             <h6>INSTRUCTIONS</h6>
             <%= f.text_area :instruction, rows: "10", style: "white-space: pre-wrap;", class: "form-control border-0", required: "true" %>
@@ -76,4 +95,53 @@
     </div>
   </div>
 </div>
-</div>
+<script>
+$("#post_database_id").prop("disabled", true); // second dropdown is disable while first dropdown is empty
+
+$("#post_module_type").change(function(){
+
+  	var database = $(this).val();
+
+    console.log(database);
+
+  	if(database == ''){
+  		$("#post_module_type").prop("disabled", true);
+  	}else{
+  		$("#post_module_type").prop("disabled", false);
+  	}
+
+  	$.ajax({
+	    url: "/database_tables",
+	    method: "GET",  
+	    dataType: "json",
+	    data: {database: database},
+	    error: function (xhr, status, error) {
+	      	console.error('AJAX Error: ' + status + error);
+	    },
+
+	    success: function (response) {
+        
+	      	console.log(response);
+	      	
+	      	$("#post_database_id").empty();
+
+          if (database == 1){
+	      	 
+           $("#post_database_id").append('<option>Select Database Type</option>').prop("disabled", false);
+            
+          }else {
+
+            $("#post_database_id").append('<option>No Database For Frontend</option>').prop("disabled", true);
+          
+          }
+
+	      	for(var i = 0; i < response.length; i++){  
+
+	      		$("#post_database_id").append('<option value="' + response[i]["id"] + '">' +response[i]["databasetable"] + '</option>');
+	      	
+          }
+
+	    }
+  	});
+});
+</script>
