@@ -18,7 +18,6 @@
 //= require dropzone
 //= require_tree .
 //= require toastr
-//= require codemirror
 //= require cable
 //= require turbolinks
 //= require_tree .
