@@ -72,12 +72,15 @@
             <%= f.select :database_id, DatabaseTable.all.collect { |database| [database.databasetable, database.id] }, {prompt: "Select"}, {class: 'form-control'} %>
             </div>
 
-            <!-- Create DB coloums from here -->
-            <!-- COLOUMS CANNOT SELECT 
-            <div class="col">
-            <h6>SELECT COLOUMS FOR DATABASE</h6>
-            <%= f.select :database_id, DatabaseTable.all.collect { |database| [database.databasetable, database.id] }, {class: 'form-control'} %>
-            </div> -->
+          </div>
+          <div class="form-group row mt-2">
+          <div class="col">
+            <!-- Need to implement multi table form submission
+            Create DB coloums from here
+            COLOUMS CANNOT SELECT -->
+              <h6>SELECT COLOUMS FOR DATABASE</h6>
+              <%= f.select :database_id, ColumnsForFakeDatabase.all.collect { |columns_for_fake_database| [columns_for_fake_database.database_table_id, columns_for_fake_database.id] }, {class: 'form-control'} %>
+          </div>  
           </div>
 
           <div class="form-group row mt-2">
