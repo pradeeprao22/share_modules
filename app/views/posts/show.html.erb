@@ -4,7 +4,7 @@
 <div class="d-flex flex-column mt-3">
   <h6>HTML</h6>
   <%= f.text_area :frontend, style: "white-space: pre-wrap;", value: (@post.frontend), class: "codemirror-textarea"%>
-  </div>
+</div>
 <br>
 
 <div class="d-flex flex-column mt-3">
@@ -15,7 +15,7 @@
 <div class="d-flex flex-column mt-3">
   <h6>JAVASCRIPT</h6>
   <%= f.text_area :javascript, style: "white-space: pre-wrap;", value: (@post.javascript), class: "code-backend"%>
-  </div>
+</div>
   <br>
   <br>
 <hr>
@@ -23,6 +23,20 @@
 <div class="d-flex flex-column mt-3">
   <h6><i>BACKEND</i> [comming soon][Runs in Ruby, Python, Java]</h6>
   <%= f.text_area :backend, style: "white-space: pre-wrap;", value: (@post.backend), class: "code-backend-2"%>
+</div>
+
+
+<!-- Need more work -->
+<div class="d-flex flex-column mt-3">
+<h6><i>DATABASE SELECTED</i> [comming soon][Runs in Ruby, Python, Java]</h6>
+<% if @post.database_id %>
+  <% @database = DatabaseTable.find(@post.database_id) %>
+    <h6><i>Database Selected For Backend Module</i> [comming soon]</h6>
+      <%= f.hidden_field :database_id, style: "white-space: pre-wrap;", value: (@post.database_id), class: "form-control" %>
+      <b><%= @database.databasetable %></b>
+  <% else %>
+ <p>This is static module</p>
+<% end %>
 </div>
 
 <div class="d-flex flex-column mt-3">
@@ -40,10 +54,13 @@
 
 <% end %>
 <hr>
-
+<div class="row">
 <div class="text-center">
 <i><p6>Beta</p6></i>
  <%= link_to "BUILD MODULE", building_path, :class => "btn btn-lg btn-success btn-circle my-4 mr-3" %>
+ <button type="button" data-toggle="modal" class="btn btn-lg btn-success btn-circle my-4 mr-3" data-target="#exampleModal">IMPORT MODULE</button>
+   <%= render "import_module" %>
+</div>
 </div>
 
 <div class="d-flex flex-column  mt-3">
