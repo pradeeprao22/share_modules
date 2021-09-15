@@ -42,6 +42,9 @@ include VisitorDetail
   def help
   end
 
+  def whyjoinus
+  end
+
   def term
     action = params[:action]
     getdetails(action)
