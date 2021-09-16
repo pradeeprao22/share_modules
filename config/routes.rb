@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   resource :contact_tables, only: [:create]
+  resource :columns_for_fake_databases, only: [:new, :create]
 
   resources :posts, param: :slug, only: [:index, :show, :update, :create, :destroy] do
      resources :photos, only: [:create]
