@@ -66,21 +66,12 @@
             <%= f.select :module_type, ModuleType.all.collect { |moduletype| [moduletype.name, moduletype.id] }, {prompt: "Select"}, {class: 'form-control'} %>
            </div>
 
-           <!-- create database from here -->
-            <div class="col">
+          <!-- create database from here -->
+          <div class="col">
             <h6>SELECT DATABASE FOR BACKEND MODULE(Select only if your module is backend)</h6>
             <%= f.select :database_id, DatabaseTable.all.collect { |database| [database.databasetable, database.id] }, {prompt: "Select"}, {class: 'form-control'} %>
-            </div>
-
           </div>
-          <div class="form-group row mt-2">
-          <div class="col">
-            <!-- Need to implement multi table form submission
-            Create DB coloums from here
-            COLOUMS CANNOT SELECT -->
-              <h6>SELECT COLOUMS FOR DATABASE</h6>
-              <%= f.select :database_id, ColumnsForFakeDatabase.all.collect { |columns_for_fake_database| [columns_for_fake_database.database_table_id, columns_for_fake_database.id] }, {class: 'form-control'} %>
-          </div>  
+
           </div>
 
           <div class="form-group row mt-2">
@@ -91,7 +82,7 @@
           </div>
       
           <div class="form-group row mt-2">
-          <%= f.submit "Submit", class: "btn btn-success form-control border-0", data: { "disable-with": "Loading..." }%>
+          <%= f.submit "Next", class: "btn btn-success form-control border-0", data: { "disable-with": "Loading..." }%>
           </div>
         <% end %>
       </div>
