@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 2021_09_16_122653) do
     t.string "column_type"
     t.integer "user_id"
     t.integer "post_id"
-    t.index ["post_id"], name: "index_columns_for_fake_databases_on_post_id", unique: true
-    t.index ["user_id"], name: "index_columns_for_fake_databases_on_user_id", unique: true
+    t.index ["post_id"], name: "index_columns_for_fake_databases_on_post_id"
+    t.index ["user_id"], name: "index_columns_for_fake_databases_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
