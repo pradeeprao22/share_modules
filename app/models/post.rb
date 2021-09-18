@@ -15,6 +15,7 @@ class Post < ApplicationRecord
   has_many :categories, dependent: :destroy
 
   scope :new_posts, lambda { where("created_at > ?", 1.week.ago) }
+  scope :published, lambda { where(published: true) }
   
   def is_belongs_to? user
     Post.find_by(user_id: user.id, id: id)
