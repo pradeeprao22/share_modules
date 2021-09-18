@@ -1,5 +1,10 @@
 class ColumnsForFakeDatabasesController < ApplicationController
 
+  # Corrent the colmun spelling
+  def admin_index
+    @colmun =  ColumnsForFakeDatabase.all
+  end
+  
   def create
     @column =  ColumnsForFakeDatabase.new(column_params)
     @column.user_id = current_user.id
@@ -12,6 +17,8 @@ class ColumnsForFakeDatabasesController < ApplicationController
     end
     
     if @column.save!
+      @post = Post.last
+      redirect_to post_path(@post)
       flash[:notice] = "Columns for database has been created"
     end
   end
