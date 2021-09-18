@@ -2,6 +2,7 @@
   <%=raw @post.frontend_css %>
 </style>
 
+<!-- Dynamic model allocation -->
   <% if @post.backend %>
     <% if @post.backend == "FakeUser" %>
       <% @fake_model = @fake_user.last(5) %>
