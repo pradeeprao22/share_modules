@@ -1,10 +1,25 @@
 <br>
+<div class="container">
 <div class="d-flex flex-column">
   <div class="col-xl-12 col-lg-8 col-md-10 col-sm-11 post-card">
+      
+    <div class="box">
+      <% byebug %> 
+        <% @post = Post.last %>
+        <% if @post.user == current_user %> 
+          <% @post.content %>
+          <% @database_id = @post.database_id %>
+          <% @database = DatabaseTable.find(@database_id) %>
+          Database saved in: <b><%= @database.databasename %></b><br>
+          Database selected for colmuns creation: <b><%= @database.databasetable %></b>
+        <% end %>
+    </div>
+    <br>
+
     <!--Post Form-->
     <div class="card">
       <div class="card-header">
-        <b>Select colmuns for your module:</b>
+        <b>Select colmuns for your module: "<%= @post.content %>"</b>
       </div>
       <div class="card-body">
         <%= form_for @column, :html => { :multipart => true, :remote=>true } do |f| %>
@@ -36,8 +51,12 @@
           <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
           </div>
 
+          <div class="form-group row mt-2">
+          <%= f.submit "ADD MORE COLMUNS", class: "btn btn-success form-control border-0" %>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
+</div>
 </div>
