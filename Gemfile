@@ -86,10 +86,6 @@ gem 'decisiontree', '~> 0.5.0'
 #gem 'webpacker', '~> 5.4'
 gem 'geocoder'
 gem 'exception_handler', '~> 0.8.0.0'
-<<<<<<< Updated upstream
-gem 'faker'
-=======
 gem 'faker'
 gem 'rails-erd'
 gem 'newrelic_rpm'
->>>>>>> Stashed changes
