@@ -21,6 +21,115 @@
       <div class="card-header">
         <b>Select colmuns for your module: "<%= @post.content %>"</b>
       </div>
+      <br>
+      <div class="card-body">
+        <%= form_for @column, :html => { :multipart => true, :remote=>true } do |f| %>
+
+          <div id="alert_message">
+          </div>
+          
+          <%= f.hidden_field :database_table_id %>
+
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :name, class: "form-control border-0", autocomplete:"off", required: "true", placeholder: "Name of the field" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :column_type, class: "form-control border-0", required: "true", placeholder: "Field Data Type" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :tag, class: "form-control border-0", required: "true", placeholder: "Select Tag"%>
+            </div>
+          </div>
+      
+          <div class="form-group row mt-2">
+          <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
+          </div>
+
+          <div class="form-group row mt-2">
+          <%= f.submit "ADD MORE COLMUNS", class: "btn btn-success form-control border-0" %>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div class="card-body">
+        <%= form_for @column, :html => { :multipart => true, :remote=>true } do |f| %>
+
+          <div id="alert_message">
+          </div>
+          
+          <%= f.hidden_field :database_table_id %>
+
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :name, class: "form-control border-0", autocomplete:"off", required: "true", placeholder: "Name of the field" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :column_type, class: "form-control border-0", required: "true", placeholder: "Field Data Type" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :tag, class: "form-control border-0", required: "true", placeholder: "Select Tag"%>
+            </div>
+          </div>
+      
+          <div class="form-group row mt-2">
+          <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
+          </div>
+
+          <div class="form-group row mt-2">
+          <%= f.submit "ADD MORE COLMUNS", class: "btn btn-success form-control border-0" %>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div class="card-body">
+        <%= form_for @column, :html => { :multipart => true, :remote=>true } do |f| %>
+
+          <div id="alert_message">
+          </div>
+          
+          <%= f.hidden_field :database_table_id %>
+
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :name, class: "form-control border-0", autocomplete:"off", required: "true", placeholder: "Name of the field" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :column_type, class: "form-control border-0", required: "true", placeholder: "Field Data Type" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :tag, class: "form-control border-0", required: "true", placeholder: "Select Tag"%>
+            </div>
+          </div>
+      
+          <div class="form-group row mt-2">
+          <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
+          </div>
+
+          <div class="form-group row mt-2">
+          <%= f.submit "ADD MORE COLMUNS", class: "btn btn-success form-control border-0" %>
+          </div>
+        <% end %>
+      </div>
+      <br>
       <div class="card-body">
         <%= form_for @column, :html => { :multipart => true, :remote=>true } do |f| %>
 

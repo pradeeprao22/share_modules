@@ -1,7 +1,7 @@
 class ColumnsForFakeDatabasesController < ApplicationController
 
   # Corrent the colmun spelling
-  def admin_index
+  def index
     @colmun =  ColumnsForFakeDatabase.all
   end
   
