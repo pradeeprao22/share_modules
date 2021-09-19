@@ -4,7 +4,6 @@
   <div class="col-xl-12 col-lg-8 col-md-10 col-sm-11 post-card">
       
     <div class="box">
-      <% byebug %> 
         <% @post = Post.last %>
         <% if @post.user == current_user %> 
           <% @post.content %>
@@ -27,9 +26,6 @@
 
           <div id="alert_message">
           </div>
-          
-          <%= f.hidden_field :database_table_id %>
-
           <div class="form-group row mt-2">
             <div class="col pl-0">
               <%= f.text_field :name, class: "form-control border-0", autocomplete:"off", required: "true", placeholder: "Name of the field" %>
@@ -52,116 +48,8 @@
           <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
           </div>
 
-          <div class="form-group row mt-2">
-          <%= f.submit "ADD MORE COLMUNS", class: "btn btn-success form-control border-0" %>
-          </div>
-        <% end %>
-      </div>
-      <br>
-      <div class="card-body">
-        <%= form_for @column, :html => { :multipart => true, :remote=>true } do |f| %>
-
-          <div id="alert_message">
-          </div>
-          
-          <%= f.hidden_field :database_table_id %>
-
-          <div class="form-group row mt-2">
-            <div class="col pl-0">
-              <%= f.text_field :name, class: "form-control border-0", autocomplete:"off", required: "true", placeholder: "Name of the field" %>
-            </div>
-          </div>
-
-          <div class="form-group row mt-2">
-            <div class="col pl-0">
-              <%= f.text_field :column_type, class: "form-control border-0", required: "true", placeholder: "Field Data Type" %>
-            </div>
-          </div>
-
-          <div class="form-group row mt-2">
-            <div class="col pl-0">
-              <%= f.text_field :tag, class: "form-control border-0", required: "true", placeholder: "Select Tag"%>
-            </div>
-          </div>
-      
-          <div class="form-group row mt-2">
-          <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
-          </div>
-
-          <div class="form-group row mt-2">
-          <%= f.submit "ADD MORE COLMUNS", class: "btn btn-success form-control border-0" %>
-          </div>
-        <% end %>
-      </div>
-      <br>
-      <div class="card-body">
-        <%= form_for @column, :html => { :multipart => true, :remote=>true } do |f| %>
-
-          <div id="alert_message">
-          </div>
-          
-          <%= f.hidden_field :database_table_id %>
-
-          <div class="form-group row mt-2">
-            <div class="col pl-0">
-              <%= f.text_field :name, class: "form-control border-0", autocomplete:"off", required: "true", placeholder: "Name of the field" %>
-            </div>
-          </div>
-
-          <div class="form-group row mt-2">
-            <div class="col pl-0">
-              <%= f.text_field :column_type, class: "form-control border-0", required: "true", placeholder: "Field Data Type" %>
-            </div>
-          </div>
-
-          <div class="form-group row mt-2">
-            <div class="col pl-0">
-              <%= f.text_field :tag, class: "form-control border-0", required: "true", placeholder: "Select Tag"%>
-            </div>
-          </div>
-      
-          <div class="form-group row mt-2">
-          <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
-          </div>
-
-          <div class="form-group row mt-2">
-          <%= f.submit "ADD MORE COLMUNS", class: "btn btn-success form-control border-0" %>
-          </div>
-        <% end %>
-      </div>
-      <br>
-      <div class="card-body">
-        <%= form_for @column, :html => { :multipart => true, :remote=>true } do |f| %>
-
-          <div id="alert_message">
-          </div>
-          
-          <%= f.hidden_field :database_table_id %>
-
-          <div class="form-group row mt-2">
-            <div class="col pl-0">
-              <%= f.text_field :name, class: "form-control border-0", autocomplete:"off", required: "true", placeholder: "Name of the field" %>
-            </div>
-          </div>
-
-          <div class="form-group row mt-2">
-            <div class="col pl-0">
-              <%= f.text_field :column_type, class: "form-control border-0", required: "true", placeholder: "Field Data Type" %>
-            </div>
-          </div>
-
-          <div class="form-group row mt-2">
-            <div class="col pl-0">
-              <%= f.text_field :tag, class: "form-control border-0", required: "true", placeholder: "Select Tag"%>
-            </div>
-          </div>
-      
-          <div class="form-group row mt-2">
-          <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
-          </div>
-
-          <div class="form-group row mt-2">
-          <%= f.submit "ADD MORE COLMUNS", class: "btn btn-success form-control border-0" %>
+          <div class="form-group row mt-2">   
+          <%= link_to "Create Another Column", new_columns_for_fake_databases_path, :class => "aboutus-more", :target => "_blank" %></center>
           </div>
         <% end %>
       </div>
