@@ -1,7 +1,8 @@
 class ColumnsForFakeDatabasesController < ApplicationController
 
+  before_action :authenticate_user!
   # Corrent the colmun spelling
-  def index
+  def admin_index
     @colmun =  ColumnsForFakeDatabase.all
   end
   
