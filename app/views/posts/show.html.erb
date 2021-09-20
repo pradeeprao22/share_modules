@@ -29,10 +29,13 @@
   <br>
 <hr>
 
+<!-- If the module type is backend -->
+<% if @post.module_type == "1" %>
 <div class="d-flex flex-column mt-3">
   <h6><i>BACKEND</i> [comming soon][Runs in Ruby, Python, Java]</h6>
   <%= f.text_area :backend, style: "white-space: pre-wrap;", value: (@post.backend), class: "code-backend-2"%>
 </div>
+<% end %>
 
 <div class="d-flex flex-column mt-3">
   <h6><i>Instructions</i> </h6>
