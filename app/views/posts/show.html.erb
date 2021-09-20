@@ -1,4 +1,13 @@
+<br>
 <div class="container">
+
+<% if @post.module_type == "1" %>
+<% @module_type = "Backend" %>
+<% else %>
+<% @module_type = "Frontend" %>
+<% end %>
+
+<h4>Module Type:</h4> <%= @module_type %>
 
 <%= form_for(@post, as: @post, url: post_path(@post), html: { method: :put }) do |f| %>
 <div class="d-flex flex-column mt-3">
