@@ -28,7 +28,8 @@ Rails.application.routes.draw do
   end
 
   resource :contact_tables, only: [:create]
-  resource :columns_for_fake_databases, only: [:new, :create]
+
+  resource :columns_for_fake_databases
 
   resources :posts, param: :slug, only: [:index, :show, :update, :create, :destroy] do
      resources :photos, only: [:create]
@@ -38,6 +39,7 @@ Rails.application.routes.draw do
   end
 
   #custom route defined
+  get 'columns', :to => 'columns_for_fake_databases#admin_index', as: 'get_columns'
   get 'notifications', :to => 'notifications#create_notifications', as: 'get_notification'
   get 'pages/contact_get'
   get 'appbuilder/appbuilder', :to => 'appbuilders#appbuilder', as: 'app_builder'
