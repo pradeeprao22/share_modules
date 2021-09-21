@@ -172,6 +172,7 @@ GEM
       domain_name (~> 0.5)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    imgkit (1.6.2)
     inherited_resources (1.13.0)
       actionpack (>= 5.2, < 6.2)
       has_scope (~> 0.6)
@@ -374,6 +375,7 @@ GEM
     will_paginate (3.3.0)
     will_paginate-bootstrap4 (0.2.2)
       will_paginate (~> 3.0, >= 3.0.0)
+    wkhtmltoimage-binary (0.12.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
@@ -402,6 +404,7 @@ DEPENDENCIES
   figaro
   friendly_id (~> 5.1.0)
   geocoder
+  imgkit
   jbuilder (~> 2.5)
   jquery-rails (~> 4.4)
   listen (>= 3.0.5, < 3.2)
@@ -427,6 +430,7 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
   will_paginate-bootstrap4
+  wkhtmltoimage-binary
 
 RUBY VERSION
    ruby 2.7.2p137
