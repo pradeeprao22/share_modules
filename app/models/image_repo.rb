@@ -1,0 +1,3 @@
+class ImageRepo < ApplicationRecord
+
+end
