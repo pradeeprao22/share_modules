@@ -4,8 +4,11 @@ module VisitorDetail
    def getdetails action
     ip = request.ip
     @visitor_details = VisitornewDetail.create(ip: ip, page: action)
-    if request.location.city != nil && request.location.country != nil
-      @visitor_details.update(city: request.location.city, country: request.location.country)
+    # if request.location.city != nil
+    #   @visitor_details.update(city: request.location.city, country: request.location.country)
+    # end
+    if request.location.country != nil
+      @visitor_details.update(country: request.location.country)
     end
    end 
 end
