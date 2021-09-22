@@ -8,4 +8,6 @@
       <%=raw @post.javascript %>  
     </script>
     
+    <% if @post.module_type == "1" %>
     <%= @post.backend %>
+    <% end %>
