@@ -336,6 +336,8 @@ GEM
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
+    sidekiq-limit_fetch (3.4.0)
+      sidekiq (>= 4)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -422,6 +424,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   sidekiq (~> 6.2, >= 6.2.1)
+  sidekiq-limit_fetch
   spring
   spring-watcher-listen (~> 2.0.0)
   toastr-rails (~> 1.0, >= 1.0.3)

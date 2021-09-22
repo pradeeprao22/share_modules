@@ -7,7 +7,7 @@ class ImgkitWorker
         kit = IMGKit.new('http://localhost:3000/posts/build_module/'+ slug)
         img = kit.to_img(:png)
           
-        if ImageRepo.find_by(image_name: slug) == nil
+        if ImageRepo.find_by(post_id: post_id) == nil
           image_file = kit.to_file('app/assets/images/module_screenshots/'+ slug+'.png')
           ImageRepo.create(image_name: slug, post_id: post_id)
         end
@@ -16,7 +16,7 @@ class ImgkitWorker
         kit = IMGKit.new("http://ai.londevs.com/posts/build_module/"+ slug)
         img = kit.to_img(:png)
   
-        if ImageRepo.find_by(image_name: slug) == nil
+        if ImageRepo.find_by(post_id: post_id) == nil
           image_file = kit.to_file('app/assets/images/module_screenshots/'+ slug+'.png')
           ImageRepo.create(image_name: slug, post_id: post_id)
         end
@@ -26,8 +26,3 @@ class ImgkitWorker
     end
   end
 end
-
-# class ImgkitRemoveWorker
-#   include Sidekiq::Worker
-#   sidekiq_options retry: false
-# end
