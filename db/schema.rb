@@ -282,14 +282,6 @@ ActiveRecord::Schema.define(version: 2021_09_21_114807) do
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
-  create_table "visitor_details", force: :cascade do |t|
-    t.string "ip"
-    t.string "city"
-    t.string "country"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "visitornew_details", force: :cascade do |t|
     t.string "ip"
     t.string "city"
