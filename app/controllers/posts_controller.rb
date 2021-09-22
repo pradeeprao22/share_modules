@@ -80,7 +80,7 @@ class PostsController < ApplicationController
      else
       flash[:notice] = "You don't have permission to do that!"
     end
-    redirect_to root_path
+    redirect_to user_path(current_user)
   end
 
   def module_post
@@ -88,6 +88,9 @@ class PostsController < ApplicationController
   end
 
   def build_module
+    # slug = @post.slug
+    # post_id = @post.id
+    # ImgkitWorker.perform_async(slug, post_id)
     # for getting user details
     action = params[:action]
     getdetails(action)
