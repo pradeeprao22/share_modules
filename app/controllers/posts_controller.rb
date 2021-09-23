@@ -88,11 +88,11 @@ class PostsController < ApplicationController
   end
 
   def build_module
-    # if ImageRepo.find_by(post_id: @post.id) == nil
-    #   slug = @post.slug
-    #   post_id = @post.id
-    #   ImgkitWorker.perform_async(slug, post_id)
-    # end
+    if ImageRepo.find_by(post_id: @post.id) == nil
+      slug = @post.slug
+      post_id = @post.id
+      ImgkitWorker.perform_async(slug, post_id)
+    end
     # for getting user details
     action = params[:action]
     getdetails(action)
