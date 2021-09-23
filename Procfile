@@ -1,2 +1,2 @@
 web: bundle exec rails server -p $PORT
-worker: bundle exec sidekiq -e $RACK_ENV -C config/sidekiq.yml
+worker: bundle exec sidekiq sidekiq -c 5 -v
