@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   has_many :likes, -> {order(:created_at => :desc)}, dependent: :destroy
   has_many :comments, -> {order(:created_at => :desc)}, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  has_one :language, dependent: :destroy
+  has_many :languages, dependent: :destroy
   has_many :tags, dependent: :destroy
   has_many :categories, dependent: :destroy
 
