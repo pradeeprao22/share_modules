@@ -46,8 +46,8 @@
 
 <div class="label-group">
     <p class="title">Programming Language used:</p>
-    <% if like.post.language %>
-    <p class="caption"><%= like.post.language.name %></p>
+    <% if like.post.languages %>
+    <p class="caption"><%= like.post.languages.map {|l| l.name} %></p>
     <% else %>
     <p class="caption">nil</p>
     <% end %>
