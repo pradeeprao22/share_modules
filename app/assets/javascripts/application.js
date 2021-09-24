@@ -20,7 +20,7 @@
 //= require toastr
 //= require cable
 //= require turbolinks
-//= require_tree .
+//= require codemirror
 
 /*global toastr*/
 toastr.options = {

@@ -1,4 +1,4 @@
-ImgApp.posts = ImgApp.cable.subscriptions.create('PostChannel', {  
+LondevApp.posts = LondevApp.cable.subscriptions.create('PostChannel', {  
 
     received: function(data) {
       // debug
