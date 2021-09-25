@@ -5,4 +5,7 @@ if Rails.env.development?
     DatabaseTable.create!(databasename: "Londevs", databasetable: "POST")
     DatabaseTable.create!(databasename: "Londevs", databasetable: "LIKE")
     DatabaseTable.create!(databasename: "Londevs", databasetable: "CONTACTTABLE")
+
+    ModuleType.create(name: "BACKEND")
+    ModuleType.create(name: "FRONTEND")
 end
