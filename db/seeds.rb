@@ -24,3 +24,11 @@ if Rails.env.development?
     Tag.create(name: "python")
     
 end
+
+if Rails.env.production?
+    Tag.create(name: "HTML")
+    Tag.create(name: "CSS")
+    Tag.create(name: "Javascript")
+    Tag.create(name: "Ruby")
+    Tag.create(name: "RubyOnRails")
+end
