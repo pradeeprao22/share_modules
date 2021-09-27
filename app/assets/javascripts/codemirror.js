@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
     var code = $(".codemirror-textarea")[0];
     var editor = CodeMirror.fromTextArea(code, {
         lineNumbers : true,
@@ -8,7 +8,7 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
     var code = $(".code-textarea")[0];
     var editor = CodeMirror.fromTextArea(code, {
         lineNumbers : true,
@@ -17,7 +17,7 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
     var code = $(".code-backend")[0];
     var editor = CodeMirror.fromTextArea(code, {
         lineNumbers : true,
@@ -26,7 +26,7 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
     var code = $(".code-backend-2")[0];
     var editor = CodeMirror.fromTextArea(code, {
         lineNumbers : true,
