@@ -44,7 +44,7 @@
 </div>
 
 <!-- Conditions according to the tags-->
-<!-- It will be always empty -->
+<!-- It will be always empty insted of case just try to loop the tags-->
 <div class="d-flex flex-column mt-3">
 
 <% case %>
@@ -55,9 +55,9 @@
 <% end %>
 
 <h6><i>Tags selected</i></h6>
-<b><%= tag_0.name %></b>
-<b><%= tag_1.name %></b>
-<b><%= tag_2.name %></b>
+<span class="badge bg-success"><b><%= tag_0.name %></b></span><br>
+<span class="badge bg-success"><b><%= tag_1.name %></b></span><br>
+<span class="badge bg-success"><b><%= tag_2.name %></b></span><br>
 
 <br>
 <br>
@@ -162,12 +162,3 @@
   </div>
 </div>
 </div>
-
-# <script type="text/javascript">
-#     function autoRefreshPage()
-#     {
-#         window.location = window.location.href;
-#     }
-    
-#     setInterval('autoRefreshPage()', 10000);
-# </script>
