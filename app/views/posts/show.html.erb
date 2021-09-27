@@ -43,6 +43,22 @@
   <%= f.text_area :instruction, rows: "10", style: "white-space: pre-wrap;", value: (@post.instruction), class: "form-control border-0" %>
 </div>
 
+<!-- Conditions according to the tags-->
+<!-- It will be always empty -->
+<div class="d-flex flex-column mt-3">
+
+<% case %>
+  <% when Tag.find(@post.tags_id) != nil %>
+    <% tag_0 = Tag.find(@post.tags_id[0]) %>
+    <% tag_1 = Tag.find(@post.tags_id[1]) %>
+    <% tag_2 = Tag.find(@post.tags_id[2]) %>
+<% end %>
+
+<h6><i>Tags selected</i></h6>
+<b><%= tag_0.name %></b>
+<b><%= tag_1.name %></b>
+<b><%= tag_2.name %></b>
+
 <br>
 <br>
 <% if @post.user == current_user %>
