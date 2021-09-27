@@ -15,20 +15,10 @@ if Rails.env.development?
     ModuleType.create(name: "BACKEND")
     ModuleType.create(name: "FRONTEND")
     end
-
-    Tag.create(name: "html")
-    Tag.create(name: "CSS")
-    Tag.create(name: "Javascript")
-    Tag.create(name: "ruby")
-    Tag.create(name: "rubyonrails")
-    Tag.create(name: "python")
-    
 end
 
-if Rails.env.production?
-    Tag.create(name: "HTML")
-    Tag.create(name: "CSS")
-    Tag.create(name: "Javascript")
-    Tag.create(name: "Ruby")
-    Tag.create(name: "RubyOnRails")
-end
+Tag.create(name: "HTML")
+Tag.create(name: "CSS")
+Tag.create(name: "Javascript")
+Tag.create(name: "Ruby")
+Tag.create(name: "RubyOnRails")
