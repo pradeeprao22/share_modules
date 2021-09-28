@@ -3,14 +3,14 @@
   <div class="col-xl-12 col-lg-8 col-md-10 col-sm-11 post-card">
     <!--Post Form-->
     <div class="card">
-    
+
       <div class="card-header">
-        <b>Post your module:</b>
+        <b>Post your backend module:</b>
       </div>
 
       <div class="card-body">
   
-      <%= form_for(@post, as: @post, url: create_backend_module_path(@post), html: { method: :post }) do |f| %>          
+      <%= form_for(@post, as: @post, url: backends_backend_module_post_path, html: { method: :post }) do |f| %>          
         <div id="alert_message">
           </div>
           <div class="form-group row mt-2">

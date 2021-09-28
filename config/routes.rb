@@ -50,9 +50,10 @@ Rails.application.routes.draw do
   post 'pages/contact_get/:id', :to => 'pages#contact_get'
   get 'post/module_post', :to => 'posts#module_post', as: 'module'
   get 'posts/build_module/:slug', :to => 'posts#build_module', as: 'building'
+
   #For Backend module
-  get 'backends/module_post', :to => 'backends#backend_module_post', as: 'backend_module'
-  post 'backends/module_post/:id', :to => 'backends#backend_module_post', as: 'create_backend_module'
+  get 'backends/backend_module'
+  post 'backends/backend_module_post', :to => 'backends#backend_module_post'
 
   mount ActionCable.server, at: '/cable'
 end
