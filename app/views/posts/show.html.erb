@@ -47,6 +47,7 @@
 <!-- It will be always empty insted of case just try to loop the tags-->
 <div class="d-flex flex-column mt-3">
 
+<% if Tag.find(@post.tags_id) %>
 <% case %>
   <% when Tag.find(@post.tags_id) != nil %>
     <% tag_0 = Tag.find(@post.tags_id[0]) %>
@@ -58,6 +59,7 @@
 <span class="badge bg-success"><b><%= tag_0.name %></b></span><br>
 <span class="badge bg-success"><b><%= tag_1.name %></b></span><br>
 <span class="badge bg-success"><b><%= tag_2.name %></b></span><br>
+<% end %>
 
 <br>
 <br>
