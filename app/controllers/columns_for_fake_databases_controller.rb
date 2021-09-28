@@ -12,6 +12,8 @@ class ColumnsForFakeDatabasesController < ApplicationController
     end
     
     if @column.save!
+      @post = Post.find(@column.post_id)
+      redirect_to post_path(@post)
       flash[:notice] = "Columns for database has been created"
     end
   end
