@@ -1,0 +1,145 @@
+<br>
+ <div class="d-flex flex-column">
+  <div class="col-xl-12 col-lg-8 col-md-10 col-sm-11 post-card">
+    <!--Post Form-->
+    <div class="card">
+    
+      <div class="card-header">
+        <b>Post your module:</b>
+      </div>
+
+      <div class="card-body">
+  
+      <%= form_for(@post, as: @post, url: create_backend_module_path(@post), html: { method: :post }) do |f| %>          
+        <div id="alert_message">
+          </div>
+          <div class="form-group row mt-2">
+            <div class="col-auto pr-0">
+               <%= image_tag avatar_url(current_user), class: "post-author-icon" %>
+            </div>
+            <div class="col pl-0">
+              <%= f.text_field :content, rows: "5", class: "form-control border-0", autocomplete:"off", required: "true", 
+              placeholder: "Title of your module" %>
+            </div>
+          </div>
+          
+          <center>
+          <div class="fileUpload btn btn-danger">
+            <span>UPLOAD SNAPSHOT</span>
+            <div class="fallback">
+                <%= file_field_tag "images[]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
+            </div>
+            <!--SHOW RESULT HERE-->
+          </div>
+          <p id="fp"></p>
+          <p><input type="button" value="Show Details" onclick="FileDetails()"  class="btn btn-primary"></p>
+          </center>
+
+          <div class="form-group row mt-2">
+            <div class="col">
+            <h6>HTML</h6>
+            <%= f.text_area :frontend, style: "white-space: pre-wrap;", class: "codemirror-textarea form-control border-0"%>
+            </div> 
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col">
+            <h6>CSS</h6>
+            <%= f.text_area :frontend_css, style: "white-space: pre-wrap;", class: "code-textarea form-control border-0"%>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col">
+            <h6>JAVASCRIPT</h6>
+            <%= f.text_area :javascript, style: "white-space: pre-wrap;", class: "code-backend form-control border-0"%>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col">
+            <h6>BACKEND</h6>
+            <%= f.text_area :backend, style: "white-space: pre-wrap;", class: "code-backend-2 form-control border-0"%>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+           <div class="col">
+            <h6>SELECT YOUR MODULE TYPE</h6>
+            <%= f.select :module_type, ModuleType.all.collect { |moduletype| [moduletype.name, moduletype.id] }, {prompt: "Select"}, {class: 'form-control'} %>
+           </div>
+
+          <!-- create database from here -->
+          <div class="col">
+            <h6>SELECT DATABASE FOR BACKEND MODULE(Select only if your module is backend)</h6>
+            <%= f.select :database_id, DatabaseTable.all.collect { |database| [database.databasetable, database.id] }, {prompt: "Select"}, {class: 'form-control'} %>
+          </div>
+
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col">
+            <h6>INSTRUCTIONS</h6>
+            <%= f.text_area :instruction, rows: "10", style: "white-space: pre-wrap;", class: "form-control border-0", required: "true" %>
+            </div>
+          </div>
+      
+          <div class="form-group row mt-2">
+          <%= f.submit "Next", class: "btn btn-success form-control border-0", data: { "disable-with": "Loading..." }%>
+          </div>
+        <% end %>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$("#post_database_id").prop("disabled", true); // second dropdown is disable while first dropdown is empty
+
+$("#post_module_type").change(function(){
+
+  	var database = $(this).val();
+
+    console.log(database);
+
+  	if(database == ''){
+  		$("#post_module_type").prop("disabled", true);
+  	}else{
+  		$("#post_module_type").prop("disabled", false);
+  	}
+
+  	$.ajax({
+	    url: "/database_tables",
+	    method: "GET",  
+	    dataType: "json",
+	    data: {database: database},
+	    error: function (xhr, status, error) {
+	      	console.error('AJAX Error: ' + status + error);
+	    },
+
+	    success: function (response) {
+        
+	      	console.log(response);
+	      	
+	      	$("#post_database_id").empty();
+
+          if (database == 1){
+	      	 
+           $("#post_database_id").append('<option>Select Database Type</option>').prop("disabled", false);
+            
+          }else {
+
+            $("#post_database_id").append('<option>No Database For Frontend</option>').prop("disabled", true);
+          
+          }
+
+	      	for(var i = 0; i < response.length; i++){  
+
+	      		$("#post_database_id").append('<option value="' + response[i]["id"] + '">' +response[i]["databasetable"] + '</option>');
+	      	
+          }
+
+	    }
+  	});
+});
+</script>
