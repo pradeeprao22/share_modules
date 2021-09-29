@@ -132,7 +132,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :instruction, :slug, :tags_id)
+    params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database_id, :instruction, :slug, :module_type, :tags_id)
   end
 
 end

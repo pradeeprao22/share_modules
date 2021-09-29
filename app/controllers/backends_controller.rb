@@ -84,6 +84,6 @@ class BackendsController < ApplicationController
     end
   
     def backend_params
-      params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database_id, :instruction, :slug, :module_type)
+      params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database_id, :instruction, :slug, :module_type, :tags_id)
     end
 end
