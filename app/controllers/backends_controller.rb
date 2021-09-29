@@ -36,6 +36,7 @@ class BackendsController < ApplicationController
         end
 
         if @post.save
+            @post.update(tags_id: params[:post][:tags_id])
             if params[:images]
                 params[:images].each do |img|
                   @post.photos.create(image: img)
