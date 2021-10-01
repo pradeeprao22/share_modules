@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_25_123214) do
+ActiveRecord::Schema.define(version: 2021_10_01_133219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 2021_09_25_123214) do
   create_table "columns_for_fake_databases", force: :cascade do |t|
     t.string "name"
     t.string "tag"
-    t.text "database_table_id", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "column_type"
@@ -106,6 +105,14 @@ ActiveRecord::Schema.define(version: 2021_09_25_123214) do
     t.integer "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "database_and_its_columns", force: :cascade do |t|
+    t.integer "columns_for_fake_database_id"
+    t.integer "database_table_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "post_id"
   end
 
   create_table "database_tables", force: :cascade do |t|
@@ -281,6 +288,14 @@ ActiveRecord::Schema.define(version: 2021_09_25_123214) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
+  end
+
+  create_table "visitor_details", force: :cascade do |t|
+    t.string "ip"
+    t.string "city"
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "visitornew_details", force: :cascade do |t|
