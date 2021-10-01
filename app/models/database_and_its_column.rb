@@ -1,0 +1,2 @@
+class DatabaseAndItsColumn < ApplicationRecord
+end
