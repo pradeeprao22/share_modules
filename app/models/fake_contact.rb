@@ -1,0 +1,3 @@
+class FakeContact < ModuleRecord
+    
+end

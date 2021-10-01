@@ -1,0 +1,3 @@
+class FakePost < ModuleRecord
+    
+end
