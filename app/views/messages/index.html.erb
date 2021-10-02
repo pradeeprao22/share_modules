@@ -35,3 +35,26 @@
     <% end %>
 </div>
 </div>
+<script>
+//Checking whether form submission is success or not
+
+window.addEventListener("load", () => {
+
+    const element = document.querySelector("#new-message");
+    
+    element.addEventListener("ajax:success", (event) => {
+
+      const [_data, _status, xhr] = event.detail;
+      element.insertAdjacentHTML("beforeend", xhr.responseText);
+    
+    });
+
+    element.addEventListener("ajax:error", () => {
+
+      element.insertAdjacentHTML("beforeend", "<p>ERROR CREATING MESSAGE</p>");
+    
+    });
+
+});
+
+</script>
