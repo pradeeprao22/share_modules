@@ -9,7 +9,7 @@
       <%= link_to user_path(post.user), class: "normal-color no-text-decoration name-color", title: post.user.name do %>
           <strong><%= post.user.name %></strong>
       <% end %>  
-      <%= link_to post_path(post), method: :delete, class: "ml-auto delete-post-icon mx-0 my-auto" do %>
+      <%= link_to post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: "ml-auto delete-post-icon mx-0 my-auto" do %>
         <i class="far fa-trash-alt" aria-hidden="true"></i>
       <% end %>
     </div>
