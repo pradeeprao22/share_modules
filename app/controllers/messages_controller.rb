@@ -8,6 +8,11 @@ class MessagesController < ApplicationController
         @message = @conversation.messages.new
       end
 
+      def messages_index
+        @messages = @conversation.messages
+        render json: @messages
+      end 
+
       def new
         @message = @conversation.messages.new
       end
