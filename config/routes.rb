@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+  get 'fetch/:conversation_id/messages', :to => 'messages#messages_index', as: 'get_messages'
 
   resources :follows, only: [:create, :destroy]
   resources :module_types, only: [:index]
