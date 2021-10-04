@@ -1,13 +1,26 @@
 <br>
+<style>
+.card{
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 14px 80px 18px 36px;
+    cursor: pointer;
+}
+.card:hover{
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+</style>
+
  <div class="d-flex flex-column">
   <div class="col-xl-12 col-lg-8 col-md-10 col-sm-11 post-card">
     <!--Post Form-->
+    <div class="card-header">
+      <b>Post your backend module:</b>
+    </div>
     <div class="card">
-
-      <div class="card-header">
-        <b>Post your backend module:</b>
-      </div>
-
       <div class="card-body">
   
       <%= form_for(@post, as: @post, url: backends_backend_module_post_path, html: { method: :post }) do |f| %>          
@@ -92,7 +105,7 @@
           </div>
       
           <div class="form-group row mt-2">
-          <%= f.submit "Next", class: "btn btn-success form-control border-0", data: { "disable-with": "Loading..." }%>
+          <%= f.submit "Next", class: "btn btn-success form-control border-0", data: { confirm: 'You will be redirected to create columns for your database' } %>
           </div>
         <% end %>
         
