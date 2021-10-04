@@ -1,6 +1,11 @@
 class ColumnsForFakeDatabasesController < ApplicationController
 
   before_action :authenticate_user!
+  
+  def index
+    @colmun = ColumnsForFakeDatabase.all
+  end
+
   def create
     @column =  ColumnsForFakeDatabase.new(column_params)
     @column.user_id = current_user.id
