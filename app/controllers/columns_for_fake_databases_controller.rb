@@ -2,8 +2,8 @@ class ColumnsForFakeDatabasesController < ApplicationController
 
   before_action :authenticate_user!
   
-  def index
-    @colmun = ColumnsForFakeDatabase.all
+  def index 
+    @column = ColumnsForFakeDatabase.where(user_id: current_user)
   end
 
   def create
