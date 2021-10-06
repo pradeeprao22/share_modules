@@ -9,7 +9,15 @@
 
 <h4>Module Type:</h4> <%= @module_type %>
 
-<!--  -->
+<% if @post.module_type == "1" %>
+<p>This is backend module please check your database settings</p>
+<p><%= link_to 'Manage backend module', columns_for_fake_databases_path %></p>
+<% else %>
+<p>No database for fronted module</p>
+<% end %>
+
+<!--Link to dashboard-->
+
 <%= form_for(@post, as: @post, url: post_path(@post), html: { method: :put }) do |f| %>
 <div class="d-flex flex-column mt-3">
   <h6>HTML</h6>
