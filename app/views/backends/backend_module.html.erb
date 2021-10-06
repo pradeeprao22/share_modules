@@ -145,17 +145,17 @@ $("#post_module_type").change(function(){
 
           if (database == 1){
 	      	 
-           $("#post_database_id").append('<option>Select Database Type</option>').prop("disabled", false);
+          $("#post_database_id").append('<option>Select Database Type</option>').prop("disabled", false);
             
           }else {
 
-            $("#post_database_id").append('<option>No Database For Frontend</option>').prop("disabled", true);
+          $("#post_database_id").append('<option>No Database For Frontend</option>').prop("disabled", true);
           
           }
 
 	      	for(var i = 0; i < response.length; i++){  
 
-	      		$("#post_database_id").append('<option value="' + response[i]["id"] + '">' +response[i]["databasetable"] + '</option>');
+	      	$("#post_database_id").append('<option value="' + response[i]["id"] + '">' +response[i]["databasetable"] + '</option>');
 	      	
           }
 
