@@ -81,8 +81,12 @@
 
     <div class="form-group row mt-2">
       <div class="col pl-0">
-        <%= f.text_field :tag, class: "form-control border-0", required: "true", placeholder: "Select Tag"%>
+        <%= f.text_field :tag, class: "form-control border-0", required: "true", placeholder: "Select Tag" %>
       </div>
+    </div>
+
+    <div class="form-group row mt-2">
+      <%= f.submit "Submit", class: "btn btn-success form-control border-0", id: "londevs-submit" %>
     </div>
 
   <% end %>
