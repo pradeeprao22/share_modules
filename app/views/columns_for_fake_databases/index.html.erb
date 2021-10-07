@@ -1,0 +1,48 @@
+<!-- INDEX ALL THE ROW ALL COLMUNS HERE -->
+<!-- this page will be on backend show page -->
+<!-- Editing and deleting of the colums must be added -->
+<br>
+<div class="container">
+<div class="box">
+<h6>Column names with databases associated with it:</h6>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Module Name</th>
+        <th>Column Name</th>
+        <th>Column Type</th>
+        <th>Database Saved</th>
+        <th>Tag name</th>
+        <th>Edit Option</th>
+      </tr>
+    </thead>
+<tbody>      
+<% @column.map do |column| %>
+  <tr>
+    <% if DatabaseAndItsColumn.find_by(columns_for_fake_database_id: column.id) %>
+    <% @post_for_database = Post.find_by(id: column.post_id) %>
+          <td><%= @post_for_database.content %></td>
+    <% else %>
+    <td> Module name is not present</td>
+    <% end %>      
+        <td><%= column.name %></td>
+        <td><%= column.column_type %></td>
+        <% if DatabaseAndItsColumn.find_by(columns_for_fake_database_id: column.id) %>
+    <% column_to_database = DatabaseAndItsColumn.find_by(columns_for_fake_database_id: column.id) %>
+    <% @database_table = DatabaseTable.find(column_to_database.database_table_id) %>
+    <td><%= @database_table.databasename %></td>
+    <% else %>
+    <td>Database table is not present</td>
+    <% end %>
+    <td><%= column.tag %></td>
+
+    <td><%= link_to "Edit" %></td>
+  </tr>
+
+<% end %>
+</tbody>
+</table>
+<h6>End of the table</h6>
+</div>
+</div>
+
