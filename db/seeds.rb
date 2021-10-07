@@ -4,14 +4,14 @@ end
 
 if Rails.env.development?
 
-    if DatabaseTable.all.count != nil
+    if DatabaseTable.all.count == nil
     DatabaseTable.create!(databasename: "Londevs", databasetable: "USER")
     DatabaseTable.create!(databasename: "Londevs", databasetable: "POST")
     DatabaseTable.create!(databasename: "Londevs", databasetable: "LIKE")
     DatabaseTable.create!(databasename: "Londevs", databasetable: "CONTACTTABLE")
     end 
 
-    if ModuleType.all.count != nil
+    if ModuleType.all.count == nil
     ModuleType.create(name: "BACKEND")
     ModuleType.create(name: "FRONTEND")
     end
