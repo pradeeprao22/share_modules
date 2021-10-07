@@ -36,7 +36,8 @@
     <% end %>
     <td><%= column.tag %></td>
 
-    <td><%= link_to "Edit" %></td>
+    <td><%= link_to "Edit This", edit_columns_for_fake_database_path(column.id) %></td>
+    
   </tr>
 
 <% end %>
