@@ -25,6 +25,12 @@ class ColumnsForFakeDatabasesController < ApplicationController
     
   end
 
+  def update
+    if columns_params
+      @column = ColumnsForFakeDatabase.update(column_params)
+    end
+  end
+
   def new
     @column =  ColumnsForFakeDatabase.new
   end
