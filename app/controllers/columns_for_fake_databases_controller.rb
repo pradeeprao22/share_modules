@@ -1,6 +1,7 @@
 class ColumnsForFakeDatabasesController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :find_column, only: [:show]
   
   def index 
     @column = ColumnsForFakeDatabase.where(user_id: current_user)
@@ -31,8 +32,22 @@ class ColumnsForFakeDatabasesController < ApplicationController
     end
   end
 
+  def show
+    @column = @column
+  end
+
   def new
     @column =  ColumnsForFakeDatabase.new
+  end
+
+  private
+
+  def find_column
+    @column = ColumnsForFakeDatabase.find(params[:id])
+
+    return if @column
+    flash[:danger] = "Column not exist!"
+    redirect_to root_path
   end
 
   def column_params
