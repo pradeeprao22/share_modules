@@ -27,8 +27,9 @@ class ColumnsForFakeDatabasesController < ApplicationController
   end
 
   def update
-    if columns_params
+    if column_params
       @column = ColumnsForFakeDatabase.update(column_params)
+      flash[:notice] = "Columns Updated"
     end
   end
 
