@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_03_141032) do
+ActiveRecord::Schema.define(version: 2021_10_10_102800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,13 @@ ActiveRecord::Schema.define(version: 2021_10_03_141032) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "data_types", force: :cascade do |t|
+    t.string "name"
+    t.string "selected_column"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "database_and_its_columns", force: :cascade do |t|
     t.integer "columns_for_fake_database_id"
     t.integer "database_table_id"
@@ -201,6 +208,15 @@ ActiveRecord::Schema.define(version: 2021_10_03_141032) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "name"
+    t.string "notificationable_type"
+    t.bigint "notificationable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["notificationable_type", "notificationable_id"], name: "index_notifications_on_notificationable"
   end
 
   create_table "photos", force: :cascade do |t|
