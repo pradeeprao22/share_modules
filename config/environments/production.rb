@@ -100,8 +100,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:       'smtpout.secureserver.net',
     port:           80,
-    user_name:     'pradeep.rao@londevs.com',
-    password:      'hiZnij-gijqir-pohxa6',
+    user_name:     ENV['user_name'],
+    password:      ENV['password'],
     authentication: :login,
     enable_starttls_auto: true
   }
