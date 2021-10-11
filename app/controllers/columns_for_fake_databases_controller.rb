@@ -41,6 +41,11 @@ class ColumnsForFakeDatabasesController < ApplicationController
     @column =  ColumnsForFakeDatabase.new
   end
 
+  def create_collection
+    #Update collection params
+    #Not Needed at the moment
+  end
+
   private
 
   def find_column
