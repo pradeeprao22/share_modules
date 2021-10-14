@@ -85,7 +85,7 @@
           <!-- create database from here -->
           <div class="col">
             <h6>SELECT DATABASE FOR BACKEND MODULE(Select only if your module is backend)</h6>
-            <%= f.select :database_id, DatabaseTable.all.collect { |database| [database.databasetable, database.id] }, {prompt: "Select"}, {class: 'form-control'} %>
+            <%= f.select :database, DatabaseTable.all.collect { |database| [database.databasetable, database.id] }, {prompt: "Select"}, {class: 'form-control'} %>
           </div>
 
           </div>
