@@ -7,11 +7,11 @@ class DatabaseTablesController < ApplicationController
     end
 
     def create
-      byebug
       @database_table = DatabaseTable.new(database_params)
       @database_table.user_id = current_user
       if @database_table.save!
-        flash[:notice] = "Database was created"
+        redirect_to new_columns_for_fake_databases_path
+        flash[:notice] = "Database was created please create columns for database"
       end
     end
 
