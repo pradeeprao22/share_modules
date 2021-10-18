@@ -1,0 +1,128 @@
+<br>
+<style>
+.card{
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+}
+.card:hover{
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+</style>
+
+<div class="container">
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+  <!-- User cant go to nex steps -->
+    <li class="breadcrumb-item active" aria-current="page">Database Create</li>
+    <li class="breadcrumb-item"><a href="#" onclick="this.window.alert("Can't jump direcltly to other steps")">Columns Create</a></li>
+    <li class="breadcrumb-item"><a href="#">Create Backend Module</a></li>
+  </ol>
+</nav>
+
+<div class="d-flex flex-column">
+  <div class="col-xl-12 col-lg-8 col-md-10 col-sm-11 post-card">
+    <!--Post Form-->
+    <div class="card-header">
+      <b>Create Database Table For Your Module:</b>
+    </div>
+    <!--Element to be copied -->
+    <div class="card" id="newlink">
+      <div class="card-body">
+        <%= form_for @database_table, :html => { :multipart => true, :remote=>true } do |f| %>
+
+          <div id="alert_message">
+          </div>
+          
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :databasename, class: "form-control border-0", autocomplete:"off", required: "true", placeholder: "Name Of The Database" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col pl-0">
+              <%= f.text_field :databasetable, class: "form-control border-0", required: "true", placeholder: "Database Table Name" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <%= f.submit "Submit", class: "btn btn-success form-control border-0", id: "londevs-submit" %>
+          </div>
+
+          <!-- Click of below button above element to be copied -->
+          <p id="addnew" class="align-self-center">
+            <a href="javascript:new_link()" class="btn btn-success">Add New</a>
+          </p>
+
+        <% end %>
+      </div>
+    </div>
+
+  <div id="newlinktpl" style="display:none">
+    <div class="card-body">
+
+    <%= form_for @database_table, :html => { :multipart => true, :remote=>true } do |f| %>
+
+    <div id="alert_message">
+    </div>
+    
+    <div class="form-group row mt-2">
+      <div class="col pl-0">
+        <%= f.text_field :databasename, class: "form-control border-0", autocomplete:"off", required: "true", placeholder: "Name Of The Database" %>
+      </div>
+    </div>
+
+    <div class="form-group row mt-2">
+      <div class="col pl-0">
+        <%= f.text_field :databasetable, class: "form-control border-0", required: "true", placeholder: "Database Table Name" %>
+      </div>
+    </div>
+
+    <div class="form-group row mt-2">
+      <%= f.submit "Submit", class: "btn btn-success form-control border-0", id: "londevs-submit" %>
+    </div>
+
+  <% end %>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<script>
+/* This script is identical to the above JavaScript function. */
+var ct = 1;
+
+function new_link()
+{
+	ct++;
+
+	var div1 = document.createElement('div');
+
+  console.log(div1)
+
+	div1.id = ct;
+
+// link to delete extended form elements
+	var delLink = '<div style="text-align:right;margin-right:65px"><a href="javascript:delIt('+ ct +')", class="btn btn-danger">Delete Column</a></div>';
+	
+  div1.innerHTML = document.getElementById('newlinktpl').innerHTML + delLink;
+
+	document.getElementById('newlink').appendChild(div1);
+
+}
+
+// function to delete the newly added set of elements
+function delIt(eleId)
+{
+	d = document;
+	var ele = d.getElementById(eleId);
+	var parentEle = d.getElementById('newlink');
+	parentEle.removeChild(ele);
+}
+</script>
