@@ -16,9 +16,10 @@ class ColumnsForFakeDatabasesController < ApplicationController
         @column.save!
         @post = Post.last
         @column.update(post_id: Post.last.id)
-        DatabaseAndItsColumn.create(columns_for_fake_database_id: @column.id, database_table_id: Post.last.database_id, post_id: Post.last.id, user_id: current_user.id)
+        DatabaseAndItsColumn.create(columns_for_fake_database_id: @column.id, database_table_id: Post.last.database, post_id: Post.last.id, user_id: current_user.id)
+        redirect_to backends_backend_module_path(@column.id)
         flash[:notice] = "Columns for database has been created"
-       # redirect_to post_path(@post)
+        # Need to pass columns and database tables details to another page
         #@column.database_table_id << Post.last.database_id
     else
       flash[:notice] = "Some error happened"
