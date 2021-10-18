@@ -7,10 +7,11 @@ class DatabaseTablesController < ApplicationController
     end
 
     def create
+      # Database table should have post name also
       @database_table = DatabaseTable.new(database_params)
-      @database_table.user_id = current_user
+      @database_table.user_id = current_user.id
       if @database_table.save!
-        redirect_to new_columns_for_fake_databases_path
+        redirect_to new_columns_for_fake_database_path(@database_table.id)
         flash[:notice] = "Database was created please create columns for database"
       end
     end
