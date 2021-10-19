@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_150126) do
+ActiveRecord::Schema.define(version: 2021_10_16_132047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_150126) do
     t.integer "user_id"
     t.integer "post_id"
     t.integer "incriment_number"
+    t.string "database_table_id"
     t.index ["post_id"], name: "index_columns_for_fake_databases_on_post_id"
     t.index ["user_id"], name: "index_columns_for_fake_databases_on_user_id"
   end
@@ -128,8 +129,8 @@ ActiveRecord::Schema.define(version: 2021_10_14_150126) do
     t.string "databasetable"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "module_type_id"
-    t.index ["module_type_id"], name: "index_database_tables_on_module_type_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_database_tables_on_user_id"
   end
 
   create_table "feeds", force: :cascade do |t|
