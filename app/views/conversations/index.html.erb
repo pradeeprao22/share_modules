@@ -15,7 +15,7 @@
         <% end %>
 </div> 
 <div class="form-login box">   
-        <h4>You Follow This Coders</h4>
+        <h4>Following</h4>
         <% @follows.each do |follow| %>
         <% if follow.following.id != current_user.id %>
           <%= image_tag avatar_url(follow.following), class: "card-type-icon with-border material-icons" %>
