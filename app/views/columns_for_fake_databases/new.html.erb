@@ -15,6 +15,20 @@
 
 <div class="container">
 
+<!-- Find the database and put the name here -->
+
+<% @database_name = DatabaseTable.find_by(id: params[:format]) %>
+
+<p> Selected Database Name: <b><%= @database_name.databasename %></b></p>
+
+<!-- After fetching the database -->
+
+<p>Create Columns Under This Database:</p>
+
+</div>
+
+<div class="container">
+
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/database_tables/new">Database Create</a></li>
