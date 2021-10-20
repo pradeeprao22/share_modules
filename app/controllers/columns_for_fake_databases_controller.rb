@@ -16,9 +16,10 @@ class ColumnsForFakeDatabasesController < ApplicationController
         # @column.post_id = Post.last.id
         @column.save!
         # @post = Post.last
+        # this will happen in later stage
         # @column.update(post_id: Post.last.id)
         # post will be nil at this stage
-        @database_columns = DatabaseAndItsColumn.create(columns_for_fake_database_id: @column.id, database_table_id: @database_table_id, user_id: current_user.id)
+        @database_columns = DatabaseAndItsColumn.create(columns_for_fake_database_id: @column.id, user_id: current_user.id)
         
         redirect_to backends_backend_module_path(@database_columns.id)
         
