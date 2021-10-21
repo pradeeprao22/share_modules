@@ -29,7 +29,8 @@
         <td><%= column.column_type %></td>
         <% if DatabaseAndItsColumn.find_by(columns_for_fake_database_id: column.id) %>
     <% column_to_database = DatabaseAndItsColumn.find_by(columns_for_fake_database_id: column.id) %>
-    <% @database_table = DatabaseTable.find(column_to_database.database_table_id) %>
+    <!-- Data Errors -->
+    <% @database_table = DatabaseTable.find_by(id: column_to_database.database_table_id) %>
     <td><%= @database_table.databasename %></td>
     <% else %>
     <td>Database table is not present</td>
