@@ -17,6 +17,8 @@
 
 <!-- Find the database and put the name here -->
 
+<% @database_table_id = params[:format] %>
+
 <% @database_name = DatabaseTable.find_by(id: params[:format]) %>
 
 <p> Selected Database Name: <b><%= @database_name.databasename %></b></p>
@@ -70,6 +72,8 @@
               <%= f.text_field :tag, class: "form-control border-0", required: "true", placeholder: "Select Tag"%>
             </div>
           </div>
+
+          <%= f.hidden_field :database_table_id, value: @database_table_id %>
       
           <div class="form-group row mt-2">
             <%= f.submit "Submit", class: "btn btn-success form-control border-0", id: "londevs-submit" %>
