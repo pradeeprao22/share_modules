@@ -20,6 +20,7 @@
 <% @column.map do |column| %>
   <tr>
     <% if DatabaseAndItsColumn.find_by(columns_for_fake_database_id: column.id) %>
+    <!-- Post id will come at the end of the backend module creation -->
     <% @post_for_database = Post.find_by(id: column.post_id) %>
           <td><%= @post_for_database.content %></td>
     <% else %>
