@@ -25,7 +25,6 @@ class ColumnsForFakeDatabasesController < ApplicationController
         
         flash[:notice] = "Columns for database has been created"
         # Need to pass columns and database tables details to another page
-        #@column.database_table_id << Post.last.database_id
     else
       flash[:notice] = "Some error happened"
     end
@@ -63,7 +62,7 @@ class ColumnsForFakeDatabasesController < ApplicationController
   end
 
   def column_params
-    params.require(:columns_for_fake_database).permit(:name, :tag, :database_table_id, :column_type)
+    params.require(:columns_for_fake_database).permit(:name, :tag, :database_table_id, :column_type, :database_table)
   end
 
 end
