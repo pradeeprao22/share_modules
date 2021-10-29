@@ -1,0 +1,12 @@
+<!-- This user created some module logic -->
+<%  @feeds.map do |feed| %>
+   
+   <% user = User.find(feed.user_id) %>
+   
+   <% post = Post.find(feed.post_id) %>
+
+   <p><% user.name %> posted <% post.name %></p>
+
+   <!-- clap button by other users -->
+
+<% end %>
