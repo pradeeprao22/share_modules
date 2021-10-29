@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :follows, only: [:create, :destroy]
   resources :module_types, only: [:index]
   resources :database_tables
+  resources :feeds
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
