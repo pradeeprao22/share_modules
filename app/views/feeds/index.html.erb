@@ -5,8 +5,10 @@
    
    <% post = Post.find(feed.post_id) %>
 
-   <p><% user.name %> posted <% post.name %></p>
+   <p><% user.name %> posted <% post.content %></p>
 
+   <div>
+   </div>
    <!-- clap button by other users -->
 
 <% end %>
