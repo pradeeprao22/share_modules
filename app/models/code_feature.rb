@@ -1,0 +1,3 @@
+class CodeFeature < ApplicationRecord
+
+end
