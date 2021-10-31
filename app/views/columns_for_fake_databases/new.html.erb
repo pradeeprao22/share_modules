@@ -19,11 +19,11 @@
 
 <% @database_table_id = params[:format] %>
 
-<% @database_name = DatabaseTable.find_by(id: params[:format]) %>
+<% @database_table = DatabaseTable.find_by(id: params[:format]) %>
 
-<p> Selected Database Name: <b><%= @database_name.databasename %></b></p>
+<p> Selected Database Name: <b><%= @database_table.databasename %></b></p>
 
-<p> Selected Table: <b><%= @database_name.databasetable %></b></p>
+<p> Selected Table: <b><%= @database_table.databasetable %></b></p>
 
 <!-- After fetching the database -->
 
