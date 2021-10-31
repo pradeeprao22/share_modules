@@ -1,0 +1,134 @@
+<br>
+<style>
+.hide {
+  display: none;
+}
+
+.drag-over {
+    border: dashed 3px red;
+}
+</style>
+
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <!-- <div class="panel-group" id="accordion"> -->
+            <!-- <div class="panel panel-default"> -->
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-heart"></span>Modules</a>
+                </h4>
+              </div>
+
+
+              <br>
+							<div class="drop-targets" >
+                <div class="list-group">
+                  <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  </a>
+                </div>
+
+                <div class="list-group">
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">List group item heading</h4>
+                    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                  </a>
+                </div>
+							</div>	
+
+            <!-- </div> -->
+          <!-- </div> -->
+        </div>
+				<div class="drop-targets" >
+				<div class="londevsappbuilder" id="londevsappbuilder">
+				<!-- Draggable element -->
+					<div class="londev" draggable="true" id="londev"> 
+
+						<div class="list-group">
+							<a href="#" class="list-group-item">
+								<h4 class="list-group-item-heading">List group item heading</h4>
+								<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+							</a>
+						</div>
+
+					</div> 
+				</div>
+
+				<div class="londevsappbuilder" id="londevsappbuilder">
+          
+        </div>
+
+        <div class="col-sm-9 col-md-9 panel">
+
+        </div>
+      </div>
+      </div>
+
+<script>
+
+const londevmodule = document.querySelector('.londev');
+
+console.log(londevmodule)
+
+londevmodule.addEventListener("dragstart", dragStart);
+
+function dragStart(e){       
+
+    e.dataTransfer.setData('text/plain', e.target.id);
+
+    setTimeout ( () => {
+    
+    // e.target.classList.add('hide');
+     
+		 }, 0);
+}
+
+const londevsappbuilders = document.querySelectorAll('.londevsappbuilder');
+
+console.log(londevsappbuilders)
+
+londevsappbuilders.forEach(londevsappbuilder => {
+    londevsappbuilder.addEventListener('dragenter', dragEnter)
+    londevsappbuilder.addEventListener('dragover', dragOver);
+    londevsappbuilder.addEventListener('dragleave', dragLeave);
+    londevsappbuilder.addEventListener('drop', drop);
+});
+
+function dragEnter(e){
+	e.preventDefault();
+  e.target.classList.add('drag-over');
+}
+
+function dragOver(e){
+	e.preventDefault();
+  e.target.classList.add('drage-over');
+}
+
+function dragLeave(e){
+  e.target.classList.remove('drage-over');
+}
+
+function drop(e){
+
+  e.target.classList.add('drage-over');
+
+	console.log(e.target)
+
+	const id = e.dataTransfer.getData('text/plain');
+
+	console.log(id)
+	
+	// draggable is nil comming
+	const draggable = document.getElementById(id);
+
+	console.log(e.target)
+
+	console.log(draggable)
+
+	e.target.appendChild(draggable);
+
+	draggable.classList.remove('hide');
+}
+
+</script>
