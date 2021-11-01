@@ -45,6 +45,10 @@ include VisitorDetail
   def whyjoinus
   end
 
+  def userlandingtesting
+    
+  end
+
   def term
     action = params[:action]
     getdetails(action)
