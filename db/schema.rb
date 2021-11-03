@@ -254,7 +254,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_202451) do
     t.integer "status"
     t.string "slug"
     t.integer "language_id"
-    t.integer "database"
+    t.integer "database_id"
     t.integer "database_type"
     t.string "module_type"
     t.boolean "published"
