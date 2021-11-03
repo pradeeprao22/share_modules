@@ -9,6 +9,8 @@ class ColumnsForFakeDatabasesController < ApplicationController
 
   def create
     @column =  ColumnsForFakeDatabase.new(column_params)
+    @database_table = DatabaseTable.find(column_params[:database_table_id])
+    @column.database_table = @database_table
     @column.user_id = current_user.id
 
     if @column.user_id && (@column.user_id == current_user.id)
@@ -62,7 +64,7 @@ class ColumnsForFakeDatabasesController < ApplicationController
   end
 
   def column_params
-    params.require(:columns_for_fake_database).permit(:name, :tag, :database_table_id, :column_type, :database_table)
+    params.require(:columns_for_fake_database).permit(:name, :tag, :database_table_id, :column_type)
   end
 
 end
