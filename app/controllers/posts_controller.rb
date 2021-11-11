@@ -22,6 +22,9 @@ class PostsController < ApplicationController
         action = params[:action]
         getdetails(action)
 
+        # Quick bug fix (remove this)
+        params[:post][:tags_id][0] = params[:post][:tags_id][1]
+
         @post = current_user.posts.build(post_params)
         if @post.save
             @post.update(tags_id: params[:post][:tags_id])
