@@ -4,6 +4,7 @@
 <br>
 <h2>{ <%= user.name %> } messages inbox</h2>
 <!--AJAX ID HERE-->
+<!-- Selecting the user from here -->
 <div class="form-control">
 <div id="results">
   <% @messages.each do |message| %>
@@ -35,6 +36,8 @@
     <% end %>
 </div>
 </div>
+
+
 <script>
 //Checking whether form submission is success or not
 
