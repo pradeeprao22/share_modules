@@ -1,7 +1,8 @@
 <br>
 <div class="container">
 <h2>Inbox</h2>
-<div class="form-login box">
+<div class="form-control">
+<div class="box">
 <h4>Conversations</h4>
         <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
@@ -10,17 +11,20 @@
         <% else %>
         <% recipient = User.find(conversation.sender_id) %>
         <% end %>
-        <h4><%= image_tag avatar_url(recipient), class: "card-type-icon with-border material-icons" %><%= link_to recipient.email, conversation_messages_path(conversation)%></h4>
+        <h4><%= image_tag avatar_url(recipient), class: "card-type-icon with-border material-icons" %><%= link_to recipient.name, conversation_messages_path(conversation)%></h4>
         <% end %>
         <% end %>
 </div> 
-<div class="form-login box">   
+</div>
+<div class="form-control">
+<div class="box">   
         <h4>Following</h4>
         <% @follows.each do |follow| %>
         <% if follow.following.id != current_user.id %>
           <%= image_tag avatar_url(follow.following), class: "card-type-icon with-border material-icons" %>
-          <%= link_to follow.following.email, conversations_path(sender_id: current_user.id, recipient_id: follow.following.id), method: "post"%>
+          <%= link_to follow.following.name, conversations_path(sender_id: current_user.id, recipient_id: follow.following.id), method: "post"%>
         <% end %>
         <% end %>
+</div>
 </div>
 </div>
