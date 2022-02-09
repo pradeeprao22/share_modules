@@ -16,16 +16,12 @@
 
   <body>
 
-  <% if params[:action] != "userlanding" %>
-      <%= render "shared/navbar" if current_user %>
-      <%= render "shared/navbarg" if !current_user %>
-  <% end %>
+  <%= render "shared/navbar" if current_user %>
+  <%= render "shared/navbarg" if !current_user %>
    
     <%= yield %>
    
-   <% if params[:action] != "userlanding" %>   
-   <%= render "shared/footer" %>
-   <% end %>
+  <%= render "shared/footer" %>
 
    <!-- Hotjar Tracking Code for ai.londevs.com -->
     <script type="text/javascript">

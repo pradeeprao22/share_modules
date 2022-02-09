@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   #custom route defined
   get 'notifications', :to => 'notifications#create_notifications', as: 'get_notification'
-  get 'pages/contact_get'
+  #get 'pages/contact_get'
   get 'appbuilder/appbuilder', :to => 'appbuilders#appbuilder', as: 'app_builder'
   get 'pages/howto', :to => 'pages#howto', as: 'how_to'
   get 'users/likes/:id', :to => 'users#likes', as: 'users_likes'
@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   post 'pages/contact_get/:id', :to => 'pages#contact_get'
   get 'post/module_post', :to => 'posts#module_post', as: 'module'
   get 'posts/build_module/:slug', :to => 'posts#build_module', as: 'building'
+  #get 'pages/userlandingtesting', :to => 'pages#userlandingtesting', as: 'landingtesting'
 
   #For Backend module
   get 'backends/backend_module'
