@@ -16,10 +16,13 @@
                <div class="single-footer f-link">
                     <h5>Quick menu</h5>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="http://ai.londevs.com/pages/about">About Us</a></li>
+                        <li><%= link_to "About Us", pages_about_path %></li>
+                        <li><%= link_to "Terms", pages_terms_path %></li>
+                        <li><%= link_to "Privacy", pages_privacy_path %></li> 
                         <li><a href="https://londevs.com/services.html">Services</a></li>
-                        <li><a href="https://ai.londevs.com/pages/contact_get">Contact us</a></li>
+                        <li><%= link_to "Contact us", contact_path %></li> 
+
+                        <!--<li><a href="https://ai.londevs.com/pages/contact_get">Contact us</a></li>-->
                     </ul>
                </div>
             </div>
@@ -27,7 +30,7 @@
                 <div class="single-footer f-link">
                   <h5>Featured links</h5>
                     <ul>
-                        <li class="nav-item"><a href="faqs.html">Documentation</a></li>
+                    <li><%= link_to "Documentation", pages_help_path, :class => "nav-item" %></li>
                         <li class="nav-item"><a href="http://ai.londevs.com">Search For Modules</a></li>
                         <li class="nav-item"><a href="#blog">Blog</a></li>
                     </ul>

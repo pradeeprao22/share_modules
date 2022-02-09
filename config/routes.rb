@@ -16,12 +16,12 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'pages#userlanding'
-  get 'pages/about'
-  get 'pages/innovation'
-  get 'pages/help'
+  get 'pages/about', as: 'pages_about'
+  get 'pages/innovation', as: 'pages_innovation'
+  get 'pages/help', as: 'pages_help'
   get 'pages/success'
-  get 'pages/terms'
-  get 'pages/privacy'
+  get 'pages/terms', as: 'pages_terms'
+  get 'pages/privacy', as: 'pages_privacy'
   devise_for :users,
     path: '',
     path_name: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   get 'pages/howto', :to => 'pages#howto', as: 'how_to'
   get 'users/likes/:id', :to => 'users#likes', as: 'users_likes'
   get 'users/bookmark/:id', :to => 'users#bookmark', as: 'users_bookmark'
-  get 'pages/contact_get'
+  get 'pages/contact_get', as: 'contact'
   post 'pages/contact_get/:id', :to => 'pages#contact_get'
   get 'post/module_post', :to => 'posts#module_post', as: 'module'
   get 'posts/build_module/:slug', :to => 'posts#build_module', as: 'building'

@@ -8,6 +8,13 @@ Bundler.require(*Rails.groups)
 
 module LondevApp
   class Application < Rails::Application
+    config.to_prepare do
+      Devise::SessionsController.layout "frontpage"
+      Devise::RegistrationsController.layout "frontpage"
+      Devise::ConfirmationsController.layout "frontpage"
+      Devise::UnlocksController.layout "frontpage"
+      Devise::PasswordsController.layout "frontpage"
+    end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.action_cable.mount_path = '/websocket'
