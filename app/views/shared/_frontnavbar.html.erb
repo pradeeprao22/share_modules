@@ -43,7 +43,7 @@
                 <div class="col-lg-2 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <a class="navbar-brand" href="#"><h3 class="masthead-brand mb-0">LonDevs.com</h3></a>
+                        <a class="navbar-brand" href="/"><h3 class="masthead-brand mb-0">LonDevs.com</h3></a>
                     </div>
                     <!-- End Logo -->
                     <div class="mobile-nav"></div>
@@ -54,12 +54,9 @@
                         <nav class="navigation">
                             <ul class="nav">
                                 <li class="active"><a href="/">Home</a></li>
-                                <li><a target="_blank" href="http://ai.londevs.com/pages/about">About Us</a></li>
-                                <li><a target="_blank" href="https://londevs.com/services.html">Free Service</a></li>
-                                <li><a target="_blank" href="https://londevs.com/portfolio.html">Our work</a></li>
-                                <li><a target="_blank" href="/faqs.html">How to use?</a></li>
-                                <!-- Login -->
-                                <!-- Register -->
+                                <li><%= link_to "About Us", pages_about_path %></li>
+                                <li><%= link_to "Terms", pages_terms_path %></li>
+                                <li><%= link_to "Documentation", pages_help_path %></li>                
                             </ul>
                         </nav>
                     </div>

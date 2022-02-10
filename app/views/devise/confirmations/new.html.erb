@@ -1,7 +1,4 @@
 <div class="container">
-<br>
-<br>
-<br>
   <div class="row">
     <div class="col-lg-4">
     </div>
@@ -12,8 +9,7 @@
                 <h4 class="text-center align-items-center">Londevs.com</h4>
                 <hr>
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-      <%= devise_error_messages! %>
-
+        <%= render "devise/shared/error_messages", resource: resource %>
       <div class="form-group">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) , placeholder: "Email", class: "form-control"%>
       </div>
