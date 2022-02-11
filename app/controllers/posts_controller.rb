@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   include BackendRunner
   include VisitorDetail
-  before_action :authenticate_user!, only: [:show, :destroy, :create, :module_post]
+  #layout "frontpage"
+  before_action :authenticate_user!, only: [:destroy, :create, :module_post]
   before_action :find_post, only: [:show, :destroy, :build_module]
 
   def index
