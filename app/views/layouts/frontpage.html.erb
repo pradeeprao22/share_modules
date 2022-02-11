@@ -55,7 +55,9 @@
     </head>
 
    <body class="js">
-   <%= render "shared/frontnavbar" %>
+   <%= render "shared/frontnavbar" if !current_user %>
+   <%= render "shared/navbar" if current_user %>
+
     <%= yield %>
     <%= render "shared/frontfooter" %>
    <!-- Hotjar Tracking Code for ai.londevs.com -->
