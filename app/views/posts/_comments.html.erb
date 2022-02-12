@@ -5,6 +5,6 @@
               <%= f.text_field :content, class: "form-control comment-input border-0",
                 placeholder: "Add a comment ...", autocomplete: :off %>
               <% else %>
-              <p>Please login to comment</p>
+              <p>Please <%= link_to "login", new_user_session_path %> to comment</p>
               <% end %>  
             <% end %>
