@@ -283,6 +283,17 @@ footer .nav-item {
     background-position: -35px -273px;
 }
 
+
+.follow {
+    @extend .clap;
+    background-position: -150px -353px;
+}
+
+.unfollow {
+    @extend .clap;
+    background-position: -35px -273px;
+}
+
 .comment-list {
    height: 310px;
    overflow: auto;
