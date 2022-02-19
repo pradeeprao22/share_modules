@@ -16,8 +16,9 @@
 
        <% if @user != current_user %>
        <div class="row">
-       <div id="follow-user-<%= @user.id.to_s %>">
-         <%= render 'follow', {is_followed: @is_followed, user: @user} %>
+       <!-- Follow partial -->
+       <div id="follow-user-<%= @user.id.to_s %>", class="ml-auto reloadbtn">
+         <%= render 'follow', {is_followed: @user.is_followed(current_user), user: @user} %>
        </div>
        <% if @is_followed %>
        <div>
