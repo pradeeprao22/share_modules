@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   include BackendRunner
   include VisitorDetail
+  include CreateNotification  
   #layout "frontpage"
   before_action :authenticate_user!, only: [:destroy, :create, :module_post]
   before_action :find_post, only: [:show, :destroy, :build_module]
@@ -28,7 +29,11 @@ class PostsController < ApplicationController
 
         @post = current_user.posts.build(post_params)
         if @post.save
-            @post.update(tags_id: params[:post][:tags_id])
+      
+          # For creating notification
+          notify(action, @post)
+           
+            @post.update(tags_id: params[:post][:tags_id])      
             if params[:images]
                 params[:images].each do |img|
                   @post.photos.create(image: img)
