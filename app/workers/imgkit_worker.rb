@@ -13,7 +13,7 @@ class ImgkitWorker
         end
   
     elsif Rails.env == "production"
-        kit = IMGKit.new("http://ai.londevs.com/posts/build_module/"+ slug)
+        kit = IMGKit.new("https://ai.londevs.com/posts/build_module/"+ slug)
         img = kit.to_img(:png)
   
         if ImageRepo.find_by(post_id: post_id) == nil
