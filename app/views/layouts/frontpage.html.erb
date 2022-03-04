@@ -60,7 +60,7 @@
 
     <%= yield %>
     <%= render "shared/frontfooter" %>
-   <!-- Hotjar Tracking Code for ai.londevs.com -->
+   <!-- Hotjar Tracking Code for ai.londevs.com
    <script type="text/javascript">
         
         (function(h,o,t,j,a,r){
@@ -72,17 +72,9 @@
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 
-   </script>
-
-   <% if flash.any? %>
-      <script type="text/javascript">
-        <% flash.each do |key, value| %>
-          <% type = key.to_s.gsub('alert', 'error').gsub('notice', 'success') %>
-          toastr.<%= type %>('<%=  value %>')
-        <% end %>
-      </script>
-   <% end %>
-   <!-- Global site tag (gtag.js) - Google Analytics -->
+   </script>-->
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9C631XPTN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -91,6 +83,7 @@
 
     gtag('config', 'G-T9C631XPTN');
   </script>
+
   <!-- Jquery -->
   <script src="https://s3.eu-west-2.amazonaws.com/londevs.com/external_js/jquery.min.js"></script>
   <script src="https://s3.eu-west-2.amazonaws.com/londevs.com/external_js/jquery-migrate-3.0.0.js"></script>
