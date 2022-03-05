@@ -1,17 +1,17 @@
 <br>
 <style>
-.card{
-    border-radius: 4px;
-    background: #fff;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    padding: 14px 80px 18px 36px;
-    cursor: pointer;
-}
-.card:hover{
-     transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-}
+  .card{
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+      padding: 14px 80px 18px 36px;
+      cursor: pointer;
+  }
+  .card:hover{
+      transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
 </style>
 
 <div class="container">
@@ -45,8 +45,13 @@
             </div>
             <!--SHOW RESULT HERE-->
           </div>
-          <p id="fp"></p>
-          <p><input type="button" value="Show Details" onclick="FileDetails()"  class="btn btn-primary"></p>
+
+          <div><p id="fp"></p></div>
+  
+          <div>
+            <input type="button" value="Show Details" onclick="fileDetails()"  class="btn btn-primary">
+          </div>
+
           </center>
 
           <div class="form-group row mt-2">
