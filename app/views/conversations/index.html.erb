@@ -1,30 +1,34 @@
 <br>
 <div class="container">
 <h2>Inbox</h2>
+
+<!-- Broadcast messages -->
+<div id="messages"> </div>
+
+<!--<div class="form-control">
+        <div class="box">   
+                <h4>Following</h4>
+                <% @follows.each do |follow| %>
+                <% if follow.following.id != current_user.id %>
+                <%= image_tag avatar_url(follow.following), class: "card-type-icon with-border material-icons" %>
+                <%= link_to follow.following.name, conversations_path(sender_id: current_user.id, recipient_id: follow.following.id), method: "post"%>
+                <% end %>
+                <% end %>
+        </div>
+</div>--> 
+
 <div class="form-control">
-<div class="box">
-<h4>Conversations</h4>
+   <h4>Conversations</h4>
         <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
         <% if conversation.sender_id == current_user.id %>
-        <% recipient = User.find(conversation.recipient_id) %>
+          <% recipient = User.find(conversation.recipient_id) %>
         <% else %>
-        <% recipient = User.find(conversation.sender_id) %>
+          <% recipient = User.find(conversation.sender_id) %>
         <% end %>
-        <h4><%= image_tag avatar_url(recipient), class: "card-type-icon with-border material-icons" %><%= link_to recipient.name, conversation_messages_path(conversation)%></h4>
+           <h4><%= image_tag avatar_url(recipient), class: "card-type-icon with-border material-icons" %><%= link_to recipient.name, conversation_messages_path(conversation)%></h4>
         <% end %>
         <% end %>
 </div> 
-</div>
-<div class="form-control">
-<div class="box">   
-        <h4>Following</h4>
-        <% @follows.each do |follow| %>
-        <% if follow.following.id != current_user.id %>
-          <%= image_tag avatar_url(follow.following), class: "card-type-icon with-border material-icons" %>
-          <%= link_to follow.following.name, conversations_path(sender_id: current_user.id, recipient_id: follow.following.id), method: "post"%>
-        <% end %>
-        <% end %>
-</div>
-</div>
+
 </div>
