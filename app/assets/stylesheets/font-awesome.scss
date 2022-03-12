@@ -5,8 +5,8 @@
 
 @font-face {
     font-family: 'FontAwesome';
-    src: url('https://s3.eu-west-2.amazonaws.com/londevs.com/external_fonts/fontawesome-webfont.eot?v=4.7.0');
-    src: url('https://s3.eu-west-2.amazonaws.com/londevs.com/external_fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('https://s3.eu-west-2.amazonaws.com/londevs.com/external_fonts/fontawesome-webfont.eot?v=4.7.0') format('woff2'), url('https://s3.eu-west-2.amazonaws.com/londevs.com/external_fonts/fontawesome-webfont.eot?v=4.7.0') format('woff'), url('https://s3.eu-west-2.amazonaws.com/londevs.com/external_fonts/fontawesome-webfont.eot?v=4.7.0') format('truetype'), url('https://s3.eu-west-2.amazonaws.com/londevs.com/external_fonts/fontawesome-webfont.eot?v=4.7.0#fontawesomeregular') format('svg');
+    src: font-url('fontawesome-webfont.eot?v=4.7.0');
+    src: font-url('fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), font-url('fontawesome-webfont.eot?v=4.7.0') format('woff2'), font-url('fontawesome-webfont.eot?v=4.7.0') format('woff'), font-url('fontawesome-webfont.eot?v=4.7.0') format('truetype'), font-url('fontawesome-webfont.eot?v=4.7.0#fontawesomeregular') format('svg');
     font-weight: normal;
     font-style: normal
 }
