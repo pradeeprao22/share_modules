@@ -69,6 +69,7 @@ gem 'omniauth', '~>1.6'
 gem 'omniauth-twitter'
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'cloudinary', '~> 1.11', '>= 1.11.1'
+# For rails env credentials usage 
 gem 'figaro'
 gem 'dropzonejs-rails'
 gem 'mini_magick', '~> 4.2', '>= 4.2.4'
@@ -83,7 +84,7 @@ gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 
 # FOR ML
 gem 'decisiontree', '~> 0.5.0'
-#gem 'webpacker', '~> 5.4'
+gem 'webpacker', '~> 5.4'
 gem 'geocoder'
 gem 'exception_handler', '~> 0.8.0.0'
 gem 'faker'

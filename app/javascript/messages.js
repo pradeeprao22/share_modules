@@ -1,0 +1,3 @@
+$("messages.index").ready(function(){
+
+ })

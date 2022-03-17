@@ -1,4 +1,8 @@
-LondevApp.posts = LondevApp.cable.subscriptions.create('PostChannel', {  
+import consumer from "./consumer"
+
+//consumer.subscriptions
+
+consumer.subscriptions.create('PostChannel', {  
 
     received: function(data) {
       // debug

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
   $("#users-search #term").on("keyup", function(){
     var jqxhr = $.get (
         $("#users-search").attr("action"), 

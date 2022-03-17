@@ -5,9 +5,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= action_cable_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', async: true %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -35,37 +35,6 @@
 
     </script>
     -->
-
-   <script type="text/javascript">
-   function fileDetails() {
-
-       // GET THE FILE INPUT.
-       var fi = document.getElementById('file');
-
-       // VALIDATE OR CHECK IF ANY FILE IS SELECTED.
-       if (fi.files.length > 0) {
-
-           // THE TOTAL FILE COUNT.
-           document.getElementById('fp').innerHTML =
-               'Total Files: <b>' + fi.files.length + '</b></br >';
-
-           // RUN A LOOP TO CHECK EACH SELECTED FILE.
-           for (var i = 0; i <= fi.files.length - 1; i++) {
-
-               var fname = fi.files.item(i).name;      // THE NAME OF THE FILE.
-               var fsize = fi.files.item(i).size;      // THE SIZE OF THE FILE.
-
-               // SHOW THE EXTRACTED DETAILS OF THE FILE.
-               document.getElementById('fp').innerHTML =
-                   document.getElementById('fp').innerHTML + '<br /> ' +
-                       fname + ' (<b>' + fsize + '</b> bytes)';
-           }
-       }
-       else { 
-           alert('Please select a file.') 
-       }
-   }
-   </script> 
 
    <% if flash.any? %>
       <script type="text/javascript">
