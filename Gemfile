@@ -75,14 +75,13 @@ gem 'mini_magick', '~> 4.2', '>= 4.2.4'
 gem 'will_paginate-bootstrap4'
 
 gem 'activeadmin'
-gem 'cancancan'
 gem 'draper'
-gem 'pundit'
 gem 'friendly_id', '~> 5.1.0'
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 
 # FOR ML
-gem 'decisiontree', '~> 0.5.0'
+#gem 'decisiontree', '~> 0.5.0'
+
 #gem 'webpacker', '~> 5.4'
 gem 'geocoder'
 gem 'exception_handler', '~> 0.8.0.0'
