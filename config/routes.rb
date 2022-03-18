@@ -42,8 +42,9 @@ Rails.application.routes.draw do
   end
 
   #custom route defined
-  get 'notifications', :to => 'notifications#create_notifications', as: 'get_notification'
+  get 'notifications', :to => 'notifications#index', as: 'get_notification'
   #get 'pages/contact_get'
+  
   get 'appbuilder/appbuilder', :to => 'appbuilders#appbuilder', as: 'app_builder'
   get 'pages/howto', :to => 'pages#howto', as: 'how_to'
   get 'users/likes/:id', :to => 'users#likes', as: 'users_likes'
