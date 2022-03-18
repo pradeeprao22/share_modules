@@ -38,15 +38,12 @@ class PostsController < ApplicationController
                 params[:images].each do |img|
                   @post.photos.create(image: img)
                   ActionCable.server.broadcast('post_channel', post: ( render @post))
+                  flash[:alert] = "Module created succesfully"
                   head :ok
-                  # PostBroadcastJob.perform_later
                 end
             end
-            # respond_to do |format|
-            #   format.js
-            # end
         else
-            flash[:alert] = "Something went wrong ..."
+            flash[:alert] = "Unable to create module"
             respond_to :js
             redirect_to posts_path
         end
