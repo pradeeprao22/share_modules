@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require_self
 //= require rails-ujs
 //= require activestorage
 //= require jquery3
@@ -20,7 +21,6 @@
 //= require toastr
 //= require cable
 //= require turbolinks
-//= require codemirror
 
 /*global toastr*/
 toastr.options = {

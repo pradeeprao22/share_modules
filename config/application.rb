@@ -23,6 +23,7 @@ module LondevApp
     config.load_defaults 5.2
     config.action_cable.mount_path = '/websocket'
     config.exceptions_app = ->(env) { ExceptionController.action(:show).call(env) }
+    #path for fonts
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
     # Settings in config/environments/* take precedence over those specified here.
