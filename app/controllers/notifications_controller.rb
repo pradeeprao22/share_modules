@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
     before_action :authenticate_user!
 
-    def create_notifications
+    def index
         # Notification should comes from Init
         # Like
         # Bookmark
