@@ -10,8 +10,7 @@
         <h5 class="light-color"><strong>Signup to see posted modules <br> from coders.</strong></h5> 
          
          <hr>
-
-         <%= render 'shared/devisemes' %>
+         <%= render "devise/shared/error_messages", resource: resource %>
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
