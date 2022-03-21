@@ -29,8 +29,6 @@ module CreateNotification
         #Notification Reciver 
         #Notification Sender
 
-        byebug
-
         case
           when @notification.notificationable_type == "Post"
               @message = "#{@notification.notificationable.user.name} posted new code module: #{@notification.notificationable.content}"
