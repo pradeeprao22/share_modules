@@ -7,24 +7,18 @@
 
 <div id="notifications">
 
-
 </div>
 
 <% @current_user_notifications.map do |notification| %>
 
 <div class="border-card">
 
-<div class="card-type-icon with-border"> </div>
 
 <div class="content-wrapper">
 
-<div class="label-group">
     <!-- which post user liked -->
     <p class="title"><p><%= notification.notify_message %></p></p>
-    <p class="caption">Date: <%= notification.notificationable.created_at %> </p>
-</div>
-
-<div class="min-gap"></div>
+    <p class="caption">Date: <%= notification.notificationable.created_at if notification.notificationable %> </p>
 
 </div>
 
@@ -32,8 +26,8 @@
 
 </div>
 <% end %>
+<center><%= will_paginate @current_user_notifications %></center>
 </div>
-
 <script>
   window.console = window.console || function(t) {};
 </script>
