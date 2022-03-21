@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @current_user_notifications = Notification.all
+        @current_user_notifications = Notification.paginate(:page => params[:page], :per_page => 5)
         # if @current_user_posts != nil
         #     respond_to do |format|
         #         format.js { render 'create_notifications'} 
