@@ -1,23 +1,9 @@
 module CreateNotification
   extend ActiveSupport::Concern
-    def fetch_follow
-          # notification according to user follow
-          result = Follow.all.map do |follow|
-            if follow.follower_id == current_user
-                user  = follow.following_id
-            elsif follow.following_id == current_user 
-                user = follow.follower_id
-            else
-              puts "ERROR: UNABLE TO FETCH USER"   
-            end
-          end  
-    end
-    
+
     def notify(action, model)
-      #fetch_follow.user
       @notification = Notification.new(:notificationable => model)
       if @notification.save!
-
         ###Notification Triggers
         #Post
         #Bookmark
@@ -44,7 +30,21 @@ module CreateNotification
 
         # Stroing message generated
         # User who triggered the notification
-        @notification.update(name: action, user_id: current_user.id, notify_message: @message)
+
+        # Notification According to User Followed
+        Follow.all.map do |follow|
+          if follow.follower_id == current_user.id
+              @notify_user = follow.following_id
+              #Create Multiple Notification
+              @notification.update(name: action, user_id: current_user.id, reciver_id: @notify_user, notify_message: @message)
+            elsif follow.following_id == current_user.id
+              @notify_user = follow.follower_id
+              #Create Multiple Notification
+              @notification.update(name: action, user_id: current_user.id, reciver_id: @notify_user, notify_message: @message)
+            else
+              puts "ERROR: UNABLE TO FETCH USER"   
+            end
+        end   
 
         ActionCable.server.broadcast 'notification',
           notification: @notification.id,
