@@ -1,15 +1,15 @@
 class MessagesController < ApplicationController
   include ActionController::Cookies
-  before_action :set_cookie, only: [:index]
+  # before_action :set_cookie, only: [:index]
   
       before_action do
         @conversation = Conversation.find_by_id(params[:conversation_id])
       end
       
-      def set_cookie
-        cookies[:verified_user] = current_user.id
-        verified_user = cookies[:verified_user]
-      end
+      # def set_cookie
+      #   cookies[:verified_user] = current_user.id
+      #   verified_user = cookies[:verified_user]
+      # end
 
       def index
         @conversations = Conversation.all
@@ -35,6 +35,7 @@ class MessagesController < ApplicationController
             
             #byebug
             if @conversation.sender.id == @verified_user.to_i
+              #byebug
                @user_rec = @conversation.recipient.id.to_i
             elsif @conversation.recipient.id == @verified_user.to_i
                @user_rec = @conversation.sender.id.to_i
@@ -47,8 +48,7 @@ class MessagesController < ApplicationController
           #byebug
           ActionCable.server.broadcast 'message',
             message: @message.body,
-            user_send: @user_send,
-            user_rec: @user_rec,
+            current_user: @user_rec,
             #user_rec: @user_rec,
             verified_user: @verified_user,
             created: @message.created_at
