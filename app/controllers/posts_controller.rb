@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
+  include ActionController::Cookies
   include BackendRunner
   include VisitorDetail
   include CreateNotification  
   #layout "frontpage"
   before_action :authenticate_user!, only: [:destroy, :create, :module_post]
   before_action :find_post, only: [:show, :destroy, :build_module]
+  before_action :set_cookie, only: [:index]
 
   def index
     # For getting user details
@@ -139,6 +141,11 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database, :instruction, :slug, :module_type, :tags_id)
+  end
+
+  def set_cookie
+    cookies[:verified_user] = current_user.id
+    verified_user = cookies[:verified_user]
   end
 
 end
