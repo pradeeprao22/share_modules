@@ -24,8 +24,24 @@ development:
     replica: true
 
 test:
-  <<: *default
-  database: module_test
+  primary:
+    <<: *default
+    database: module_test
+  primary_replica:
+    <<: *default
+    database: module_test
+    replica: true
+  module:
+    <<: *default
+    # username: module_root username for different users must be different
+    database: module_backend 
+    migrations_paths: db/module_backend_migrate
+  module_replica:
+    <<: *default
+    # username: module_root username for different users must be different
+    database: module_backend
+    migrations_paths: db/module_backend_migrate
+    replica: true
 
 production:
   primary:
