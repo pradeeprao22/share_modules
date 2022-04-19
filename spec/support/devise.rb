@@ -6,5 +6,5 @@ RSpec.configure do |config|
   config.include Devise::Test::ModelHelpers, :type => :model
   # Use the following instead if you are on Devise <= 4.1.1
   # config.include Devise::TestHelpers, :type => :controller
-  config.extend ControllerMacros, :type => :model
+  config.extend ControllerMacros, :type => :controller
 end
