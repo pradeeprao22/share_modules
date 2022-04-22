@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   #layout "frontpage"
   before_action :authenticate_user!, only: [:destroy, :create, :module_post]
   before_action :find_post, only: [:show, :destroy, :build_module]
-  before_action :set_cookie, only: [:index]
+  before_action :set_cookie, only: [:index] if current_user != nil?
 
   def index
     # For getting user details
@@ -15,10 +15,10 @@ class PostsController < ApplicationController
 
     @posts = Post.paginate(:page => params[:page], :per_page => 9).includes(:photos, :user, :likes, :bookmarks).order('created_at desc')
     # redirect_to posts_path
-    respond_to do |format|
-      format.js {render layout: false}
-      format.html { render 'index'} 
-    end
+    # respond_to do |format|
+    #   format.js {render layout: false}
+    #   format.html { render 'index'} 
+    # end
   end
 
   def create
@@ -144,8 +144,10 @@ class PostsController < ApplicationController
   end
 
   def set_cookie
-    cookies[:verified_user] = current_user.id
-    verified_user = cookies[:verified_user]
+    if cookies[:verified_user]
+      cookies[:verified_user] = current_user.id
+      verified_user = cookies[:verified_user]
+    end
   end
 
 end
