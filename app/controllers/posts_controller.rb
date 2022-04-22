@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   #layout "frontpage"
   before_action :authenticate_user!, only: [:destroy, :create, :module_post]
   before_action :find_post, only: [:show, :destroy, :build_module]
-  before_action :set_cookie, only: [:index] if current_user != nil?
+  before_action :set_cookie, only: [:index]
 
   def index
     # For getting user details
