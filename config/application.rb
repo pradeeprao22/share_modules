@@ -10,11 +10,11 @@ module LondevApp
   class Application < Rails::Application
     config.to_prepare do
       Devise::SessionsController.layout "frontpage"
-      if Devise::RegistrationsController.action "edit"
-        Devise::RegistrationsController.layout "application"
-      elsif Devise::RegistrationsController.action "create"
+      #if Devise::RegistrationsController.action "edit"
         Devise::RegistrationsController.layout "frontpage"
-      end
+      #elsif Devise::RegistrationsController.action "create"
+        #Devise::RegistrationsController.layout "frontpage"
+      #end
       Devise::ConfirmationsController.layout "frontpage"
       Devise::UnlocksController.layout "frontpage"
       Devise::PasswordsController.layout "frontpage"
