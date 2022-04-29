@@ -17,7 +17,13 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require dropzone
-//= require_tree .
+//= require channels/messages
+//= require channels/notifications
+//= require channels/posts
+//= require active_admin
+//= require application
+//= require cable
+//= require upload_post_images
 //= require toastr
 //= require cable
 //= require turbolinks
