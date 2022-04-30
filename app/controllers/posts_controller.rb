@@ -144,7 +144,7 @@ class PostsController < ApplicationController
   end
 
   def set_cookie
-    if cookies[:verified_user]
+    if cookies[:verified_user] && current_user
       cookies[:verified_user] = current_user.id
       verified_user = cookies[:verified_user]
     end
