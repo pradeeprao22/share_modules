@@ -10,4 +10,4 @@ test:
 production:
   adapter: redis
   url: <%= ENV.fetch("REDIS_URL") { "redis://redistogo:24d839cdcb0e1f8895c4c15a9e409885@sole.redistogo.com:9001/" } %>
-  channel_prefix: img_app_production
+  channel_prefix: londev_app_production
