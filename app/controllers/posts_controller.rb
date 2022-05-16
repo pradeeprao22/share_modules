@@ -7,6 +7,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:destroy, :create, :module_post]
   before_action :find_post, only: [:show, :destroy, :build_module]
   before_action :set_cookie, only: [:index]
+  #Quick fix
+  skip_before_action :verify_authenticity_token, :only => [:create]
 
   def index
     # For getting user details
@@ -40,7 +42,7 @@ class PostsController < ApplicationController
                 params[:images].each do |img|
                   @post.photos.create(image: img)
                   ActionCable.server.broadcast('post_channel', post: ( render @post))
-                  flash[:alert] = "Module created succesfully"
+                  flash[:success] = "Module created succesfully"
                   head :ok
                 end
             end
