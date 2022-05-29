@@ -8,10 +8,9 @@ describe "user creats the module", :type => :feature do
         user = User.create(:email => 'user@example.com', :password => 'password')
 
         visit module_path
-        byebug
        # within(".card.card-body") do
-       page = Capybara.string(rendered)
-       scoped_node = page.find(".some-class")
+       # page = Capybara.string(rendered)
+       # scoped_node = page.find(".some-class")
        
        fill_in 'post[content]', with: 'This is sample post'
 
