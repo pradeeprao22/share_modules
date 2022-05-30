@@ -1,11 +1,16 @@
 class BookmarksController < ApplicationController
+    include CreateNotification
     before_action :authenticate_user!
   
     def create
+      action = params[:action]
+
       post = Post.find_by_slug(params[:post_slug])
       post_id = post.id
       @bookmark = current_user.bookmarks.build(post_id: post_id, post_slug: params[:post_slug])
       if @bookmark.save
+        # For creating notification
+        notify(action, @bookmark)
         @post = @bookmark.post
         @is_bookmarked = @bookmark
         respond_to :js 
