@@ -14,37 +14,59 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+// debugger;
 
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/actioncable").start()
 require("channels")
+
+// THIS IS MAKING jQuery AVAILABLE EVEN INSIDE Views FOLDER
+require("jquery") // Don't really need to require this...
+//require("jquery-ui")
+//require("bootstrap")
+// Internal javascript files
 // require("active_admin")
-// require("backend_module")
+require("backend_module")
 require("codemirror")
-// require("jquery-readyselector")
-// require("messages")
-// require("notifications")
-// require("posts_show")
-// require("upload_post_images")
-// require("users_search")
+require("jquery-readyselector")
+require("messages")
+require("notifications")
+//require("posts_show")
+require("upload_post_images")
+require("users_search")
 // require("users")
-// require('jquery')
+// jquery
+import $ from 'jquery';
 
+global.$ = $
+global.jQuery = $
 
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 //import "stylesheets/application"
-import "controllers"
-import "bootstrap"
+//import "bootstrap"
 
-import 'expose-loader?$!jquery';
-import 'expose-loader?jQuery!jquery';
+// import Jquery from 'jquery'
+// window.jquery = $;
+// window.$ = $;
 
-import Jquery from 'jquery'
-window.jquery = $;
-window.$ = $;
-
+import 'bootstrap/dist/js/bootstrap.bundle';
 import { fileDetails } from '../frontend_module';
 import '../users_search';
 import '../codemirror';
 
 export { fileDetails };
+
+document.addEventListener("turbolinks:load", function() {
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="popover"]').popover()
+    })
+})
+
+// Pass the button, the tooltip, and some options, and Popper will do the
+// magic positioning for you:
+// createPopper(button, tooltip, {
+//   placement: 'right',
+// });

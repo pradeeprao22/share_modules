@@ -416,7 +416,6 @@ DEPENDENCIES
   geocoder
   imgkit
   jbuilder (~> 2.5)
-  jquery-rails (~> 4.4)
   listen (>= 3.0.5, < 3.2)
   mini_magick (~> 4.2, >= 4.2.4)
   newrelic_rpm
@@ -440,7 +439,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  webpacker (~> 5.4)
+  webpacker (~> 5.0)
   will_paginate-bootstrap4
   wkhtmltoimage-binary
 

@@ -63,7 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'bootstrap', '~> 4.0.0'
-gem 'jquery-rails', '~> 4.4'
+#gem 'jquery-rails', '~> 4.4'
 gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'omniauth', '~>1.6'
 gem 'omniauth-twitter'
@@ -84,7 +84,7 @@ gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 
 # FOR ML
 gem 'decisiontree', '~> 0.5.0'
-gem 'webpacker', '~> 5.4'
+gem 'webpacker', '~> 5.0'
 gem 'geocoder'
 gem 'exception_handler', '~> 0.8.0.0'
 gem 'faker'
