@@ -17,16 +17,16 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require dropzone
-//= require channels/messages
-//= require channels/notifications
-//= require channels/posts
 //= require active_admin
 //= require application
-//= require cable
 //= require upload_post_images
 //= require toastr
-//= require cable
 //= require turbolinks
+//= require_tree .
+
+$(document).on("click", ".bg-info", function(e){
+  $(this).hide();
+});
 
 /*global toastr*/
 toastr.options = {
