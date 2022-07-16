@@ -14,11 +14,19 @@
         <% end %>
         <ul class="navbar-nav ml-md-auto">
           <li class="nav-item">
+          <% if params[:controller] == "posts" && params[:action] == "index" %>
+            <%= link_to "Modules", root_path, :class => "nav-link active" %>
+          <% else %>
             <%= link_to "Modules", root_path, :class => "nav-link" %>
+          <% end %>
           </li>
           
           <li class="nav-item">
+          <% if params[:controller] == "posts" && params[:action] == "module_post" %>
+            <%= link_to "Frontend", module_path, :class => "nav-link active", :disabled => "disabled" %>
+          <% else %>
             <%= link_to "Frontend", module_path, :class => "nav-link", :disabled => "disabled" %>
+          <% end %> 
           </li>
 
           <!--<li class="nav-item">
@@ -27,16 +35,20 @@
 
           <!-- data-toggle="popover" -->
 
-          <!-- <button type='button' class='btn btn-secondary' data-container='body' data-toggle='popover' data-placement='bottom' data-html='true' data-content='<%= render 'notifications/notifications' %>' >
-            Notification
-          </button> -->
+          <button type='button' class='btn' data-container='body' data-toggle='popover' data-placement='bottom' data-html='true' data-content='<%= render 'notifications/notifications' %>' >
+              <span class="fa fa-bell">
+          </button>
 
           <li class="nav-item">
             <%= link_to get_notification_path, :class => "nav-link"  do %><span class="fa fa-bell"></span><% end %>
           </li>
 
           <li class="nav-item">
-          <%= link_to conversations_path, :class => "nav-link"  do %><span class="far fa-comments"></span><% end %>
+          <% if params[:controller] == "posts" && params[:action] == "module_post" %>
+            <%= link_to conversations_path, :class => "nav-link active"  do %><span class="far fa-comments"></span><% end %>
+          <% else %>
+            <%= link_to conversations_path, :class => "nav-link"  do %><span class="far fa-comments"></span><% end %>
+          <% end %>   
           </li>
 
           <li class="nav-item">
