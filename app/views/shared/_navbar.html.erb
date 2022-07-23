@@ -35,12 +35,16 @@
 
           <!-- data-toggle="popover" -->
 
-          <button type='button' class='btn' data-container='body' data-toggle='popover' data-placement='bottom' data-html='true' data-content='<%= render 'notifications/notifications' %>' >
+          <!--<button type='button' class='btn' data-container='body' data-toggle='popover' data-placement='bottom' data-html='true' data-content='<%= render 'notifications/notifications' %>' >
               <span class="fa fa-bell">
-          </button>
+          </button>-->
 
           <li class="nav-item">
+          <% if params[:controller] == "notifications" %>
+            <%= link_to get_notification_path, :class => "nav-link active"  do %><span class="fa fa-bell"></span><% end %>
+          <% else %>
             <%= link_to get_notification_path, :class => "nav-link"  do %><span class="fa fa-bell"></span><% end %>
+          <% end %>
           </li>
 
           <li class="nav-item">
