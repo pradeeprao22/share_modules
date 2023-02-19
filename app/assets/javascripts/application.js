@@ -9,8 +9,9 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+// This is required
 //= require jquery
+
 //= require jquery_ujs
 //= require_self
 //= require activestorage
@@ -22,12 +23,15 @@
 //= require upload_post_images
 //= require toastr
 //= require turbolinks
+//= require bootstrap-tooltip
+//= require bootstrap-popover
 //= require_tree .
 
 $(document).on("click", ".bg-info", function(e){
   $(this).hide();
 });
 
+$(document).ready(function(){
 /*global toastr*/
 toastr.options = {
     "closeButton": false,
@@ -43,3 +47,4 @@ toastr.options = {
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
   }
+});
