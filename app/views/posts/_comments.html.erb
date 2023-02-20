@@ -7,4 +7,5 @@
               <% else %>
               <p>Please <%= link_to "login", new_user_session_path %> to comment</p>
               <% end %>  
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/> 
             <% end %>
