@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  # Quick fix
+  # skip_before_action :verify_authenticity_token
 
   def index
     @comments = @post.comments.includes(:user)
@@ -8,8 +10,14 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
+      # respond_to do |format|
+      #   format.js do
+      @comment = Comment.find(@comment.id)
       @post = @comment.post
-      respond_to :js 
+      #   end
+      # end
+      respond_to :js
+      redirect_to post_path(@post.slug)
     else 
       flash[:alert] = "Something went wrong ...."
     end  
@@ -27,6 +35,6 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.required(:comment).permit :user_id, :post_id, :content  
+    params.required(:comment).permit :user_id, :post_id, :content, :post_slug, :form_authenticity_token
   end
 end
