@@ -88,8 +88,8 @@
     <%= form_with(model: [@conversation, @message], id: "new-message", local: false) do |f| %>
         <%= f.text_field :body, class: "write_msg" %>
         <%= f.text_field :user_id, value: current_user.id, type: "hidden", required: true %>
-       <!-- <%= f.submit "Send Reply", class: "btnmsg_send_btn"%> -->
-        <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+       <!-- <%= f.submit "Send Reply", class: "btn msg_send_btn"%> -->
+        <button class="btn msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
     <% end %>
           </div>
         </div>
