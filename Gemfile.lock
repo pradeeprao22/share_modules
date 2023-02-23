@@ -266,7 +266,6 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     netrc (0.11.0)
-    newrelic_rpm (7.2.0)
     nio4r (2.5.8)
     nokogiri (1.12.2-arm64-darwin)
       racc (~> 1.4)
@@ -290,6 +289,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-cors (2.0.0)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.1.4)
@@ -441,11 +442,11 @@ DEPENDENCIES
   jquery-rails (~> 4.4)
   listen (>= 3.0.5, < 3.2)
   mini_magick (~> 4.2, >= 4.2.4)
-  newrelic_rpm
   omniauth (~> 1.6)
   omniauth-twitter
   pg
   puma (~> 4.3)
+  rack-cors
   rails (~> 6.0)
   rails-erd
   redis (~> 4.0)
