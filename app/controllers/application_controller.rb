@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
         #protect_from_forgery with: :exception
+        # byebug
+        respond_to :json
+        include ActionController::MimeResponds
         rescue_from ActionController::InvalidAuthenticityToken, :with => :bad_token
 
         before_action :configure_permitted_parameters, if: :devise_controller?
