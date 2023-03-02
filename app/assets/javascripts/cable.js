@@ -3,7 +3,9 @@
 //
 //= require action_cable
 //= require_self
-//= require_tree ./channels
+//= require channels/messages
+//= require channels/notifications
+//= require channels/posts
 
 (function() {
   this.LondevApp || (this.LondevApp = {});
