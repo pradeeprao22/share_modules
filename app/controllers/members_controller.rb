@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
-    before_action :authorize_request except: [:create, :index, :show]
-    before_action :set_member only: [:show, :update, :destroy]
+    before_action :authorize_request, except: [:create, :index, :show]
+    before_action :set_member, only: [:show, :update, :destroy]
 
     def index
       @members = Member.all 
@@ -13,14 +13,15 @@ class MembersController < ApplicationController
 
     def create
        @member = Member.new(members_params)
+       byebug
        if @member.save!
         @token = encode({id: @member.id})
         render json: {
-            user: @user.attributes.except('password_digest', 'updated_at'), 
+            user: @member.attributes.except('password_digest', 'updated_at'), 
             token: @token
             }, status: :created
        else
-         render json: @user.errors, status: :unprocessable_entity
+         render json: @member.errors, status: :unprocessable_entity
        end
     end
 
