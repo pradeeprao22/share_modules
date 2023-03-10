@@ -13,7 +13,6 @@ class MembersController < ApplicationController
 
     def create
        @member = Member.new(members_params)
-       byebug
        if @member.save!
         @token = encode({id: @member.id})
         render json: {
