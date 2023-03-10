@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :module_types, only: [:index]
   resources :database_tables
   resources :feeds
+  resources :members
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
