@@ -15,9 +15,12 @@ class MembersController < ApplicationController
        @member = Member.new(members_params)
        if @member.save!
         @token = encode({id: @member.id})
-
+        render json: {
+            user: @user.attributes.except('password_digest', 'updated_at'), 
+            token: @token
+            }, status: :created
        else
-        render json: @member
+         render json: @user.errors, status: :unprocessable_entity
        end
     end
 
