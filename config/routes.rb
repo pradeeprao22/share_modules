@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :database_tables
   resources :feeds
   resources :members
+  post '/auth/login', to: 'authentication#login'
+  get '/auth/verify', to: 'authentication#verify'
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
