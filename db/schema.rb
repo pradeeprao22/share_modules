@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_21_153722) do
+ActiveRecord::Schema.define(version: 2023_03_24_101510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2022_03_21_153722) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "post_slug"
+    t.integer "member_id"
     t.index ["post_id"], name: "index_bookmarks_on_post_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(version: 2022_03_21_153722) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "member_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -203,8 +205,17 @@ ActiveRecord::Schema.define(version: 2022_03_21_153722) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "post_slug"
+    t.integer "member_id"
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -263,6 +274,7 @@ ActiveRecord::Schema.define(version: 2022_03_21_153722) do
     t.boolean "published"
     t.text "tags_id", default: [], array: true
     t.integer "database_and_column_id"
+    t.integer "member_id"
     t.index ["language_id"], name: "index_posts_on_language_id", unique: true
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
