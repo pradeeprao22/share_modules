@@ -20,6 +20,7 @@ before_action :authorize_request, except: [:login]
     end
 
     private
+    
     def login_params
         params.require(:authentication).permit(:email, :password)
     end
