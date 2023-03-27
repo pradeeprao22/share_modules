@@ -1,6 +1,6 @@
 class ImgkitWorker
   include Sidekiq::Worker
-  sidekiq_options retry: false
+  sidekiq_options retry: true
 
   def perform(slug, post_id) 
     if Rails.env == "development"
