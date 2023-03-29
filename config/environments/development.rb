@@ -4,6 +4,8 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+  config.serve_static_assets = false
+
   config.cache_classes = false
 
   # Do not eager load code on boot.
@@ -13,7 +15,7 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Web socket 
-  config.action_cable.url = "ws://localhost:3000/cable"
+  config.action_cable.url = "ws://localhost:3001/cable"
 
   config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
 
