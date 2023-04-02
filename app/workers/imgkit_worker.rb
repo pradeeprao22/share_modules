@@ -4,7 +4,7 @@ class ImgkitWorker
 
   def perform(slug, post_id) 
     if Rails.env == "development"
-        kit = IMGKit.new('http://localhost:3000/posts/build_module/'+ slug)
+        kit = IMGKit.new('http://localhost:3001/posts/build_module/'+ slug)
         img = kit.to_img(:png)
           
         if ImageRepo.find_by(post_id: post_id) == nil
