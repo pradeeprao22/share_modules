@@ -32,6 +32,7 @@ module LondevApp
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_name_prefix = Rails.env
     # Disabling the CSRF FOR APPLICATION
     # config.action_controller.default_protect_from_forgery = false # unless ENV["RAILS_ENV"] == "production"
   end
