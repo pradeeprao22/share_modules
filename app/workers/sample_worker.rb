@@ -1,11 +1,11 @@
 class SampleWorker
-    include Sidekiq::Job
+    include Sidekiq::Worker
+    sidekiq_options retry: true
 
     user_id = 1
     # Task perform once
     def perform(user_id)
         @user = User.find(user_id)
-        # puts @user
+        puts "Process Done"
     end
-
 end
