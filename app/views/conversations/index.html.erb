@@ -18,7 +18,7 @@
 </div>--> 
 
 <div class="form-control">
-   <h4>Conversations</h4>
+   <h4>Messages</h4>
         <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
         <% if conversation.sender_id == current_user.id %>
