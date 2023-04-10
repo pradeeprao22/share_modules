@@ -3,11 +3,12 @@ class ApplicationController < ActionController::Base
         SECRET_KEY = Rails.application.secrets.secret_key_base.to_s
         protect_from_forgery with: :null_session
 
-        respond_to :json
+        # respond_to :json  if api request
         include ActionController::MimeResponds
         rescue_from ActionController::InvalidAuthenticityToken, :with => :bad_token
 
-        before_action :configure_permitted_parameters, if: :devise_controller?, only: [:bad_token]
+        before_action :configure_permitted_parameters, if: :devise_controller?
+        # , only: [:bad_token]
 
         def encode(payload, exp = 24.hours.from_now)
             payload[:exp] = exp.to_i
