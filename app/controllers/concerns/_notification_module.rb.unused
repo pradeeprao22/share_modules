@@ -1,0 +1,30 @@
+# module Notification
+#     extend ActiveSupport::Concern
+#    def notification_fetch_block
+
+
+#     @current_user_posts = current_user.posts.last(5)
+
+#     # Look more clearly
+#     notification_lambda = lambda { |notification|  notification. }
+
+#     # Not Inline
+#     notification_lambda = lambda do |notification|
+
+#     end
+
+#     notification_lambda()
+
+#     # need to allocate ever object before this
+#     @current_user_posts = current_user.posts.last(5).map do |post|
+
+#         post.likes.map do |like|
+#             if like.post.user != current_user
+
+#             end
+#         end
+
+#     end
+
+#    end
+# end
