@@ -1,6 +1,6 @@
 module BackendRunner
     extend ActiveSupport::Concern
- def get_backend_code post_id
+ def get_backend_code(post_id)
     backend_code = Post.find(post_id).backend
  end
 
