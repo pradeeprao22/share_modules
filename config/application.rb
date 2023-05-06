@@ -9,15 +9,15 @@ Bundler.require(*Rails.groups)
 module LondevApp
   class Application < Rails::Application
     config.to_prepare do
-      Devise::SessionsController.layout "frontpage"
-      #if Devise::RegistrationsController.action "edit"
-        Devise::RegistrationsController.layout "frontpage"
-      #elsif Devise::RegistrationsController.action "create"
-        #Devise::RegistrationsController.layout "frontpage"
-      #end
-      Devise::ConfirmationsController.layout "frontpage"
-      Devise::UnlocksController.layout "frontpage"
-      Devise::PasswordsController.layout "frontpage"
+      # Devise::SessionsController.layout "frontpage"
+      # #if Devise::RegistrationsController.action "edit"
+      #   Devise::RegistrationsController.layout "frontpage"
+      # #elsif Devise::RegistrationsController.action "create"
+      #   #Devise::RegistrationsController.layout "frontpage"
+      # #end
+      # Devise::ConfirmationsController.layout "frontpage"
+      # Devise::UnlocksController.layout "frontpage"
+      # Devise::PasswordsController.layout "frontpage"
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
