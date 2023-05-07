@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 include VisitorDetail
 
-layout "frontpage"
+# layout "frontpage"
   def userlanding
     action = params[:action]
     getdetails(action)
