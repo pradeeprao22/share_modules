@@ -11,9 +11,6 @@ Module Sharing Feature
 Free Project Page(User can download free projects from this application)
 ___________________________________________________________________________________________________
 
-https://londevs.com --> http://ai.londevs.com
-___________________________________________________________________________________________________
-
 Process Of Building
 
 Every coding laungage(technology) is going to have different process or worker
@@ -26,12 +23,10 @@ Try to understand the product as much as you can?
 Write down user use cases
 Building the module running, module
 Intigration of Rspec unit testing
-_____________________________________________________________________________________________________
+_________________________________________________________________________________________________________
 
 User can run multiple modules according to the technologey they want applying the system anaysis thinking:
-_____________________________________________________________________________________________________
-
-_______________________________________________________________________________________________________
+__________________________________________________________________________________________________________
 
 Better Email Management System With Secure Connection
 _______________________________________________________________________________________________________
@@ -42,4 +37,3 @@ Action Cable Debugging
 Added Notifications
 Import And Export module implementation
 Drag and Drop Software Building Platform and launching through module
-
