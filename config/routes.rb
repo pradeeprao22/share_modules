@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root 'pages#home'
+  root 'posts#index'
   get 'pages/about', as: 'pages_about'
   get 'pages/innovation', as: 'pages_innovation'
   get 'pages/help', as: 'pages_help'
