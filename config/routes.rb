@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'pages/success'
   get 'pages/terms', as: 'pages_terms'
   get 'pages/privacy', as: 'pages_privacy'
+  
   devise_for :users,
     path: '',
     path_name: {sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'registration'},
