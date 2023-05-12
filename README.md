@@ -1,5 +1,4 @@
-ai.londevs.com
-_______________
+## Project for sharing different code modules
 1. User can post his module ideas using moduler platform
 2. User also have option to copy any module to their application
 3. Back-end, front-end should work together feature
