@@ -12,6 +12,8 @@
 }
 </style>
 <div class="row">
+<% byebug %>
+<% if @posts.present? %>
 <% for post in @posts %>
   <div class="col-md-4">
   <div class="card mt-3 posts">
@@ -56,6 +58,12 @@
       
   </div>
   </div>
-
 <% end %>
+<% else %>
+<div class="row">
+  <div class="alert">
+  <p>No Modules Posted Yet</p>
+  </div>
+</div>  
+<% end %>  
 </div>
