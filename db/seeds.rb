@@ -22,3 +22,5 @@ Tag.create(name: "CSS")
 Tag.create(name: "Javascript")
 Tag.create(name: "Ruby")
 Tag.create(name: "RubyOnRails")
+
+puts "DB SEEDED"
