@@ -56,23 +56,12 @@
 <!-- Conditions according to the tags-->
 <!-- It will be always empty insted of case just try to loop the tags-->
 <div class="d-flex flex-column mt-3">
-
-<% if Tag.find(@post.tags_id) %>
-<% case %>
-  <% when Tag.find(@post.tags_id) != nil %>
-    <% tag_0 = Tag.find(@post.tags_id[0]) %>
-    <% tag_1 = Tag.find(@post.tags_id[1]) %>
-    <% tag_2 = Tag.find(@post.tags_id[2]) %>
-<% end %>
-
 <h6><i>Tags selected</i></h6>
-<div class="row">
-<span class="badge bg-success"><b><%= tag_0.name %></b></span>
-
-<span class="badge bg-success"><b><%= tag_1.name %></b></span>
-
-<span class="badge bg-success"><b><%= tag_2.name %></b></span>
-</div>
+<% @post.tags_id.map do |t| %>
+    <% tag = Tag.find(t) %>
+    <div class="row">
+      <span class="badge bg-success"><b><%= tag.name %></b></span>
+    </div>
 <% end %>
 
 <br>
