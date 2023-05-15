@@ -20,7 +20,6 @@
 //= require dropzone
 //= require active_admin
 //= require application
-//= require upload_post_images
 //= require toastr
 //= require turbolinks
 //= require bootstrap-tooltip
