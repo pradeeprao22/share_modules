@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
   
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  # devise_for :admin_users, ActiveAdmin::Devise.config
+  # ActiveAdmin.routes(self)
   root 'posts#index'
   get 'pages/about', as: 'pages_about'
   get 'pages/innovation', as: 'pages_innovation'

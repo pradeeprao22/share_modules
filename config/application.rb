@@ -22,7 +22,7 @@ module LondevApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.action_cable.mount_path = '/websocket'
-    config.exceptions_app = ->(env) { ExceptionController.action(:show).call(env) }
+    #config.exceptions_app = ->(env) { ExceptionController.action(:show).call(env) }
     #path for fonts
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.unknown_asset_fallback = false

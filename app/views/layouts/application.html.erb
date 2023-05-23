@@ -6,21 +6,16 @@
     <%= csp_meta_tag %>
     <%= action_cable_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag 'application' %>
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.47.0/codemirror.css">
   </head>
 
   <body>
-
-  <script>
-  $(function () {
-  $('[data-toggle="popover"]').popover()
-  })
-  </script>
 
   <% @title = "Welcome to londevs" %>
   
@@ -29,22 +24,6 @@
   <%= render "shared/navbarg" if !current_user %>
    
     <%= yield %>
-
-   <!-- Hotjar Tracking Code for ai.londevs.com 
-    <script type="text/javascript">
-        
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-            h._hjSettings={hjid:2603649,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-
-    </script>
-    -->
-
    <script type="text/javascript">
    function fileDetails() {
 
