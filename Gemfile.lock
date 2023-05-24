@@ -190,10 +190,6 @@ GEM
     dropzonejs-rails (0.8.5)
       rails (> 3.1)
     erubi (1.10.0)
-    exception_handler (0.8.0.2)
-      bundler
-      rails (>= 4.2.0)
-      responders
     execjs (2.8.1)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -435,7 +431,6 @@ DEPENDENCIES
   devise
   draper
   dropzonejs-rails
-  exception_handler (~> 0.8.0.0)
   factory_bot_rails
   faker
   figaro
