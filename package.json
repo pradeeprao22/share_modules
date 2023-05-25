@@ -3,10 +3,15 @@
   "private": "true",
   "dependencies": {
     "@hotwired/turbo-rails": "^7.3.0",
+    "@rails/actioncable": "^7.0.5",
+    "@rails/ujs": "^7.0.5",
     "codemirror": "^6.0.1",
     "fontawesome-free-6.2.1": "^6.2.1",
     "jquery": "^3.7.0",
+    "rails-ujs": "^5.2.8-1",
     "stimulus": "^3.2.1",
+    "toastr": "^2.1.4",
+    "turbolinks": "^5.2.0",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1"
   },
