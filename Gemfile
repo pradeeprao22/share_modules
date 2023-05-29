@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0'
+gem 'rails', '~> 7.0'
 # Use Puma as the app server
 gem 'pg'
 gem 'puma', '~> 4.3'
@@ -75,7 +75,7 @@ gem 'dropzonejs-rails'
 gem 'mini_magick', '~> 4.2', '>= 4.2.4'
 gem 'will_paginate-bootstrap4'
 
-gem 'activeadmin'
+# gem 'activeadmin'
 gem 'draper'
 gem 'friendly_id', '~> 5.1.0'
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
@@ -86,7 +86,7 @@ gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 gem 'geocoder'
 gem 'faker'
 gem 'rails-erd'
-gem 'imgkit'
+# gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 gem 'sidekiq-limit_fetch'
 gem 'rspec-core', github: 'rspec/rspec-core', branch: 'master'

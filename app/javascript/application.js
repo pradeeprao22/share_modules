@@ -1,10 +1,15 @@
 // Entry point for the build script in your package.json
-import "@hotwired/turbo-rails"
+console.log("file loaded")
+
 import "jquery"
+import $ from "jquery"
+import jQuery from "jquery"
+import "@hotwired/turbo-rails"
 import "popover"
 import "@rails/actioncable"
 import "@fortawesome/fontawesome-free"
-import "@activeadmin/activeadmin"
+// import "@activeadmin/activeadmin"
+import "./testing"
 
 import toastr from "./toastr"
 
@@ -20,7 +25,9 @@ import "./codemirror_custom"
 // import "./channels"
 
 // console.log(toastr)
+// global.$ = global.jQuery = $;
+// global.$ = global.jQuery = jQuery;
 
 window.$ = window.jQuery = require("jquery");
 
-window.$ = toastr.options
+// window.$ = toastr.options
