@@ -4,6 +4,19 @@ const webpack = require("webpack")
 module.exports = {
   mode: "production",
   devtool: "source-map",
+
+  // Other webpack configurations...
+  module: {
+    rules: [
+      // Other rules...
+      // Add the CSS loader configuration
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+
   entry: {
     application: "./app/javascript/application.js"
   },
