@@ -9,7 +9,7 @@ import "popover"
 import "@rails/actioncable"
 import "@fortawesome/fontawesome-free"
 // import "@activeadmin/activeadmin"
-import "./testing"
+// import "./testing"
 
 import toastr from "./toastr"
 
@@ -20,7 +20,6 @@ import Rails from "@rails/ujs"
 Rails.start()
 
 import "codemirror"
-import "./user_search"
 import "./codemirror_custom"
 // import "./channels"
 
@@ -31,3 +30,4 @@ import "./codemirror_custom"
 window.$ = window.jQuery = require("jquery");
 
 // window.$ = toastr.options
+import "./user_search"
