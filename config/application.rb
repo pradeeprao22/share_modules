@@ -20,7 +20,7 @@ module LondevApp
       # Devise::PasswordsController.layout "frontpage"
     end
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 7.0
     config.action_cable.mount_path = '/websocket'
     #config.exceptions_app = ->(env) { ExceptionController.action(:show).call(env) }
     #path for fonts
