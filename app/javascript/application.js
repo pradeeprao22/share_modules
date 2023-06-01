@@ -6,12 +6,14 @@ import $ from "jquery"
 import jQuery from "jquery"
 import "@hotwired/turbo-rails"
 import "popover"
+// import toastr from "toastr" 
 import "@rails/actioncable"
-import "@fortawesome/fontawesome-free"
+// Import Font Awesome styles
+import "@fortawesome/fontawesome-free/css/all.css"
 // import "@activeadmin/activeadmin"
 // import "./testing"
 
-import toastr from "./toastr"
+import "./toastr"
 
 import Turbolinks from "turbolinks"
 Turbolinks.start()
