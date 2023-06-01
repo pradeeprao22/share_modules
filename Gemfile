@@ -63,7 +63,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails', '~> 4.4'
 gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'omniauth', '~>1.6'
@@ -73,7 +72,7 @@ gem 'cloudinary', '~> 1.11', '>= 1.11.1'
 gem 'figaro'
 gem 'dropzonejs-rails'
 gem 'mini_magick', '~> 4.2', '>= 4.2.4'
-gem 'will_paginate-bootstrap4'
+gem 'will_paginate', '~> 4.0'
 
 # gem 'activeadmin'
 gem 'draper'
