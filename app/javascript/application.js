@@ -2,9 +2,10 @@
 console.log("file loaded")
 
 import "jquery"
-import $ from "jquery"
-import jQuery from "jquery"
 import "@hotwired/turbo-rails"
+import "bootstrap"
+import "bootstrap-tooltip"
+import "dropzone"
 import "popover"
 // import toastr from "toastr" 
 import "@rails/actioncable"
@@ -24,10 +25,6 @@ Rails.start()
 import "codemirror"
 import "./codemirror_custom"
 // import "./channels"
-
-// console.log(toastr)
-// global.$ = global.jQuery = $;
-// global.$ = global.jQuery = jQuery;
 
 window.$ = window.jQuery = require("jquery");
 
