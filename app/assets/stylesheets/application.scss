@@ -1,16 +1,14 @@
-@import "bootstrap";
+// @import "bootstrap";
+@import "bootstrap/dist/css/bootstrap";
 @import "toastr";
 @import "dropzone/dropzone";
 // @import "*";
-@import "style";
 @import "animate";
 @import "font-awesome";
-@import "jquery-ui";
-@import "LineIcons";
-@import "LineIcons";
+@import "jquery-ui/themes/base/all";
 @import "magnific-popup.min";
 @import "nice-select";
-@import "owl-carousel";
+@import 'owl.carousel/dist/assets/owl.carousel.css';
 @import "reset";
 @import "responsive";
 @import "slicknav.min";
@@ -26,12 +24,6 @@ body {
     background-color: #fff;
     border-bottom: 1px solid rgba(0,0,0,.0975);
     height: 77px;
-}
-
-.core-sprite {
-  background-image: img-url("");
-  background-size: 485px 379px;
-  background-repeat: no-repeat;
 }
 
 .navbar-brand {
@@ -82,30 +74,6 @@ body {
     background-position: 0 0;
     height: 51px;
     width: 175px;
-}
-
-// landing page css
-.landing-left {
-    .dummy-phone {
-        background-image: image-url("ideas-transparent-logo.png");
-        background-repeat: no-repeat;
-        background-position: right 0;
-        background-size: 550px 590px;
-        position: relative;
-        height: 700px;
-        margin-left: -30px;
-        margin-right: -15px;
-    }
-
-    .screen-shot {
-        position: absolute;
-        top: 99px;
-        right: 60px;
-
-        .item {
-            position: absolute;
-        }
-    }
 }
 
 // left side in login view
@@ -202,7 +170,7 @@ footer .nav-item {
 }
 
 .dz-remove {
-    @extend .core-sprite;
+    // @extend .core-sprite;
     @extend .hide-text;
     position: absolute;
     top: 9px;
