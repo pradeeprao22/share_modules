@@ -11,8 +11,18 @@ module.exports = {
       // Other rules...
       // Add the CSS loader configuration
       {
+        test: /\.scss$/,
+        use: [
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'style-loader',
+          'css-loader'
+       ],
       },
     ],
   },

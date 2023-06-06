@@ -679,7 +679,14 @@ jest-worker@^27.4.5:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jquery@>=1.12.0, jquery@^3.7.0:
+jquery-ui@^1.13.2:
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.13.2.tgz#de03580ae6604773602f8d786ad1abfb75232034"
+  integrity sha512-wBZPnqWs5GaYJmo1Jj0k/mrSkzdQzKDwhXNtHKcBdAcKVxMM3KNYFq+iJ2i1rwiG53Z8M4mTn3Qxrm17uH1D4Q==
+  dependencies:
+    jquery ">=1.8.0 <4.0.0"
+
+jquery@>=1.12.0, "jquery@>=1.8.0 <4.0.0", jquery@>=1.8.3, jquery@^3.7.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.0.tgz#fe2c01a05da500709006d8790fe21c8a39d75612"
   integrity sha512-umpJ0/k8X0MvD1ds0P9SfowREz2LenHsQaxSohMZ5OMNEU2r0tf8pdeEFTHMFxWVxKNyU9rTtK3CWzUCTKJUeQ==
@@ -708,6 +715,11 @@ kind-of@^6.0.2:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
+
+klona@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.6.tgz#85bffbf819c03b2f53270412420a4555ef882e22"
+  integrity sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==
 
 loader-runner@^4.2.0:
   version "4.3.0"
@@ -759,6 +771,13 @@ node-releases@^2.0.8:
   version "2.0.11"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.11.tgz#59d7cef999d13f908e43b5a70001cf3129542f0f"
   integrity sha512-+M0PwXeU80kRohZ3aT4J/OnR+l9/KD2nVLNNoRgFtnf+umQVFdGBAO2N8+nCnEi0xlh/Wk3zOGC+vNNx+uM79Q==
+
+owl.carousel@^2.3.4:
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/owl.carousel/-/owl.carousel-2.3.4.tgz#6c53dc8d24304b790e4f27a1dc4a655e973ccdc9"
+  integrity sha512-JaDss9+feAvEW8KZppPSpllfposEzQiW+Ytt/Xm5t/3CTJ7YVmkh6RkWixoA2yXk2boIwedYxOvrrppIGzru9A==
+  dependencies:
+    jquery ">=1.8.3"
 
 p-limit@^2.2.0:
   version "2.3.0"
@@ -915,6 +934,14 @@ safe-buffer@^5.1.0:
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.1.tgz#1eaf9fa9bdb1fdd4ec75f58f9cdb4e6b7827eec6"
   integrity sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==
 
+sass-loader@^13.3.1:
+  version "13.3.1"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-13.3.1.tgz#32ee5791434b9b4dbd1adcce76fcb4cea49cc12c"
+  integrity sha512-cBTxmgyVA1nXPvIK4brjJMXOMJ2v2YrQEuHqLw3LylGb3gsR6jAvdjHMcy/+JGTmmIF9SauTrLLR7bsWDMWqgg==
+  dependencies:
+    klona "^2.0.6"
+    neo-async "^2.6.2"
+
 schema-utils@^3.1.1, schema-utils@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-3.1.2.tgz#36c10abca6f7577aeae136c804b0c741edeadc99"
@@ -923,6 +950,11 @@ schema-utils@^3.1.1, schema-utils@^3.1.2:
     "@types/json-schema" "^7.0.8"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+scss-loader@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/scss-loader/-/scss-loader-0.0.1.tgz#eae017b9e0f38c12a532db25c220b902fb34e671"
+  integrity sha512-SbT/smRJjkvvdHSEdAYAplosVkrtaSwwgUlnQCOuDS5sOKNjrS/eYCMvKeV6+YxK5cCOCsOJZd3vltrXatFp+g==
 
 semver@^7.3.8:
   version "7.5.1"
