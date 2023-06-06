@@ -59,7 +59,7 @@
 <h6><i>Tags selected</i></h6>
 <% @post.tags_id.map do |t| %>
     <% tag = Tag.find(t) %>
-    <div class="row">
+    <div class="col-sm">
       <span class="badge bg-success"><b><%= tag.name %></b></span>
     </div>
 <% end %>
