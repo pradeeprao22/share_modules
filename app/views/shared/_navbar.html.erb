@@ -1,72 +1,66 @@
-  <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
-    <div class="container">
-      <%= link_to "Londevs.com", root_path, :class => "navbar-brand" %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<nav class="navbar bg-body-tertiary fixed-top">
+<div class="container-fluid">
+    <%= link_to "Londevs", root_path, :class => "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         
-        <%= form_tag users_path, method: :get, class: "form-inline my-2 my-lg-0 ml-md-auto", id: "users-search", remote: true do %>
-          <%= text_field_tag :term, params[:term], class: "form-control mr-sm-2 text-center common-btn", 
-          placeholder: "Search", autocomplete: "off" %>
-          <div id="users-result"></div>
-        <% end %>
-        <ul class="navbar-nav ml-md-auto">
-          <li class="nav-item">
-          <% if params[:controller] == "posts" && params[:action] == "index" %>
-            <%= link_to "Modules", root_path, :class => "nav-link active" %>
-          <% else %>
-            <%= link_to "Modules", root_path, :class => "nav-link" %>
-          <% end %>
-          </li>
-          
-          <li class="nav-item">
-          <% if params[:controller] == "posts" && params[:action] == "module_post" %>
-            <%= link_to "Frontend", module_path, :class => "nav-link active", :disabled => "disabled" %>
-          <% else %>
-            <%= link_to "Frontend", module_path, :class => "nav-link", :disabled => "disabled" %>
-          <% end %> 
-          </li>
+      <li class="nav-item">
+      <% if params[:controller] == "posts" && params[:action] == "index" %>
+        <%= link_to "Modules", root_path, :class => "nav-link active" %>
+      <% else %>
+        <%= link_to "Modules", root_path, :class => "nav-link" %>
+      <% end %>
+      </li>
 
-          <!--<li class="nav-item">
-            <%= link_to "Backend", new_database_table_path, :class => "nav-link", :disabled => "disabled" %>
-          </li>-->
+      <li class="nav-item">
+      <% if params[:controller] == "posts" && params[:action] == "module_post" %>
+        <%= link_to "Frontend", module_path, :class => "nav-link active", :disabled => "disabled" %>
+      <% else %>
+        <%= link_to "Frontend", module_path, :class => "nav-link", :disabled => "disabled" %>
+      <% end %> 
+      </li>
+        
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= current_user.name %>
+        </a>
+        <ul class="dropdown-menu">
+            <% if params[:controller] == "notifications" %>
+              <li><%= link_to get_notification_path, :class => "active dropdown-item"  do %>Notification<% end %></li>
+            <% else %>
+              <li><%= link_to get_notification_path, :class => "dropdown-item"  do %>Notification<% end %></li>
+            <% end %>
 
-          <!-- data-toggle="popover" -->
-
-          <!--<button type='button' class='btn' data-container='body' data-toggle='popover' data-placement='bottom' data-html='true' data-content='<%= render 'notifications/notifications' %>' >
-              <span class="fa fa-bell">
-          </button>-->
-
-          <li class="nav-item">
-          <% if params[:controller] == "notifications" %>
-            <%= link_to get_notification_path, :class => "nav-link active"  do %><span class="fa fa-bell"></span><% end %>
-          <% else %>
-            <%= link_to get_notification_path, :class => "nav-link"  do %><span class="fa fa-bell"></span><% end %>
-          <% end %>
-          </li>
-
-          <li class="nav-item">
-          <% if params[:controller] == "posts" && params[:action] == "module_post" %>
-            <%= link_to conversations_path, :class => "nav-link active"  do %><span class="far fa-comments"></span><% end %>
-          <% else %>
-            <%= link_to conversations_path, :class => "nav-link"  do %><span class="far fa-comments"></span><% end %>
-          <% end %>   
-          </li>
-
-          <li class="nav-item">
-            <%= link_to "Logout", destroy_user_session_path, :class => "nav-link" %>
-          </li>
-
-          <li class="nav-item">
-            <b><%= link_to current_user.name, user_path(current_user.id), method: :get, :class => "nav-link" %></b>
-          </li>
-
-          <div class="text-end">
-            <%= image_tag avatar_url(current_user), class: "card-type-icon with-border material-icons rounded-circle" %>
-          </div>
+            <li>
+            <% if params[:controller] == "posts" && params[:action] == "module_post" %>
+              <%= link_to conversations_path, :class => "dropdown-item active"  do %>Messages<% end %>
+            <% else %>
+              <%= link_to conversations_path, :class => "dropdown-item"  do %>Messages</span><% end %>
+            <% end %>   
+            </li>  
+          <li><hr class="dropdown-divider"></li>
+          <li>
+          <%= link_to "Logout", destroy_user_session_path, :class => "dropdown-item" %>
+          </li>          
         </ul>
-      </div>
+        </li>
+
+      </ul>
+
+      <form class="d-flex mt-3" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+    </div>
   </div>
+</div>
 </nav>
