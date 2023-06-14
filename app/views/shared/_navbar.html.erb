@@ -1,12 +1,12 @@
 <nav class="navbar bg-body-tertiary fixed-top">
-<div class="container-fluid">
+<div class="container">
     <%= link_to "Londevs", root_path, :class => "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Londevs</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -55,10 +55,14 @@
 
       </ul>
 
-      <form class="d-flex mt-3" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <%= form_tag users_path, method: :get, class: "d-flex mt-3", role: "search", id: "users-search", remote: true do %>
+        <%= text_field_tag :term, params[:term], class: "form-control me-2", placeholder: "Search", autocomplete: "off" %>
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+        <div class="row">
+        </div>
+      <% end %>
+      <div id="users-result"></div>
+
 
     </div>
   </div>
