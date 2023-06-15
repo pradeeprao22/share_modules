@@ -44,8 +44,8 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.web_socket_server_url = 'wss://modulerrr.herokuapp.com/api/v1/cable'
-  config.action_cable.url = 'wss://ai.londevs.com/cable'
-  config.action_cable.allowed_request_origins = ['http://ai.londevs.com', 'https://ai.londevs.com']
+  config.action_cable.url = 'wss://localhost:3001/cable'
+  config.action_cable.allowed_request_origins = ['http://localhost:3001', 'https://localhost:3001']
   #config.action_cable.allowed_request_origins = [%r{https?://\S+}]
   #config.action_cable.allowed_request_origins = ['http://ai.londevs.com','http://modulerrr.herokuapp.com']
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta Tag -->
+        <meta charset="utf-8">
+        <meta name='copyright' content="Low cost information technologies services in europe based in united kingdom" name="description">
+        <meta content="Development, CSS, HTML, RUBY, Python, Ruby on Rails, MySql, PostgreSQL, Django, Angular, React, React Native, Node.JS, Git, Docker, PHP, Laravel, Deployment" name="keywords">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <!-- Title Tag  -->
+        <title>Londevs.com Find and Share Web Modules</title>
+    
+        <%= stylesheet_link_tag  'application', media: 'all' %>
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="#">
+        <!-- Web Font -->        
+    </head>
+
+   <body class="js">
+   <%= render "shared/frontnavbar" if !current_user %>
+   <%= render "shared/navbar" if current_user %>
+
+    <%= yield %>
+    <%= render "shared/frontfooter" %>
+
+  <% if flash.any? %>
+    <script type="text/javascript">
+      <% flash.each do |key, value| %>
+        <% type = key.to_s.gsub('alert', 'error').gsub('notice', 'success') %>
+        toastr.<%= type %>('<%=  value %>')
+      <% end %>
+    </script>
+ <% end %>
+  
+  <!-- Jquery -->
+  <script src="jquery.min.js"></script>
+  <script src="jquery-migrate-3.0.0.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <!-- Popper JS -->
+  <script src="popper.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="bootstrap.min.js"></script>
+  <!-- Color JS -->
+  <script src="colors.js"></script>
+  <!-- Steller JS -->
+  <script src="steller.js"></script>
+  <!-- Slicknav JS -->
+  <script src="slicknav.min.js"></script>
+  <!-- Owl Carousel JS -->
+  <script src="owl-carousel.js"></script>
+  <!-- Magnific Popup JS -->
+  <script src="magnific-popup.js"></script>
+  <!-- Waypoints JS -->
+  <script src="waypoints.min.js"></script>
+  <!-- Wow Min JS -->
+  <script src="wow.min.js"></script>
+  <!-- Jquery Counterup JS -->
+  <script src="jquery-counterup.min.js"></script>
+  <!-- Ytplayer JS -->
+  <script src="ytplayer.min.js"></script>
+  <!-- Onepage Nav JS -->
+  <script src="onepage-nav.min.js"></script>
+  <!-- Easing JS -->
+  <script src="easing.js"></script>
+  <!-- Active JS -->
+  <script src="active.js"></script>
+  </body>
+</html>

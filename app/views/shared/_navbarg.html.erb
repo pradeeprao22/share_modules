@@ -1,35 +1,52 @@
 <!-- navbar starts -->
-<nav class="navbar navbar-expand-md fixed-top nav-masthead">
+<nav class="navbar bg-body-tertiary fixed-top">
 <div class="container">
-  <a class="navbar-brand" href="/"> <h3 class="masthead-brand mb-0">LonDevs.com</h3></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <%= link_to "Londevs", root_path, :class => "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto">
-    <!--  <li class="nav-item">
-        <a class="nav-link p-2 font-weight-bold text-white" href="https://londevs.com/">Home </a>
-      </li> -->
-     <!-- <li class="nav-item">
-        <a class="nav-link p-2 font-weight-bold text-white" href="https://londevs.com/portfolio.html">Our Work</a>
-      </li> -->
-      <!-- <li class="nav-item">
-        <a class="nav-link font-weight-bold p-2 text-white" href="https://londevs.com/services.html">Free Service</a>
-      </li> -->
-      <li class="nav-item" id="" >
-      <%= link_to "Modules", root_path, :class => "nav-link" %>
-      </li>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Londevs</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        
       <li class="nav-item">
-        <%= link_to "Create", module_path, :class => "nav-link", :disabled => "disabled" %>
+      <% if params[:controller] == "posts" && params[:action] == "index" %>
+        <%= link_to "Modules", root_path, :class => "nav-link active" %>
+      <% else %>
+        <%= link_to "Modules", root_path, :class => "nav-link" %>
+      <% end %>
       </li>
-    </ul>
-  
-    <%= link_to "Login", new_user_session_path, :class => "nav-link p-2 font-weight-bold" %>
 
-    <%= link_to "Register", new_user_registration_path, :class => "nav-link p-2 font-weight-bold" %>        
+      <li class="nav-item">
+      <% if params[:controller] == "posts" && params[:action] == "module_post" %>
+        <%= link_to "Frontend", module_path, :class => "nav-link active", :disabled => "disabled" %>
+      <% else %>
+        <%= link_to "Frontend", module_path, :class => "nav-link", :disabled => "disabled" %>
+      <% end %> 
+      </li>
+        
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Signup
+        </a>
+        <ul class="dropdown-menu">
+            <li> 
+              <%= link_to "Login", new_user_session_path, :class => "dropdown-item" %>
+            </li>
+            <li>
+              <%= link_to "Register", new_user_registration_path, :class => "dropdown-item" %>
+            </li>
+        </ul>
+      </li>
+      </ul>
 
+    </div>
   </div>
-  </div>
+</div>
 </nav>
 <!-- nav bar ends -->
 <br>

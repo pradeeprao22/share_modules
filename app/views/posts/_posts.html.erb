@@ -1,31 +1,22 @@
-<style>
-.card{
-    border-radius: 4px;
-    background: #fff;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    cursor: pointer;
-}
-.card:hover{
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-}
-</style>
 <div class="row">
 <% if @posts.present? %>
 <% for post in @posts %>
   <div class="col-md-4">
   <div class="card mt-3 posts">
-    <div class="card-header d-flex align-items-center">
+    <div class="card-header align-items-center">
+    <div class="row">
       <%= link_to user_path(post.user), class: "no-text-decoration" do %>
         <%= image_tag avatar_url(post.user), class: "post-author-icon" %>
       <% end %>
+      
       <%= link_to user_path(post.user), class: "normal-color no-text-decoration name-color", title: post.user.name do %>
           <strong><%= post.user.name %></strong>
-      <% end %>  
-      <%= link_to post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: "ml-auto delete-post-icon mx-0 my-auto" do %>
-        <i class="far fa-trash-alt" aria-hidden="true"></i>
       <% end %>
+
+      <%= link_to post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: "ml-auto delete-post-icon mx-0 my-auto text-md-end" do %>
+        <i class="far fa-trash-alt text-md-end" aria-hidden="true"></i>
+      <% end %>
+    </div>  
     </div>
     <%= link_to post_path(post) do %>
     <%= render "photos", {post: post} %>
@@ -34,12 +25,15 @@
       <div class="card-body">
         <div class="row actions">
           <!-- Likes button render -->
+          <div class="col">
           <div id="like-post-<%= post.id.to_s %>">
             <%= render "like", {is_liked: post.is_liked(current_user), post: post} %>
           </div>
-
+          </div>
+          <div class="col">
           <div id="bookmark-icon-post-<%= post.id.to_s %>", class="ml-auto">
             <%= render "bookmark_icon", {is_bookmarked: post.is_bookmarked(current_user), post: post} %>
+          </div>
           </div>
         </div>
         <!-- Likes Text -->
