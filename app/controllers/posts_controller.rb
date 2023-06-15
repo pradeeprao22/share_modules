@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     action = params[:action]
     getdetails(action)
 
-    @posts = Post.paginate(:page => params[:page], :per_page => 9).includes(:photos, :user, :likes, :bookmarks).order('created_at desc')
+    @posts = Post.all.where(published: true).paginate(:page => params[:page], :per_page => 9).includes(:photos, :user, :likes, :bookmarks).order('created_at desc')
     # redirect_to posts_path
     # respond_to do |format|
     #   format.js {render layout: false}
