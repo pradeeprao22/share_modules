@@ -1,6 +1,6 @@
 <div class="container">
 <br>
-<div class="row box justify-content-md-center profile-wrapper">
+<div class="row box profile-wrapper">
     <div class="col-md-4 text-center">
       <%= image_tag avatar_url(@user), width: '152', height: '152', class: "round-img" %>
     </div>
@@ -9,9 +9,9 @@
        <div class="row">
          <p class="username"><%= @user.name %></p>
        <% if @user == current_user %>
-       <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn" %> 
+       <%= link_to "Edit Profile", edit_user_registration_path, class: "btn common-btn" %> 
          <!-- Button trigger modal -->
-         <button type="button" class="setting" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-cog"></i></button>
+         <button type="button" class="setting" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-cog"></i></button>
        <% end %>
 
        <% if @user != current_user %>
@@ -35,7 +35,7 @@
                <div class="modal-content">
                   <div class="modal-header">
                      <h5 class="modal-title" id="exampleModalLabel">Setting</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                            <span aria-hidden="true">&times;</span>
                         </button>
                   </div>
@@ -48,6 +48,7 @@
                </div>
             </div>
          </div>
+
        </div>
         <div class="row">
           Email:<p class ="email"><%= @user.email %></p>
@@ -64,7 +65,7 @@
  <% if @user == current_user %>
    <nav>
       <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" id="nav-posts-tab" data-toggle="tab" href="#nav-posts" role="tab" aria-controls="nav-posts" aria-selected="false">YOUR MODULES</a>
+      <a class="nav-item nav-link" id="nav-posts-tab" data-bs-toggle="tab" href="#nav-posts" role="tab" aria-controls="nav-posts" aria-selected="false">YOUR MODULES</a>
       <br>
       </div>
    </nav>
