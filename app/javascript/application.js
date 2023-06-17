@@ -14,6 +14,7 @@ import "@fortawesome/fontawesome-free/css/all.css"
 // import "@activeadmin/activeadmin"
 // import "./testing"
 
+import "./channels"
 import "./toastr"
 
 import Turbolinks from "turbolinks"
