@@ -18,7 +18,6 @@ RSpec.describe Post, type: :model do
         user_id: current_user.id
       )
 
-      byebug
       comment1 = post.comments.create!(:content => "first comment", :user_id => current_user.id)
       comment2 = post.comments.create!(:content => "second comment", :user_id => current_user.id)
       expect(post.reload.comments).to eq([comment2, comment1])
