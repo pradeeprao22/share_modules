@@ -1,7 +1,4 @@
 <div class="container">
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 <h4>Your Notifications</h4>
 <hr>
 
@@ -12,28 +9,13 @@
 <% @current_user_notifications.map do |notification| %>
 
 <div class="border-card">
-
-
 <div class="content-wrapper">
-
     <!-- which post user liked -->
     <p class="title"><p><%= notification.notify_message %></p></p>
     <p class="caption">Date: <%= notification.notificationable.created_at if notification.notificationable %> </p>
-
 </div>
-
-<i class="material-icons end-icon">more_vert</i>
 
 </div>
 <% end %>
 <center><%= will_paginate @current_user_notifications %></center>
 </div>
-<script>
-  window.console = window.console || function(t) {};
-</script>
-
-<script>
-  if (document.location.search.match(/type=embed/gi)) {
-    window.parent.postMessage("resize", "*");
-  }
-</script>
