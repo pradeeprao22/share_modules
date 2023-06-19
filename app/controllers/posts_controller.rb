@@ -41,7 +41,7 @@ class PostsController < ApplicationController
             if params[:images]
                 params[:images].each do |img|
                   @post.photos.create(image: img)
-                  ActionCable.server.broadcast('post_channel', post: ( render @post))
+                  ActionCable.server.broadcast('post_channel', {post: ( render @post)})
                   flash[:success] = "Module created succesfully"
                   head :ok
                 end
