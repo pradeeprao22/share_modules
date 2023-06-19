@@ -7,7 +7,6 @@ import "bootstrap"
 import "bootstrap-tooltip"
 import "dropzone"
 import "popover"
-// import toastr from "toastr" 
 import "@rails/actioncable"
 // Import Font Awesome styles
 import "@fortawesome/fontawesome-free/css/all.css"
