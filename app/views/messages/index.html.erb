@@ -1,5 +1,9 @@
 <% user_id = Conversation.find(params[:conversation_id]).recipient_id %>
 <% user = User.find(user_id) %>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
 <h3 class=" text-center">Messaging</h3>
 <div class="messaging">
@@ -89,7 +93,7 @@
         <%= f.text_field :body, class: "write_msg" %>
         <%= f.text_field :user_id, value: current_user.id, type: "hidden", required: true %>
        <!-- <%= f.submit "Send Reply", class: "btn msg_send_btn"%> -->
-        <button class="btn msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
     <% end %>
           </div>
         </div>
