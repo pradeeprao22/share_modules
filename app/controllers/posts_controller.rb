@@ -83,7 +83,7 @@ class PostsController < ApplicationController
     getdetails(action)
 
     if @post.user == current_user
-      if @post.destroy
+      if @post.update(published: false)
         flash[:notice] = "Post deleted!"
       else
         flash[:notice] = "Something went wrong ..."
