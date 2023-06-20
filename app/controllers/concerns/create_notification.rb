@@ -27,30 +27,37 @@ module CreateNotification
           when @notification.notificationable_type == "Message"
               @message = "#{@notification.notificationable.user.name} sent a message to: #{@notification.notificationable.conversation.recipient.name}"
         end
+        puts "Notification created success"
 
-        # Stroing message generated
+        # Storing message generated
         # User who triggered the notification
 
         # Notification According to User Followed
-        Follow.all.map do |follow|
-          if follow.follower_id == current_user.id
-              @notify_user = follow.following_id
-              #Create Multiple Notification
-              @notification.update(name: action, user_id: current_user.id, reciver_id: @notify_user, notify_message: @message)
-            elsif follow.following_id == current_user.id
-              @notify_user = follow.follower_id
-              #Create Multiple Notification
-              @notification.update(name: action, user_id: current_user.id, reciver_id: @notify_user, notify_message: @message)
-            else
-              puts "ERROR: UNABLE TO FETCH USER"   
-            end
-        end   
+        if Follow.first != nil
+          Follow.all.map do |follow|
+            if follow.follower_id == current_user.id
+                @notify_user = follow.following_id
+                #Create Multiple Notification
+                @notification.update(name: action, user_id: current_user.id, reciver_id: @notify_user, notify_message: @message)
+                return @notification
+              elsif follow.following_id == current_user.id
+                @notify_user = follow.follower_id
+                #Create Multiple Notification
+                @notification.update(name: action, user_id: current_user.id, reciver_id: @notify_user, notify_message: @message)
+                return @notification
+              else
+                puts "ERROR: UNABLE TO FETCH USER"   
+              end
+          end
+        else
+          @notification.update(name: action, user_id: current_user.id, reciver_id: nil, notify_message: @message)
+        end
 
-        ActionCable.server.broadcast 'notification',
-          notification: @notification.id,
+        ActionCable.server.broadcast('notification',
+          {notification: @notification.id,
           created: @notification.created_at,
           message: @notification.notify_message,
-          user: current_user
+          user: current_user})
       end
     end
 end
