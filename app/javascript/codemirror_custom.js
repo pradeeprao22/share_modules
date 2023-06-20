@@ -1,3 +1,4 @@
+if (window.location.pathname == "/post/module_post") {
 document.addEventListener("DOMContentLoaded", () => {
     const htmlcode = $(".codemirror-textarea")[0];
     const editor = CodeMirror.fromTextArea(htmlcode, {
@@ -27,3 +28,4 @@ document.addEventListener("DOMContentLoaded", () => {
       tabMode: "indent",
     });
 });
+}
