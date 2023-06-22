@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     action = params[:action]
     getdetails(action)
 
-    @posts = Post.all.where(published: true).paginate(:page => params[:page], :per_page => 9).includes(:photos, :user, :likes, :bookmarks).order('created_at desc')
+    @posts = Post.where(published: true).paginate(:page => params[:page], :per_page => 9).includes(:photos, :user, :likes, :bookmarks).order('created_at asc')
     # redirect_to posts_path
     # respond_to do |format|
     #   format.js {render layout: false}
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
           # For creating notification
           notify(action, @post)
            
-            @post.update(tags_id: params[:post][:tags_id])      
+            @post.update(tags_id: params[:post][:tags_id], published: true)      
             if params[:images]
                 params[:images].each do |img|
                   @post.photos.create(image: img)
