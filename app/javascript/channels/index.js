@@ -1,4 +1,5 @@
 // Import all the channels to be used by Action Cable
-import "./messages"
-import "./notifications"
-import "./posts"
+import "./messages.js"
+import "./notifications.js"
+import "./posts.js"
+import "./consumer.js"
