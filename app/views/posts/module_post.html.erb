@@ -1,7 +1,7 @@
  <br>
  <br>
  <br>
- <div class="d-flex flex-column">
+ <div class="d-flex flex-column" id="module-post">
   <div class="col-xl-12 col-lg-8 col-md-10 col-sm-11 post-card">
     <!--Post Form-->
   <div class="card-header">
@@ -90,3 +90,23 @@
     </div>
   </div>
 </div>
+
+<div id="success-element">
+<div class="row">
+ Module Posted Success
+</div>
+</div>
+
+<script>
+ var form = document.getElementById("new_post")
+
+ form.addEventListener("submit", function(event) {
+   event.preventDefault();
+   if (form.checkValidity()) {
+     window.location.replace("http://localhost:3001")
+     #toastr.alert("This is a Toastr alert!");
+    } else {
+      console.log("not submited")
+    }
+ });
+</script>
