@@ -1,11 +1,7 @@
 <% user_id = Conversation.find(params[:conversation_id]).recipient_id %>
 <% user = User.find(user_id) %>
-<br>
-<br>
-<br>
-<br>
 <div class="container">
-<h3 class=" text-center">Messaging</h3>
+<h4>Messaging</h4>
 <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
@@ -103,7 +99,7 @@
   </div>
 
 <style>
-.container{max-width:1170px; margin:auto;}
+
 img{ max-width:100%;}
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
