@@ -1,16 +1,13 @@
-LondevApp.posts = LondevApp.cable.subscriptions.create('PostChannel', {  
+import consumer from "./consumer"
 
-    received: function(data) {
-      // debug
-      // window.alert(data.post)
+consumer.subscriptions.create("PostChannel",{
+    received(data) {
 
       $("#post").removeClass('hidden')
       
       return $('#post').append(this.renderMessage(data));
     },
-  
-    renderMessage: function(data) {    
+    renderMessage(data) {    
       return "<p>" + data.post + "</p>";
     }
-
-});  
+})
