@@ -1,15 +1,18 @@
-LondevApp.messages = LondevApp.cable.subscriptions.create('MessagesChannel', {
-    received: function(data){
+import consumer from "./consumer"
 
-    // id messages
-    $("#messages").removeClass('hidden')
-
-        return $('#messages').append(this.renderMessage(data));    
-    
+consumer.subscriptions.create("MessagesChannel",{
+    received(data){
+        //console.log(data)
+        //window.alert(data)
+        //id messages
+        //console.log(data)
+        $("#messages").removeClass('hidden')
+        return $('#messages').append(this.renderMessage(data));   
     },
-
-    renderMessage: function(data) {
+    renderMessage(data){
+    console.log(data)
         var user = getCookie('verified_user')
+        //console.log(user)
         var cookie_user = parseInt(user)
         // console.log(data.current_user === u)
         // html 
@@ -24,5 +27,4 @@ LondevApp.messages = LondevApp.cable.subscriptions.create('MessagesChannel', {
             return "<div class='outgoing_msg'><div class='sent_msg'><p>" + data.message + "</p><span class='time_date'>"  + data.created + "</span></div></div>";
         }
     }
-
 })
