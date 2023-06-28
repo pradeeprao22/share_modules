@@ -30,3 +30,4 @@ window.$ = window.jQuery = require("jquery");
 
 // window.$ = toastr.options
 import "./user_search"
+import "./cookies"
