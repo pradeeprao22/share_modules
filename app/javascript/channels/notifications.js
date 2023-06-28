@@ -1,14 +1,12 @@
 import consumer from "./consumer"
 
 consumer.subscriptions.create("NotificationsChannel",{ 
-    received: function(data){
-
+    received(data){
     console.log(data)
     $("#notifications").removeClass('hidden')
         return $('#notifications').append(this.renderMessage(data));    
     },
-    renderMessage: function(data) {
-    console.log(data)
+    renderMessage(data) {
     //var allcookies = document.cookie;
     //cookiearray = allcookies.split(';');
     //var user = getCookie('verified_user')
