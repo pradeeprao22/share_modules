@@ -6,11 +6,13 @@
     <div class="col-md-8">
        <div class="row">
          <p class="username"><%= @user.name %></p>
-       <% if @user == current_user %>
-       <%= link_to "Edit Profile", edit_user_registration_path, class: "btn common-btn" %> 
-         <!-- Button trigger modal -->
-         <button type="button" class="setting" data-bs-toggle="modal" data-bs-target="#changePasswordModel"><i class="fas fa-cog"></i></button>
-       <% end %>
+         <div class="col">
+          <% if @user == current_user %>
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "btn common-btn" %> 
+            <!-- Button trigger modal -->
+            <button type="button" class="setting" data-bs-toggle="modal" data-bs-target="#changePasswordModel"><i class="fas fa-cog"></i></button>
+          <% end %>
+         </div> 
 
        <% if @user != current_user %>
        <div class="row">
@@ -49,13 +51,13 @@
 
        </div>
         <div class="row">
-          Email:<p class ="email"><%= @user.email %></p>
+          <p class ="email">Email: <%= @user.email %></p>
         </div>
         <div class="row">
-          Bio:<p class ="bio"><%= @user.bio %></p>
+          <p class ="bio">Bio: <%= @user.bio %></p>
         </div>
         <div class="row">  
-          Website:<p class ="bio"><%= @user.website %></p>
+          <p class ="bio">Website: <%= @user.website %></p>
         </div>
     </div>
 
