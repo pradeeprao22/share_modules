@@ -37,9 +37,13 @@ body {
 }
 
 .navbar-brand {
-    background-position: -176px 0;
+    margin-left: 50px;
     height: 35px;
     width: 176px;
+}
+
+.navbar-toggler {
+    margin-right: 50px;
 }
 
 .hide-text {
