@@ -5,6 +5,7 @@
   <div class="card mt-3 posts">
     <div class="card-header align-items-center">
     <div class="row">
+    <div class="col">
       <%= link_to user_path(post.user), class: "no-text-decoration" do %>
         <%= image_tag avatar_url(post.user), class: "post-author-icon" %>
       <% end %>
@@ -12,10 +13,14 @@
       <%= link_to user_path(post.user), class: "normal-color no-text-decoration name-color", title: post.user.name do %>
           <strong><%= post.user.name %></strong>
       <% end %>
-
-      <%= link_to post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: "ml-auto delete-post-icon mx-0 my-auto text-md-end" do %>
-        <i class="far fa-trash-alt text-md-end" aria-hidden="true"></i>
-      <% end %>
+    </div>
+    <div class="col">
+        <%= link_to post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this?' }, class: "ml-10 delete-post-icon mx-0 my-auto text-md-end" do %>
+          <div class="transh">
+          <i class="far fa-trash-alt text-md-end" aria-hidden="true"></i>
+          </div>
+        <% end %>
+    </div>  
     </div>  
     </div>
     <%= link_to post_path(post) do %>
