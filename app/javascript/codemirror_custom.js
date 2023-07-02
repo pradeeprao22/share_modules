@@ -1,6 +1,7 @@
 if (window.location.pathname == "/post/module_post") {
+
 document.addEventListener("DOMContentLoaded", () => {
-    const htmlcode = $(".codemirror-textarea")[0];
+    const htmlcode = $(".html-area")[0];
     const editor = CodeMirror.fromTextArea(htmlcode, {
       lineNumbers: true,
       mode: "htmlmixed",
@@ -10,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const htmlcode = $(".code-textarea")[0];
+    const htmlcode = $(".css-area")[0];
     const editor = CodeMirror.fromTextArea(htmlcode, {
       lineNumbers: true,
       mode: "htmlmixed",
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const htmlcode = $(".code-backend")[0];
+    const htmlcode = $(".javascript-area")[0];
     const editor = CodeMirror.fromTextArea(htmlcode, {
       lineNumbers: true,
       mode: "htmlmixed",
@@ -28,4 +29,5 @@ document.addEventListener("DOMContentLoaded", () => {
       tabMode: "indent",
     });
 });
+
 }
