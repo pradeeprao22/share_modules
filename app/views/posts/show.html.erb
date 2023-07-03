@@ -8,75 +8,14 @@
 
 <h4>Module Type:</h4> <%= @module_type %>
 
-<% if @post.module_type == "1" %>
+<!--<% if @post.module_type == "1" %>
 <p>This is backend module please check your database settings</p>
 <p><%= link_to 'Manage backend module', columns_for_fake_databases_path %></p>
 <% else %>
 <p>No database for frontend module</p>
-<% end %>
+<% end %>-->
 
 <!--Link to dashboard-->
-
-<%= form_for(@post, as: @post, url: post_path(@post), html: { method: :put }) do |f| %>
-<div class="d-flex flex-column mt-3">
-  <h6>HTML</h6>
-  <%= f.text_area :frontend, style: "white-space: pre-wrap;", value: (@post.frontend), class: "codemirror-textarea"%>
-  </div>
-<br>
-
-<div class="d-flex flex-column mt-3">
-  <h6>CSS</h6>
-  <%= f.text_area :frontend_css, style: "white-space: pre-wrap;", value: (@post.frontend_css), class: "code-textarea"%>
-</div>
-
-<div class="d-flex flex-column mt-3">
-  <h6>JAVASCRIPT</h6>
-  <%= f.text_area :javascript, style: "white-space: pre-wrap;", value: (@post.javascript), class: "code-backend"%>
-  </div>
-  <br>
-  <br>
-<hr>
-
-<!-- If the module type is backend -->
-<% if @post.module_type == "1" %>
-<div class="d-flex flex-column mt-3">
-  <h6><i>BACKEND</i> [comming soon][Runs in Ruby, Python, Java]</h6>
-  <%= f.text_area :backend, style: "white-space: pre-wrap;", value: (@post.backend), class: "code-backend-2"%>
-</div>
-<% end %>
-
-<div class="d-flex flex-column mt-3">
-  <h6><i>Instructions</i> </h6>
-  <%= f.text_area :instruction, rows: "10", style: "white-space: pre-wrap;", value: (@post.instruction), class: "form-control border-0" %>
-</div>
-
-<!-- Conditions according to the tags-->
-<!-- It will be always empty insted of case just try to loop the tags-->
-<div class="d-flex flex-column mt-3">
-<h6><i>Tags selected</i></h6>
-<% @post.tags_id.map do |t| %>
-    <% tag = Tag.find(t) %>
-    <div class="col-sm">
-      <span class="badge bg-success"><b><%= tag.name %></b></span>
-    </div>
-<% end %>
-
-<br>
-<br>
-<% if @post.user == current_user %>
-<div class="d-flex flex-column">
-  <%= f.submit "Update Module", class: "btn btn-success form-control border-0" %>
-</div>
-<% end %>
-
-<% end %>
-<hr>
-
-<div class="text-center">
-<i><p6>Beta</p6></i>
- <%= link_to "BUILD MODULE", building_path, :class => "btn btn-lg btn-success btn-circle my-4 mr-3" %>
-</div>
-
 <div class="d-flex flex-column  mt-3">
   <h6>Module Snapshot</h6>
  <div class ="row">
@@ -89,7 +28,8 @@
       </div>
 
       <div class="col-lg-4 col-md-5 mt-sm-4 mt-md-0">
-        <div class="row px-3">
+        <div class="row">
+          <div class="col">
           <%= link_to user_path(@post.user), class: "no-text-decoration" do %>
               <%= image_tag avatar_url(@post.user), class: "post-author-icon" %>
           <% end %>
@@ -97,9 +37,14 @@
           title: @post.user.name do %>
           <strong><%= @post.user.name %></strong>
           <% end %>
+          </div>
+          <div class="col">
             <%= link_to post_path(@post), method: :delete, class: "ml-auto delete-post-icon mx-0 my-auto" do %>
+              <div class="trash">
               <i class="far fa-trash-alt" aria-hidden="true"></i>
+              </div>
             <% end %>
+            </div>
         </div>
 
           <hr class="mb-0">
@@ -148,7 +93,7 @@
     <div class="container">
     <h6>Instructions:</h6>
     <hr class="mb-0">
-    <p> <b><% if @post.languages %>Written in <%= @post.languages.map {|l| l.name} %><% end %></b></p>
+    <p> <b><% if @post.languages.present? %>Written in <%= @post.languages.map {|l| l.name} %><% end %></b></p>
     <hr class="mb-0">
     <div class="d-flex flex-column">
       <br>
@@ -163,12 +108,72 @@
     </div>
   </div>
 </div>
+
+<%= form_for(@post, as: @post, url: post_path(@post), html: { method: :patch }) do |f| %>
+<div class="d-flex flex-column mt-3">
+  <h6>HTML</h6>
+  <%= f.text_area :frontend, style: "white-space: pre-wrap;", value: (@post.frontend), class: "html-area"%>
+  </div>
+<br>
+
+<div class="d-flex flex-column mt-3">
+  <h6>CSS</h6>
+  <%= f.text_area :frontend_css, style: "white-space: pre-wrap;", value: (@post.frontend_css), class: "css-area"%>
+</div>
+
+<div class="d-flex flex-column mt-3">
+  <h6>JAVASCRIPT</h6>
+  <%= f.text_area :javascript, style: "white-space: pre-wrap;", value: (@post.javascript), class: "javascript-area"%>
+  </div>
+  <br>
+  <br>
+<hr>
+
+<!-- If the module type is backend -->
+<% if @post.module_type == "1" %>
+<div class="d-flex flex-column mt-3">
+  <h6><i>BACKEND</i> [comming soon][Runs in Ruby, Python, Java]</h6>
+  <%= f.text_area :backend, style: "white-space: pre-wrap;", value: (@post.backend), class: "code-backend-2"%>
+</div>
+<% end %>
+
+<div class="d-flex flex-column mt-3">
+  <h6><i>Instructions</i> </h6>
+  <%= f.text_area :instruction, rows: "10", style: "white-space: pre-wrap;", value: (@post.instruction), class: "form-control border-0" %>
+</div>
+
+<!-- Conditions according to the tags-->
+<!-- It will be always empty insted of case just try to loop the tags-->
+<div class="d-flex flex-column mt-3">
+<h6><i>Tags selected</i></h6>
+<% @post.tags_id.map do |t| %>
+    <% tag = Tag.find(t) %>
+    <div class="col-sm">
+      <span class="badge bg-success"><b><%= tag.name %></b></span>
+    </div>
+<% end %>
+
+<br>
+<br>
+<% if @post.user == current_user %>
+<div class="d-flex flex-column">
+  <%= f.submit "UPDATE MODULE", class: "btn btn-success form-control border-0" %>
+</div>
+<% end %>
+
+<% end %>
+<hr>
+
+<div class="text-center">
+<i><p6>Beta</p6></i>
+ <%= link_to "BUILD MODULE", building_path, :class => "btn btn-lg btn-success btn-circle my-4 mr-3" %>
+</div>
 </div>
 </div>
 <!-- Code mirror javascript -->
 <script type="text/javascript">
   $(document).ready(function() {
-      var htmlcode = $(".codemirror-textarea")[0];
+      var htmlcode = $(".html-area")[0];
       var editor = CodeMirror.fromTextArea(htmlcode, {
           lineNumbers : true,
           mode: "htmlmixed",
@@ -178,7 +183,7 @@
   });
 
   $(document).ready(function() {
-      var csscode = $(".code-textarea")[0];
+      var csscode = $(".css-area")[0];
       var editor = CodeMirror.fromTextArea(csscode, {
           lineNumbers : true,
           mode: "css",
@@ -187,7 +192,7 @@
   });
 
   $(document).ready(function() {
-      var baccode = $(".code-backend")[0];
+      var baccode = $(".javascript-area")[0];
       var editor = CodeMirror.fromTextArea(baccode, {
           lineNumbers : true,
           mode: "javascript",
