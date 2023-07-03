@@ -20,8 +20,6 @@ body {
  color: #262626;
 }
 
-
-
 .footer-logo{
     margin-left: 100px;
 }
@@ -33,6 +31,7 @@ body {
 .navbar{
     background-color: #fff;
     border-bottom: 1px solid rgba(0,0,0,.0975);
+    border-top: 2px solid rgba(0,0,0,.0975);
     height: 77px;
 }
 
@@ -250,7 +249,12 @@ footer .nav-item {
         opacity: 1;
         width: 30px
     }
+
+    .trash {
+        margin-left: 100px;
+    }
 }
+
 
 .clap {
     background-position: -325px -329px;
