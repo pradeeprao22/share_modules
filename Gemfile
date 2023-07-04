@@ -98,3 +98,4 @@ gem 'jwt'
 gem 'jsbundling-rails'
 gem 'tailwindcss-rails'
 gem 'sassc-rails'
+gem 'bundler-audit', require: false
