@@ -3,9 +3,9 @@
   
   <!--Post Form-->
     <div class="card">
-    <div class="card-header">
-      <b>Post Frontend Module:</b>
-    </div>
+      <div class="card-header">
+        <b>Post Frontend Module:</b>
+      </div>
       <div class="card-body">
         <%= form_for @post, :html => { :multipart => true, :remote=>true } do |f| %>
           <div id="alert_message">
@@ -70,25 +70,26 @@
           </div>
       
           <div class="form-group row mt-2">
-            <button type="button" class="btn btn-primary" name="Submit" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+            <button type="button" class="btn btn-primary" name="Submit" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Post Module</button>
           </div>
+
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
-            <div class="modal-header">
-            <h6> Module Posted </h6>
-            <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
-            </div>
+              <div class="modal-header">
+               <h6> Post Module </h6>
+              </div>
             <div class="modal-body">
+               <p>This module will be posted and you will be redirected to show page.</p>
+            </div>
+            <div class="modal-footer">
+              <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
             </div>
             </div>
           </div>
           </div>
         <% end %>
       </div>
-
-
-
     </div>
   </div>
 </div>
@@ -99,9 +100,10 @@
  form.addEventListener("submit", function(event) {
    event.preventDefault();
    if (form.checkValidity()) {
+     console.log("Form Submited")
      window.location.replace("http://localhost:3001")
     } else {
-      console.log("not submited")
+      console.log("Not Submited")
     }
  });
 </script>
