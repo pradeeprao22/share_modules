@@ -1,48 +1,30 @@
-##Project for sharing different code modules
+#Project for sharing different code modules
 
-    Users can post their module ideas using a modular platform.
+    Users can post code module ideas using this platform.
     Users also have the option to copy any module to their application.
     The back-end and front-end should work together seamlessly.
     Integration of multiple containers in the application.
 
-##Features this application will contain:
+#Features this application will contain:
 
-    Technology Blog
+    Blog
     Module Sharing Feature
-    Free Project Page (Users can download free projects from this application)
+    Free Project Page (Users can download free projects)
 
-Process of Building:
+Future:
+Every coding language (technology) is going to have a different process or worker. Initially: Ruby, Python, PHP, JAVA
 
-Every coding language (technology) is going to have a different process or worker.
-
-Initially: Ruby, Python, PHP, JAVA
-
-Can we convert NonSQL DB to SQL DB, like MongoDB to PostgreSQL? Can we call this automation?
-
+Things needs to cover:
 Making the UI more user-friendly.
-
-Try to understand the product as much as you can.
-
+Try to understand the product in more depth.
 Write down user use cases.
-
 Building and running the module.
-
-Integration of Rspec unit testing.
-
+Integration of Rspec unit testing for most features(95%).
 Users can run multiple modules according to the technology they want, applying system analysis thinking.
-
 Better Email Management System With Secure Connection.
-
 Cookies integration.
-
-User mail send acquisition.
-
 User Permissions System (Not required currently).
-
 Action Cable Debugging.
-
-Added Notifications.
-
+Sending user specific notifications.
 Implementation of Import and Export modules.
-
 Drag and Drop Software Building Platform and launching through modules.
