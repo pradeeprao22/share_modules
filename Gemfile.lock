@@ -461,7 +461,7 @@ DEPENDENCIES
   rspec-support!
   sass-rails (~> 5.0)
   sassc-rails
-  selenium-webdriver (~> 3.142.0)
+  selenium-webdriver
   sidekiq (~> 6.2, >= 6.2.1)
   sidekiq-limit_fetch
   spring
