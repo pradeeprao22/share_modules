@@ -26,6 +26,8 @@ jobs:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
     steps:
+      - name: Print PostgreSQL socket directory
+        run: ls -al /var/run/postgresql
       - name: Checkout code
         uses: actions/checkout@v3
       # Add or replace dependency steps here
