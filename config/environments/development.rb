@@ -84,6 +84,4 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.selenium_driver = :chrome
-  Selenium::WebDriver::Chrome::Service.driver_path = '/usr/local/bin'
 end
