@@ -39,7 +39,11 @@ jobs:
       - name: PG gem installation
         run: sudo apt-get -yqq install libpq-dev  
       - name: Set up database
-        run: bin/rails db:prepare
+        run:
+          bin/rails db:create
+          bin/rails db:migrate
+          bin/rails db:prepare
+           
       # Add or replace test runners here
       - name: Run tests
         run: bin/rake
