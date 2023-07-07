@@ -43,7 +43,6 @@ jobs:
 
       - name: Set up PostgreSQL database
         run: |
-          cp config/rubyonrails.yml.ci config/rubyonrails.yml
           bundle exec rails db:create db:schema:load
 
       - name: Run tests
