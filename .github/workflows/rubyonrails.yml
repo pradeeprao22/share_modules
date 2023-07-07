@@ -21,6 +21,9 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://postgres:@localhost:5432/test"
+      REDIS_URL: redis://localhost:6379/0
+      RAILS_ENV: test
+      RAILS_MASTER_KEY: ${{ secrets.rails.RAILS_MASTER_KEY }} 
     steps:
       - name: Print PostgreSQL socket directory
         run: ls -al /var/run/postgresql
@@ -34,6 +37,8 @@ jobs:
       # Add or replace database setup steps here
       - name: Set up bundler
         run: gem install bundler
+      - name: PG gem installation
+        run: sudo apt-get -yqq install libpq-dev  
       - name: Set up database
         run: bin/rails db:prepare
       # Add or replace test runners here
