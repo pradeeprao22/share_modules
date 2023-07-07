@@ -30,6 +30,8 @@ jobs:
         run: ls -al /var/run/postgresql
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Run bundler-audit
+        run: bundle exec bundler-audit check --update
       # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
