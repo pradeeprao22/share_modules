@@ -24,3 +24,4 @@ jobs:
         PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
       run: |
         psql --host=localhost --username=pradeep --command="CREATE DATABASE module_test"
+        RAILS_ENV="test" bundle exec db:schema:load
