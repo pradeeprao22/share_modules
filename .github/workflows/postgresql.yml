@@ -44,6 +44,6 @@ jobs:
       env:
         PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
       run: |
-        redis-cli ping
+        redis-cli
         psql --host=localhost --username=pradeep --command="CREATE DATABASE module_test"
         RAILS_ENV="test" bin/rails db:migrate
