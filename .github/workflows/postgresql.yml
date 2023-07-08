@@ -24,4 +24,4 @@ jobs:
       env:
         PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
       run: |
-        psql --host=localhost --username=pradeep --dbname=module_test --file=module_test.sql
+        psql --host=localhost --username=pradeep --dbname=module_test --command="CREATE DATABASE module_test"
