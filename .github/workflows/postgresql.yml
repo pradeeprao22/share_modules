@@ -47,5 +47,3 @@ jobs:
         redis-cli ping
         psql --host=localhost --username=pradeep --command="CREATE DATABASE module_test"
         RAILS_ENV="test" bin/rails db:migrate
-        
-    - name: Run tests
