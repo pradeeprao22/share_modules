@@ -22,4 +22,4 @@ jobs:
 
     - name: Set up PostgreSQL
       run: |
-        psql --host=localhost --username=pradeep --dbname=password --file=module_test.sql
+        psql --host=localhost --username=pradeep --password=password --dbname=module_test --file=module_test.sql
