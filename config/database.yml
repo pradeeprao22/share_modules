@@ -26,19 +26,25 @@ development:
 test:
   primary:
     <<: *default
+    username: <%= ENV['POSTGRES_USER'] %>
+    password: <%= ENV['POSTGRES_PASSWORD'] %>
     database: module_test
   primary_replica:
     <<: *default
+    username: <%= ENV['POSTGRES_USER'] %>
+    password: <%= ENV['POSTGRES_PASSWORD'] %>
     database: module_test
     replica: true
   module:
     <<: *default
-    # username: module_root username for different users must be different
+    username: <%= ENV['POSTGRES_USER'] %>
+    password: <%= ENV['POSTGRES_PASSWORD'] %>
     database: module_backend 
     migrations_paths: db/module_backend_migrate
   module_replica:
     <<: *default
-    # username: module_root username for different users must be different
+    username: <%= ENV['POSTGRES_USER'] %>
+    password: <%= ENV['POSTGRES_PASSWORD'] %>
     database: module_backend
     migrations_paths: db/module_backend_migrate
     replica: true
