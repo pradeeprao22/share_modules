@@ -44,5 +44,5 @@ jobs:
       env:
         PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
       run: |
+        service postgresql status
         psql --host=localhost --username=pradeep --command="CREATE DATABASE module_test"
-        RAILS_ENV="test" bin/rails db:migrate
