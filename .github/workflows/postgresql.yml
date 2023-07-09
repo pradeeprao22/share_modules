@@ -42,12 +42,13 @@ jobs:
         
     - name: Set up PostgreSQL
       env:
+        PG_DATABASE: postgres
+        PG_HOST: localhost
+        PG_USER: postgres
+        PG_PASSWORD: password
         RAILS_ENV: test
-        POSTGRES_USER: pradeep
-        POSTGRES_PASSWORD: password@123
-        PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        WITH_COVERAGE: true
+        DISABLE_SPRING: 1
       run: |
-        sudo service postgresql start
-        sudo service postgresql status
-        psql --host=localhost --username=pradeep --command="CREATE DATABASE module_test"
-        RAILS_ENV="test" bin/rails db:migrate:primary
+        bin/rails db:setup
+        bundle exec rake test
