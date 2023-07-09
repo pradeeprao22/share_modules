@@ -44,5 +44,6 @@ jobs:
       env:
         PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
       run: |
+        sudo ls /var/run/postgresql/.s.PGSQL.5432
         sudo service postgresql status
         psql --host=localhost --username=pradeep --command="CREATE DATABASE module_test"
