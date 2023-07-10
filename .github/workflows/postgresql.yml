@@ -1,4 +1,5 @@
 name: CI/CD Workflow
+
 on:
   push:
     branches:
@@ -13,42 +14,55 @@ jobs:
 
     services:
       postgres:
-        image: postgres
+        image: postgres:latest
         env:
-          POSTGRES_USER: pradeep
-          POSTGRES_PASSWORD: password@123
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: primary_database
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-        
-      redis:
-        image: redis
+
+      secondary_postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: secondary_database
         ports:
-          - 6379:6379
+          - 5433:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.1.2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.x
 
-    - name: Install dependencies
-      run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        
-    - name: Set up PostgreSQL
-      env:
-        PG_DATABASE: postgres
-        PG_HOST: localhost
-        PG_USER: postgres
-        PG_PASSWORD: password
-        RAILS_ENV: test
-        WITH_COVERAGE: true
-        DISABLE_SPRING: 1
-      run: |
-        bin/rails db:setup
-        bundle exec rake test
+      - name: Override database.yml for test environment
+        run: |
+          echo "test:" >> config/database.yml
+          echo "  <<: *default" >> config/database.yml
+          echo "  database: primary_database" >> config/database.yml
+          echo "secondary_test:" >> config/database.yml
+          echo "  <<: *default" >> config/database.yml
+          echo "  database: secondary_database" >> config/database.yml
+
+      - name: Install dependencies
+        run: bundle install --jobs 4 --retry 3
+
+      - name: Set up primary database
+        run: |
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
+
+      - name: Set up secondary database
+        run: |
+          bundle exec rails db:create RAILS_ENV=test --database=secondary
+          bundle exec rails db:migrate RAILS_ENV=test --database=secondary
+
+      - name: Run tests
+        run: bundle exec rspec
