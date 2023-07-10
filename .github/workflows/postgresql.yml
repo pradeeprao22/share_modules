@@ -56,13 +56,13 @@ jobs:
 
       - name: Set up primary database
         run: |
-          bundle exec rails db:create RAILS_ENV=test
-          bundle exec rails db:migrate RAILS_ENV=test
+          bin/rails db:create RAILS_ENV=test
+          binrails db:migrate RAILS_ENV=test
 
       - name: Set up secondary database
         run: |
-          bundle exec rails db:create RAILS_ENV=test --database=secondary
-          bundle exec rails db:migrate RAILS_ENV=test --database=secondary
+          bin/rails db:create RAILS_ENV=test --database=secondary
+          bin/rails db:migrate RAILS_ENV=test --database=secondary
 
       - name: Run tests
         run: bundle exec rspec
