@@ -1,4 +1,4 @@
-name: CI/CD Workflow
+name: Rails Tests
 
 on:
   push:
@@ -40,29 +40,26 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1.2
+          ruby-version: 2.7.x
 
-      - name: Override database.yml for test environment
+      - name: Set up PostgreSQL databases
         run: |
-          echo "test:" >> config/database.yml
-          echo "  <<: *default" >> config/database.yml
-          echo "  database: primary_database" >> config/database.yml
-          echo "secondary_test:" >> config/database.yml
-          echo "  <<: *default" >> config/database.yml
-          echo "  database: secondary_database" >> config/database.yml
+          cp config/database.yml.ci config/database.yml
+          sed -i 's/primary_database/postgres/g' config/database.yml
+          sed -i 's/secondary_database/postgres2/g' config/database.yml
 
       - name: Install dependencies
         run: bundle install --jobs 4 --retry 3
 
       - name: Set up primary database
         run: |
-          bin/rails db:create RAILS_ENV=test
-          binrails db:migrate RAILS_ENV=test
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
 
       - name: Set up secondary database
         run: |
-          bin/rails db:create RAILS_ENV=test --database=secondary
-          bin/rails db:migrate RAILS_ENV=test --database=secondary
+          bundle exec rails db:create RAILS_ENV=test --database=secondary
+          bundle exec rails db:migrate RAILS_ENV=test --database=secondary
 
       - name: Run tests
         run: bundle exec rspec
