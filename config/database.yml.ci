@@ -2,7 +2,7 @@ test:
   primary:
     adapter: postgresql
     encoding: unicode
-    database: primary_database
+    database: module_test
     pool: 5
     username: <%= ENV['POSTGRES_USER'] %>
     password: <%= ENV['POSTGRES_PASSWORD'] %>
@@ -11,7 +11,7 @@ test:
   primary_replica:
     adapter: postgresql
     encoding: unicode
-    database: primary_database
+    database: module_test
     pool: 5
     username: <%= ENV['POSTGRES_USER'] %>
     password: <%= ENV['POSTGRES_PASSWORD'] %>
@@ -20,7 +20,7 @@ test:
   module:
     adapter: postgresql
     encoding: unicode
-    database: secondary_database
+    database: module_backend
     pool: 5
     username: <%= ENV['POSTGRES_USER'] %>
     password: <%= ENV['POSTGRES_PASSWORD'] %>
@@ -29,7 +29,7 @@ test:
   module_replica:
     adapter: postgresql
     encoding: unicode
-    database: secondary_database
+    database: module_backend
     pool: 5
     username: <%= ENV['POSTGRES_USER'] %>
     password: <%= ENV['POSTGRES_PASSWORD'] %>
