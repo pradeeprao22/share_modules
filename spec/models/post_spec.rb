@@ -7,6 +7,7 @@ RSpec.describe Post, type: :model do
         name: "Summer",
         email: "tester@example.com",
         password: "dottle-nouveau-pavilion-tights-furze",
+        confirmed_at: Date.today
       )
 
       post = Post.create(
