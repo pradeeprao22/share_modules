@@ -58,8 +58,8 @@ jobs:
 
       - name: Set up secondary database
         run: |
-          bundle exec rails db:create RAILS_ENV=test --database=secondary
-          bundle exec rails db:migrate RAILS_ENV=test --database=secondary
+          bundle exec rails db:create RAILS_ENV=test --database=module
+          bundle exec rails db:migrate RAILS_ENV=test --database=module
 
       - name: Run tests
         run: bundle exec rspec
