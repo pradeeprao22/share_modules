@@ -1,9 +1,38 @@
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: myapp_test
-  pool: 5
-  username: <%= ENV['POSTGRES_USER'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  host: <%= ENV['POSTGRES_HOST'] %>
-  port: <%= ENV['POSTGRES_PORT'] %>
+  primary:
+    adapter: postgresql
+    encoding: unicode
+    database: myapp_test
+    pool: 5
+    username: <%= ENV['POSTGRES_USER'] %>
+    password: <%= ENV['POSTGRES_PASSWORD'] %>
+    host: <%= ENV['POSTGRES_HOST'] %>
+    port: <%= ENV['POSTGRES_PORT'] %>
+  primary_replica:
+    adapter: postgresql
+    encoding: unicode
+    database: myapp_test
+    pool: 5
+    username: <%= ENV['POSTGRES_USER'] %>
+    password: <%= ENV['POSTGRES_PASSWORD'] %>
+    host: <%= ENV['POSTGRES_HOST'] %>
+    port: <%= ENV['POSTGRES_PORT'] %>
+  module:
+    adapter: postgresql
+    encoding: unicode
+    database: myapp_test_backend
+    pool: 5
+    username: <%= ENV['POSTGRES_USER'] %>
+    password: <%= ENV['POSTGRES_PASSWORD'] %>
+    host: <%= ENV['POSTGRES_HOST'] %>
+    port: <%= ENV['POSTGRES_PORT'] %>
+  module_replica:
+    adapter: postgresql
+    encoding: unicode
+    database: myapp_test_backend
+    pool: 5
+    username: <%= ENV['POSTGRES_USER'] %>
+    password: <%= ENV['POSTGRES_PASSWORD'] %>
+    host: <%= ENV['POSTGRES_HOST'] %>
+    port: <%= ENV['POSTGRES_PORT'] %>
+
