@@ -1,11 +1,7 @@
 describe "User creats the module", :type => :feature do
-    
-    before :each do
-      user = User.create(:email => 'user@example.com', :password => 'password')
-    end
   
     it "Create the post module" do
-       user = User.create(:name => 'example', :email => 'user@example.com', :password => 'password')
+       user = User.new(:name => 'example', :email => 'user@example.com', :password => 'password')
        user.confirmed_at = Date.today
        user.save!
        login_as user
