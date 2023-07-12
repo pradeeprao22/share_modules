@@ -1,7 +1,7 @@
 describe "user update the module", :type => :feature do
     
     before :each do
-      user = User.create(:email => 'user@example.com', :password => 'password')
+      user = User.create(:name => 'Example user', :email => 'user@example.com', :password => 'password')
     end
   
     it "user update the module" do
