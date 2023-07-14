@@ -63,6 +63,7 @@ jobs:
       
       - name: Compiling the js files
         run: |
+          bin/rails tailwindcss:build
           yarn install
           yarn build  
 
