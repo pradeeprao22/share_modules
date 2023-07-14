@@ -16,8 +16,8 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: ${{ secrets.POSTGRES_USERNAME }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_USER: ENV['secrets.POSTGRES_USERNAME']
+          POSTGRES_PASSWORD: ENV['secrets.POSTGRES_PASSWORD']
           POSTGRES_DB: module_test
         ports:
           - 5432:5432
@@ -26,8 +26,8 @@ jobs:
       secondary_postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: ${{ secrets.POSTGRES_USERNAME }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_USER: ENV['secrets.POSTGRES_USERNAME']
+          POSTGRES_PASSWORD: ENV['secrets.POSTGRES_PASSWORD']
           POSTGRES_DB: module_backend
         ports:
           - 5433:5432
@@ -44,8 +44,6 @@ jobs:
 
       - name: Set up PostgreSQL databases
         run: |
-          echo ${{ secrets.POSTGRES_USERNAME }}
-          echo ${{ secrets.POSTGRES_PASSWORD }}
           cp config/database.yml.ci config/database.yml
           sed -i 's/primary_database/postgres/g' config/database.yml
           sed -i 's/secondary_database/postgres2/g' config/database.yml
