@@ -62,7 +62,9 @@ jobs:
           bundle exec rails db:migrate:module RAILS_ENV=test
       
       - name: Compiling the js files
-        run: yarn build    
+        run: |
+          yarn install
+          yarn build  
 
       - name: Run tests
         run: bundle exec rspec
