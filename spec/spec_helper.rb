@@ -25,11 +25,11 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
 
-  #config.include Devise::TestHelpers, type: :controller
+  #config.include Devise::Test::ControllerHelpers, type: :controller
   #config.include Capybara::DSL
   #config.include Warden::Test::Helpers
   #config.include Rails.application.routes.url_helpers
-  config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, :type => :controller
   #config.extend ControllerMacros, :type => :controller
 
   config.expect_with :rspec do |expectations|
