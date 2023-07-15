@@ -63,8 +63,8 @@ jobs:
 
       - name: Set up devise
         run: |
-          bundle exec rails generate devise:install
-          bundle exec rails db:migrate
+          bundle exec rails generate devise:install:primary
+          bundle exec rails db:migrate:primary
       
       - name: Compiling the js files
         run: |
