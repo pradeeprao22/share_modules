@@ -63,6 +63,9 @@ jobs:
       
       - name: Compiling the js files
         run: |
+          gem install bundler
+          bundle update --bundler
+          bundle lock --add-platform x86_64-linux
           bin/rails tailwindcss:build RAILS_ENV=test
           yarn install
           yarn build  
