@@ -60,6 +60,11 @@ jobs:
         run: |
           bundle exec rails db:create:module RAILS_ENV=test
           bundle exec rails db:migrate:module RAILS_ENV=test
+
+      - name: Set up devise
+        run: |
+          bundle exec rails generate devise:install
+          bundle exec rails db:migrate
       
       - name: Compiling the js files
         run: |
