@@ -55,7 +55,6 @@ jobs:
         run: |
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails generate devise:install
-          bundle exec rails generate devise User
           bundle exec rails db:migrate RAILS_ENV=test
 
       - name: Set up secondary database
