@@ -53,6 +53,7 @@ jobs:
 
       - name: Set up primary database
         run: |
+          bundle exec rails generate devise User
           bundle exec rails db:create RAILS_ENV=test
           bundle exec rails db:migrate RAILS_ENV=test
 
