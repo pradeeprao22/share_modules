@@ -7,6 +7,11 @@ FactoryBot.define do
 
     factory :post do
       content { "this is example" }
-      password { "123456" }
+      frontend { "<html><titel>This is example</title><body><p>This is example</p></body></html>" }
+      frontend_css { ".p { color: black }" }
+      javascript { "<script></script>" }
+      instruction { "This is instructions" }
+      published { true }
+      tags_id { ["3", "3", "4"] }
     end
 end
