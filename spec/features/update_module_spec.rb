@@ -7,7 +7,7 @@ describe "user update the module", :type => :feature do
     # end
   
     it "user update the module" do
-        user = User.create(:name => 'Example user', :email => 'user@example.com', :password => 'password')
+        user = User.new(:name => 'Example user', :email => 'user@example.com', :password => 'password')
         all_fields = user.attributes
         
         print all_fields
