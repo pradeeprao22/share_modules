@@ -1,17 +1,10 @@
 describe "user update the module", :type => :feature do
     
-    # before :each do
-    #   user = User.create(:name => 'Example user', :email => 'user@example.com', :password => 'password')
-    #   all_fields = user.attributes
-    #   puts all_fields
-    # end
+    before :each do
+      user = User.create(:name => 'Example user', :email => 'user@example.com', :password => 'password')
+    end
   
     it "user update the module" do
-        user = User.new(:name => 'Example user', :email => 'user@example.com', :password => 'password')
-        all_fields = user.attributes
-        
-        print all_fields
-
         post = Post.create(content: "Name of the content", frontend: "<html></html>", 
             frontend_css: "<style></style>", javascript: "<script></script>", instruction: "new instructions"
         )
