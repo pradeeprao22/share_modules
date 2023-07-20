@@ -2,7 +2,9 @@ FactoryBot.define do
     factory :user do
       sequence(:name) { |n| "test-#{n.to_s.rjust(3, "0")}" }
       sequence(:email) { |n| "test-#{n.to_s.rjust(3, "0")}@londevs.com" }
+      bio { "Example Bio" }
       password { "123456" }
+      confirmed_at { Date.today }
     end
 
     factory :post do
