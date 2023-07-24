@@ -1,31 +1,18 @@
-describe "user update the module", :type => :feature do
+describe "user visit the module page", :type => :feature do
     
     before :each do
-      user = User.create(:email => 'user@example.com', :password => 'password')
+      @user = FactoryBot.create(:user)
+      @tag = Tag.create(name: "HTML")
+      @post = FactoryBot.build(:post)
+      @post.user = @user
+      @post.tags_id = [@tag.id]
+      @post.save
     end
   
-    it "user update the module" do
-        user = User.create(:email => 'user@example.com', :password => 'password')
-        
-        post = Post.create(content: "Name of the content", frontend: "<html></html>", 
-            frontend_css: "<style></style>", javascript: "<script></script>", instruction: "new instructions"
-        )
-
-        visit posts_path(post.slug)
-
-        # find('post_content', visible: false).set('This is sample post')
-
-        # attach_file("UPLOAD SNAPSHOT", Rails.root + "spec/fixtures/module-screenshot.png")
-
-        # fill_in 'post[frontend]', with: 'This is sample post'
-        # fill_in 'post[frontend_css]', with: 'This is sample post'
-        # fill_in 'post[javascript]', with: 'This is sample javascript'
-        # fill_in 'post[instruction]', with: 'This are the instructions'
-
-        # click_button 'Update Module', disabled: true
-
-        #show page loaded success for the when visting the above slug
-        expect(page).to have_http_status(200)
+    it "finds the module details text on the page" do
+        login_as @user
+        visit post_path(@post.slug)
+        expect(page).to have_content('Module Details')
     end
 
 end
