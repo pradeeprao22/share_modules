@@ -1,4 +1,5 @@
 <div class="container">
+<h3>Module Details</h3>
 <!--Selecting module type-->
 <% if @post.module_type == "1" %>
 <% @module_type = "Backend" %>
@@ -111,18 +112,18 @@
 
 <%= form_for(@post, as: @post, url: post_path(@post), html: { method: :patch }) do |f| %>
 <div class="d-flex flex-column mt-3">
-  <h6>HTML</h6>
+  <label>HTML</label>
   <%= f.text_area :frontend, style: "white-space: pre-wrap;", value: (@post.frontend), class: "html-area"%>
   </div>
 <br>
 
 <div class="d-flex flex-column mt-3">
-  <h6>CSS</h6>
+  <label>CSS</label>
   <%= f.text_area :frontend_css, style: "white-space: pre-wrap;", value: (@post.frontend_css), class: "css-area"%>
 </div>
 
 <div class="d-flex flex-column mt-3">
-  <h6>JAVASCRIPT</h6>
+  <label>JAVASCRIPT</label>
   <%= f.text_area :javascript, style: "white-space: pre-wrap;", value: (@post.javascript), class: "javascript-area"%>
   </div>
   <br>
@@ -138,14 +139,14 @@
 <% end %>
 
 <div class="d-flex flex-column mt-3">
-  <h6><i>Instructions</i> </h6>
+  <label><i>Instructions</i></label>
   <%= f.text_area :instruction, rows: "10", style: "white-space: pre-wrap;", value: (@post.instruction), class: "form-control border-0" %>
 </div>
 
 <!-- Conditions according to the tags-->
 <!-- It will be always empty insted of case just try to loop the tags-->
 <div class="d-flex flex-column mt-3">
-<h6><i>Tags selected</i></h6>
+<label><i>Tags selected</i></label>
 <% @post.tags_id.map do |t| %>
     <% tag = Tag.find(t) %>
     <div class="col-sm">
