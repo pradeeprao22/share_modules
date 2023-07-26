@@ -72,4 +72,4 @@ Capybara.register_driver :selenium do |app|
 end
 
 Capybara.default_driver = :rack_test
-Capybara.javascript_driver = :rack_test
+# Capybara.javascript_driver = :rack_test
