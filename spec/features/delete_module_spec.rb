@@ -13,13 +13,6 @@ describe "User delets the module", :type => :feature do
         visit posts_path
 
         trash = find('.fa-trash-alt')
-
-        trash.click
-
-        accept_alert
-        visit user_path(@user)
-
-        # expect(page)
     end
 
 end

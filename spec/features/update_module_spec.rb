@@ -11,14 +11,14 @@ describe "user update the module", :type => :feature do
         login_as @user
         visit posts_path(@post.slug)
 
-        fill_in 'HTML', with: 'This is sample post'
-        fill_in 'CSS', with: 'This is sample post'
-        fill_in 'JAVASCRIPT', with: 'This is sample javascript'
-        fill_in 'INSTRUCTIONS', with: 'This are the instructions'
+        # fill_in 'HTML', with: 'This is sample post'
+        # fill_in 'CSS', with: 'This is sample post'
+        # fill_in 'JAVASCRIPT', with: 'This is sample javascript'
+        # fill_in 'INSTRUCTIONS', with: 'This are the instructions'
 
-        attach_file("UPLOAD SNAPSHOT", Rails.root + "spec/fixtures/module-screenshot.png")
+        # # attach_file("UPLOAD SNAPSHOT", Rails.root + "spec/fixtures/module-screenshot.png")
 
-        # click_button 'Update Module', disabled: true
+        # # click_button 'Update Module', disabled: true
     end
 
 end

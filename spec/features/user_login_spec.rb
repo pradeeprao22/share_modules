@@ -11,7 +11,7 @@ describe "the signin process", :type => :feature do
       fill_in 'password', :with => 'password'
       click_button 'Log in'
 
-      expect(page).to have_http_status(200)
+      expect(page.status_code).to eq(200)
     end
 
 end

@@ -1,26 +1,27 @@
-# describe "User creats the module", :type => :feature do
-  
-#     it "Create the post module" do
-#        user = User.new(:name => 'example', :email => 'user@example.com', :password => 'password')
-#        user.confirmed_at = Date.today
-#        user.save!
-#        login_as user
+describe "User creats the module post", :type => :feature do
 
-#        visit module_path
-#        fill_in 'post[content]', with: 'This is sample post'
-#        fill_in 'post[frontend]', with: 'This is sample post'
-#        fill_in 'post[frontend_css]', with: 'This is sample post'
-#        fill_in 'post[javascript]', with: 'This is sample javascript'
-#        fill_in 'post[instruction]', with: 'This are the instructions'
-#        attach_file("file", Rails.root + "spec/fixtures/module-screenshot.png")
-#        click_on 'Post Module'
+    before :each do
+      @user = FactoryBot.create(:user)
+    end
+    
+    it "create the post module" do
+       login_as @user
 
-#        within('#exampleModal') do
-#           click_button 'Submit'
-#        end
-#        visit posts_path
+       visit module_path
+       
+       fill_in 'post[content]', with: 'This is sample post'
+       attach_file("file", Rails.root + "spec/fixtures/module-screenshot.png")
+       fill_in 'post[frontend]', with: 'This is sample post'
+       fill_in 'post[frontend_css]', with: 'This is sample post'
+       fill_in 'post[javascript]', with: 'This is sample javascript'
+       fill_in 'post[instruction]', with: 'This are the instructions'
+       click_on 'Post Module'
 
-#        expect(page).to have_content(user.posts.last.content)
-#     end
+       within('#exampleModal') do
+          click_button 'Submit'
+       end
+       
+       expect(page.status_code).to eq(200)       
+    end
 
-# end
+end

@@ -71,5 +71,5 @@ Capybara.register_driver :selenium do |app|
   # You can also use :firefox or :safari as the browser option
 end
 
-Capybara.default_driver = :selenium
-Capybara.javascript_driver = :selenium
+Capybara.default_driver = :rack_test
+Capybara.javascript_driver = :rack_test
