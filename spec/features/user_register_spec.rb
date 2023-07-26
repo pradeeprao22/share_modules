@@ -11,7 +11,7 @@ describe "the signup process", :type => :feature do
 
       click_button 'Sign up'
 
-      expect(page).to have_http_status(200)
+      expect(page).to have_selector('h4', text: 'LonDevs')
     end
 
 end
