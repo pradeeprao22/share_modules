@@ -147,12 +147,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_140427) do
   end
 
   create_table "feeds", force: :cascade do |t|
-    t.integer "post_id"
     t.integer "user_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "feed_id"
-    t.string "feed_type"
+    t.integer "feedable_id"
+    t.string "feedable_type"
   end
 
   create_table "follows", force: :cascade do |t|
