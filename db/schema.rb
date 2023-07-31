@@ -150,6 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_140427) do
     t.integer "user_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "post_id"
     t.integer "feedable_id"
     t.string "feedable_type"
   end

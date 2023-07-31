@@ -1,14 +1,10 @@
-<!-- This user created some module logic -->
 <%  @feeds.map do |feed| %>
+   <div class="continer">
+   <% if feed.feedable_type == "Like" %> 
+     <p> <% feed.user.name %> liked  </p>
    
-   <% user = User.find(feed.user_id) %>
-   
-   <% post = Post.find(feed.post_id) %>
-
-   <p><% user.name %> posted <% post.content %></p>
-
-   <div>
    </div>
-   <!-- clap button by other users -->
-
+   <% user = User.find(feed.user_id) %>
+   <% post = Post.find(feed.post_id) %>
+   <p><% user.name %> posted <% post.content %></p>
 <% end %>
