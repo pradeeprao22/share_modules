@@ -1,10 +1,14 @@
 <%  @feeds.map do |feed| %>
    <div class="continer">
-   <% if feed.feedable_type == "Like" %> 
-     <p> <% feed.user.name %> liked  </p>
-   
+      <% if feed.feedable_type == "Like" %> 
+        <p><% feed.user.name %> liked <% feed.post.name %></p>
+      <% elsif feed.feedable_type == "Comment" %>
+
+      <% elsif feed.feedable_type == "Bookmark" %>
+          
+      <% end %>
    </div>
-   <% user = User.find(feed.user_id) %>
-   <% post = Post.find(feed.post_id) %>
-   <p><% user.name %> posted <% post.content %></p>
+   <!-- When user comment -->
+   <!-- When user like -->
+   <!-- When user bookmark -->
 <% end %>
