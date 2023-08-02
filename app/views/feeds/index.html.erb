@@ -7,10 +7,7 @@
       <% elsif feed.feedable_type == "Bookmark" %>
          <p><% feed.user.name %> bookmarked <% feed.post.name %></p>
       <% elsif feed.feedable_type == "Follow" %>
-         <p><% feed.user.name %> bookm <% feed.post.name %></p>            
+         <p><% feed.user.name %> Followed <% feed.post.name %></p>            
       <% end %>
    </div>
-   <!-- When user comment -->
-   <!-- When user like -->
-   <!-- When user bookmark -->
 <% end %>
