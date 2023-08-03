@@ -5,7 +5,6 @@ class Post < ApplicationRecord
 
   friendly_id :content, use: [:slugged, :finders]
   validates :content, presence: true
-
   with_options dependent: :destroy do |post|
     post.has_many :photos
     post.has_many :likes, -> {order(:created_at => :desc)}
@@ -15,17 +14,9 @@ class Post < ApplicationRecord
     post.has_many :tags
     post.has_many :categories
     post.has_many :notifications
+    post.has_many :code_files
   end 
 
-  # has_many :photos, dependent: :destroy
-  # has_many :likes, -> {order(:created_at => :desc)}, dependent: :destroy
-  # has_many :comments, -> {order(:created_at => :desc)}, dependent: :destroy
-  # has_many :bookmarks, dependent: :destroy
-  # has_many :languages, dependent: :destroy
-  # has_many :tags, dependent: :destroy
-  # has_many :categories, dependent: :destroy
-  # has_many :notifications, as: :notificationable
-  
   #Backend implementation
   #has_many :columns_for_fake_databases
   #through: :database_tables if self.module_type == "1"
