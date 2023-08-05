@@ -40,6 +40,13 @@
             <label>HTML</label>
             <%= f.text_area :frontend, style: "white-space: pre-wrap;", class: "html-area form-control border-0"%>
             </div> 
+
+            <%= f.fields_for :code_files do |code_files| %>
+              <div class="btn">
+                <label>UPLOAD CODE</label>
+                <%= code_files.file_field :name %>
+              </div>
+            <% end %>
           </div>
 
           <div class="form-group row mt-2">
@@ -47,6 +54,13 @@
             <label>CSS</label>
             <%= f.text_area :frontend_css, style: "white-space: pre-wrap;", class: "css-area form-control border-0"%>
             </div>
+              
+            <%= f.fields_for :code_files do |code_files| %>
+              <div class="btn">
+                <label>UPLOAD CODE</label>
+                <%= code_files.file_field :name %>
+              </div>
+            <% end %>
           </div>
 
           <div class="form-group row mt-2">
@@ -54,6 +68,13 @@
             <label>JAVASCRIPT</label>
             <%= f.text_area :javascript, style: "white-space: pre-wrap;", class: "javascript-area form-control border-0"%>
             </div>
+
+            <%= f.fields_for :code_files do |code_files| %>
+              <div class="btn">
+                <label>UPLOAD CODE</label>
+                <%= code_files.file_field :name %>
+              </div>
+            <% end %>
           </div>
 
           <div class="form-group row mt-2">
