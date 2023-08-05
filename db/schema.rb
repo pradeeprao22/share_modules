@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_141742) do
   create_table "code_files", force: :cascade do |t|
     t.string "name"
     t.integer "size"
-    t.string "type"
+    t.string "file_type"
     t.bigint "post_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
