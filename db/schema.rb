@@ -81,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_141742) do
     t.string "name"
     t.integer "size"
     t.string "file_type"
+    t.string "post_column"
     t.bigint "post_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false

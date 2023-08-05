@@ -1,4 +1,4 @@
-<%  @feeds.map do |feed| %>
+<% @feeds.map do |feed| %>
    <div class="continer">
       <% if feed.feedable_type == "Like" %> 
         <p><% feed.user.name %> liked <% feed.post.name %></p>
