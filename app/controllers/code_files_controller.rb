@@ -1,0 +1,2 @@
+class CodeFilesController < ApplicationController
+end
