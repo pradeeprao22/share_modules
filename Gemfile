@@ -100,3 +100,4 @@ gem 'tailwindcss-rails'
 gem 'sassc-rails'
 gem 'bundler-audit', require: false
 gem 'factory_bot_rails'
+gem 'uuid', '~> 2.3', '>= 2.3.9'
