@@ -5,7 +5,7 @@ class CreateCodeFiles < ActiveRecord::Migration[7.0]
       # t.string :css
       # t.string :javascript
       t.string :name
-      t.integer :fileid
+      t.string :fileid
       t.integer :size
       t.string :file_type
       t.string :post_column
