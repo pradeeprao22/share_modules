@@ -5,8 +5,9 @@ class CodeFile < ApplicationRecord
   after_create :add_fileid
 
   def add_fileid
-    random = SecureRandom.hex(4)
-    self.fileid = random
+    random = UUID.new
+    file_id = random.generate
+    self.fileid = file_id
     self.save!
   end
   
