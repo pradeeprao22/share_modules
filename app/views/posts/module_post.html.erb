@@ -7,7 +7,7 @@
         <b>Post Frontend Module:</b>
       </div>
       <div class="card-body">
-        <%= form_for @post, :html => { :multipart => true, :remote=>true } do |f| %>
+        <%= form_for @post, :html => { :multipart => true, :remote=>true, :local=>true } do |f| %>
           <div id="alert_message">
           </div>
           <div class="form-group row mt-2">
@@ -41,10 +41,11 @@
             <%= f.text_area :frontend, style: "white-space: pre-wrap;", class: "html-area form-control border-0"%>
             </div> 
 
-            <%= f.fields_for :code_files do |code_files| %>
+            <%= f.fields_for :code_fies do |code_files| %>
               <div class="btn">
                 <label>UPLOAD HTML</label>
-                <%= code_files.file_field :name %>
+                <%= code_files.file_field :file %>
+                <%= code_files.hidden_field :post_column, value: "html" %>
               </div>
             <% end %>
           </div>
@@ -57,8 +58,10 @@
               
             <%= f.fields_for :code_files do |code_files| %>
               <div class="btn">
+              
                 <label>UPLOAD CSS</label>
-                <%= code_files.file_field :name %>
+                <%= code_files.file_field :file %>
+                <%= code_files.hidden_field :post_column, value: "css" %>
               </div>
             <% end %>
           </div>
@@ -72,7 +75,8 @@
             <%= f.fields_for :code_files do |code_files| %>
               <div class="btn">
                 <label>UPLOAD JAVASCRIPT</label>
-                <%= code_files.file_field :name %>
+                <%= code_files.file_field :file %>
+                <%= code_files.hidden_field :post_column, value: "javascript" %>
               </div>
             <% end %>
           </div>
