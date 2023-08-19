@@ -1,5 +1,6 @@
 class CodeFile < ApplicationRecord
   belongs_to :post
+  belongs_to :user
   has_one_attached :file
 
   after_create :add_fileid
