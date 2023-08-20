@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :code_files
   has_many :posts, dependent: :destroy
   has_many :likes
   has_many :comments
