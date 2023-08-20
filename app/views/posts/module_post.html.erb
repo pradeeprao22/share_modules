@@ -41,7 +41,7 @@
             <%= f.text_area :frontend, style: "white-space: pre-wrap;", class: "html-area form-control border-0"%>
             </div> 
 
-            <%= f.fields_for :code_fies do |code_files| %>
+            <%= f.fields_for :code_files do |code_files| %>
               <div class="btn">
                 <label>UPLOAD HTML</label>
                 <%= code_files.file_field :file %>
