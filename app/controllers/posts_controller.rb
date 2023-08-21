@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   end
 
   def create
+        byebug
         # For getting user details
         action = params[:action]
         getdetails(action)
@@ -38,6 +39,13 @@ class PostsController < ApplicationController
           notify(action, @post)
            
             @post.update(tags_id: params[:post][:tags_id], published: true)      
+            
+            if params[:post][:code_files]
+                params[:post][:code_files].each do |code_file|
+                  # @post.code_files.create(file: code_file)
+                end
+            end
+            
             if params[:images]
                 params[:images].each do |img|
                   @post.photos.create(image: img)
@@ -142,7 +150,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database, :instruction, :slug, :module_type, :tags_id, code_files: [:id, :file, :post_column])
+    params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database, :instruction, :slug, :module_type, :tag_ids)
   end
 
   def set_cookie
