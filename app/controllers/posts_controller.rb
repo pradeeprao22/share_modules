@@ -42,7 +42,12 @@ class PostsController < ApplicationController
             
             if params[:post][:code_files]
                 params[:post][:code_files].each do |code_file|
-                  # @post.code_files.create(file: code_file)
+                  @code_file = code_file
+                  # byebug
+                  # name = @code_file.file_name
+                  # @post.code_files.new(name: code_file.file_name)
+                  # @post.code_files.user = @post.user
+                  # @post.save!
                 end
             end
             
@@ -148,6 +153,10 @@ class PostsController < ApplicationController
     flash[:danger] = "Post not exist!"
     redirect_to root_path
   end
+
+  # def code_file_params
+  #   params.require(:code_file).permit(:name, :fileid, :size, :file_type, :post_column)
+  # end
 
   def post_params
     params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database, :instruction, :slug, :module_type, :tag_ids)
