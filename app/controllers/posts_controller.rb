@@ -24,7 +24,6 @@ class PostsController < ApplicationController
   end
 
   def create
-        byebug
         # For getting user details
         action = params[:action]
         getdetails(action)
@@ -42,12 +41,16 @@ class PostsController < ApplicationController
             
             if params[:post][:code_files]
                 params[:post][:code_files].each do |code_file|
-                  @code_file = code_file
-                  # byebug
-                  # name = @code_file.file_name
-                  # @post.code_files.new(name: code_file.file_name)
-                  # @post.code_files.user = @post.user
-                  # @post.save!
+                  byebug
+                  @code_file = code_file[1]
+                  name = @code_file.original_filename
+                  file_type = @code_file.content_type
+                  post_column = "test"
+                  post_id = @post.id
+                  user_id = @post.user.id
+
+                  @post.code_files.new(name: name, file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
+                  @post.save!
                 end
             end
             
