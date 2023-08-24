@@ -41,11 +41,11 @@
             <%= f.text_area :frontend, style: "white-space: pre-wrap;", class: "html-area form-control border-0"%>
             </div> 
 
-            <%= f.fields_for :code_files do |code_files| %>
+            <%= f.fields_for :code_files do |code_files_1| %>
               <div class="btn">
                 <label>UPLOAD HTML</label>
-                <%= code_files.file_field :file %>
-                <%= code_files.hidden_field :post_column, value: "html" %>
+                <%= code_files_1.file_field :file %>
+                <%= code_files_1.hidden_field :post_column, value: "html" %>
               </div>
             <% end %>
           </div>
@@ -56,12 +56,12 @@
             <%= f.text_area :frontend_css, style: "white-space: pre-wrap;", class: "css-area form-control border-0"%>
             </div>
               
-            <%= f.fields_for :code_files do |code_files| %>
+            <%= f.fields_for :code_files do |code_files_2| %>
               <div class="btn">
               
                 <label>UPLOAD CSS</label>
-                <%= code_files.file_field :file %>
-                <%= code_files.hidden_field :post_column, value: "css" %>
+                <%= code_files_2.file_field :file %>
+                <%= code_files_2.hidden_field :post_column, value: "css" %>
               </div>
             <% end %>
           </div>
@@ -72,11 +72,11 @@
             <%= f.text_area :javascript, style: "white-space: pre-wrap;", class: "javascript-area form-control border-0"%>
             </div>
 
-            <%= f.fields_for :code_files do |code_files| %>
+            <%= f.fields_for :code_files do |code_files_3| %>
               <div class="btn">
                 <label>UPLOAD JAVASCRIPT</label>
-                <%= code_files.file_field :file %>
-                <%= code_files.hidden_field :post_column, value: "javascript" %>
+                <%= code_files_3.file_field :file %>
+                <%= code_files_3.hidden_field :post_column, value: "javascript" %>
               </div>
             <% end %>
           </div>
@@ -120,16 +120,16 @@
   </div>
 </div>
 
-<script>
- var form = document.getElementById("new_post")
+# <!--<script>
+# #  var form = document.getElementById("new_post")
 
- form.addEventListener("submit", function(event) {
-   event.preventDefault();
-   if (form.checkValidity()) {
-     console.log("Form Submited")
-     window.location.replace("http://localhost:3001")
-    } else {
-      console.log("Not Submited")
-    }
- });
-</script>
+# #  form.addEventListener("submit", function(event) {
+# #    event.preventDefault();
+# #    if (form.checkValidity()) {
+# #      console.log("Form Submited")
+# #      window.location.replace("http://localhost:3001")
+# #     } else {
+# #       console.log("Not Submited")
+# #     }
+# #  });
+# </script>-->
