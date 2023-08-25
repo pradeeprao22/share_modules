@@ -49,6 +49,11 @@ class PostsController < ApplicationController
                   post_id = @post.id
                   user_id = @post.user.id
 
+                  #Saving each uploaded file to a specific directory
+                  File.open( Rails.root.join("storage/#{name}"), 'wb') do |file|
+                    file.write(tempfile.read)
+                  end
+
                   @post.code_files.new(name: name, file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
                   @post.save!
                 end
