@@ -1,135 +1,107 @@
- <div class="d-flex flex-column" id="module-post">
+<div class="d-flex flex-column" id="module-post">
   <div class="col-xl-12 col-lg-8 col-md-10 col-sm-11 post-card">
   
-  <!--Post Form-->
+    <!-- Post Form -->
     <div class="card">
       <div class="card-header">
         <b>Post Frontend Module:</b>
       </div>
       <div class="card-body">
-        <%= form_for @post, :html => { :multipart => true, :remote=>true, :local=>true } do |f| %>
-          <div id="alert_message">
-          </div>
+        <%= form_for @post, html: { multipart: true, remote: true } do |f| %>
+          <div id="alert_message"></div>
           <div class="form-group row mt-2">
             <div class="col pl-0">
               <label>TITLE</label>
-              <%= f.text_field :content, rows: "5", class: "form-control border-0", autocomplete:"off", required: "true", 
-              placeholder: "" %>
+              <%= f.text_field :content, rows: "5", class: "form-control border-0", autocomplete: "off", required: "true", placeholder: "" %>
+            </div>
+          </div>
+
+          <center>
+            <div class="fileUpload btn btn-danger">
+              <label>UPLOAD SNAPSHOT</label>
+              <%= file_field_tag "post[images][]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
+            </div>
+            <!-- SHOW RESULT HERE -->
+          </center>
+
+          <div><p id="fp"></p></div>
+
+          <div>
+            <input type="button" value="Show Details" onclick="fileDetails()" class="btn btn-primary">
+          </div>
+
+          <!-- File uploads for code files -->
+          <div class="form-group row mt-2">
+            <div class="col">
+              <label>HTML</label>
+              <%= f.text_area :frontend, style: "white-space: pre-wrap;", class: "html-area form-control border-0" %>
+            </div>
+            <div class="btn">
+              <label>UPLOAD HTML</label>
+              <%= file_field_tag "post[code_files][][file]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
+              <%= hidden_field_tag "post[code_files][][post_column]", "html" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col">
+              <label>CSS</label>
+              <%= f.text_area :frontend_css, style: "white-space: pre-wrap;", class: "css-area form-control border-0" %>
+            </div>
+            <div class="btn">
+              <label>UPLOAD CSS</label>
+              <%= file_field_tag "post[code_files][][file]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
+              <%= hidden_field_tag "post[code_files][][post_column]", "css" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col">
+              <label>JAVASCRIPT</label>
+              <%= f.text_area :javascript, style: "white-space: pre-wrap;", class: "javascript-area form-control border-0" %>
+            </div>
+            <div class="btn">
+              <label>UPLOAD JAVASCRIPT</label>
+              <%= file_field_tag "post[code_files][][file]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
+              <%= hidden_field_tag "post[code_files][][post_column]", "javascript" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col">
+              <label>INSTRUCTIONS</label>
+              <%= f.text_area :instruction, rows: "8", style: "white-space: pre-wrap;", class: "form-control border-0", required: "true" %>
+            </div>
+          </div>
+
+          <div class="form-group row mt-2">
+            <div class="col">
+              <label>SELECT TAGS</label>
+              <%= f.select(:tags_id, Tag.all.collect {|t| [ t.name, t.id ] }, { prompt: "Please select tag for your module" }, multiple: true, size: 5, class: "form-control"  ) %>
             </div>
           </div>
           
-          <center>
-          <div class="fileUpload btn btn-danger">
-            <label>UPLOAD SNAPSHOT</label>
-            <div class="fallback">
-                <%= file_field_tag "images[]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
-            </div>
-            <!--SHOW RESULT HERE-->
-          </div>
-
-          <div><p id="fp"></p></div>
-  
-          <div>
-            <input type="button" value="Show Details" onclick="fileDetails()"  class="btn btn-primary">
-          </div>
-
-          </center>
-
-          <div class="form-group row mt-2">
-            <div class="col">
-            <label>HTML</label>
-            <%= f.text_area :frontend, style: "white-space: pre-wrap;", class: "html-area form-control border-0"%>
-            </div> 
-
-            <%= f.fields_for :code_files do |code_files_1| %>
-              <div class="btn">
-                <label>UPLOAD HTML</label>
-                <%= code_files_1.file_field :file %>
-                <%= code_files_1.hidden_field :post_column, value: "html" %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="form-group row mt-2">
-            <div class="col">
-            <label>CSS</label>
-            <%= f.text_area :frontend_css, style: "white-space: pre-wrap;", class: "css-area form-control border-0"%>
-            </div>
-              
-            <%= f.fields_for :code_files do |code_files_2| %>
-              <div class="btn">
-              
-                <label>UPLOAD CSS</label>
-                <%= code_files_2.file_field :file %>
-                <%= code_files_2.hidden_field :post_column, value: "css" %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="form-group row mt-2">
-            <div class="col">
-            <label>JAVASCRIPT</label>
-            <%= f.text_area :javascript, style: "white-space: pre-wrap;", class: "javascript-area form-control border-0"%>
-            </div>
-
-            <%= f.fields_for :code_files do |code_files_3| %>
-              <div class="btn">
-                <label>UPLOAD JAVASCRIPT</label>
-                <%= code_files_3.file_field :file %>
-                <%= code_files_3.hidden_field :post_column, value: "javascript" %>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="form-group row mt-2">
-            <div class="col">
-            <label>INSTRUCTIONS</label>
-            <%= f.text_area :instruction, rows: "8", style: "white-space: pre-wrap;", class: "form-control border-0", required: "true" %>
-            </div>
-          </div>
-
-         <div class="form-group row mt-2">
-            <div class="col">
-            <label>SELECT TAGES</label>
-            <%= f.select(:tags_id, Tag.all.collect {|t| [ t.name, t.id ] }, { :prompt => "Please select tag for your module" }, { :multiple => true, :size => 5, :class => "form-control"  }) %>
-            </div>
-          </div>
-      
           <div class="form-group row mt-2">
             <button type="button" class="btn btn-primary" name="Submit" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Post Module</button>
           </div>
 
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-               <label>POST MODULE</label>
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <label>POST MODULE</label>
+                </div>
+                <div class="modal-body">
+                  <p>This module will be posted, and you will be redirected to the show page.</p>
+                </div>
+                <div class="modal-footer">
+                  <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
+                </div>
               </div>
-            <div class="modal-body">
-               <p>This module will be posted and you will be redirected to show page.</p>
             </div>
-            <div class="modal-footer">
-              <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>
-            </div>
-            </div>
-          </div>
           </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-# <!--<script>
-# #  var form = document.getElementById("new_post")
-
-# #  form.addEventListener("submit", function(event) {
-# #    event.preventDefault();
-# #    if (form.checkValidity()) {
-# #      console.log("Form Submited")
-# #      window.location.replace("http://localhost:3001")
-# #     } else {
-# #       console.log("Not Submited")
-# #     }
-# #  });
-# </script>-->
