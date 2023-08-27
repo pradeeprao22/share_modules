@@ -42,12 +42,11 @@ class PostsController < ApplicationController
             if params[:post][:code_files]
                 params[:post][:code_files].each do |code_file|
                   byebug
-                  @code_file = code_file[1]
-                  name = @code_file.original_filename
-                  file_type = @code_file.content_type
-                  post_column = "test"
-                  post_id = @post.id
-                  user_id = @post.user.id
+                  name = code_file[:file].original_filename
+                  file_type = code_file[:file].content_type
+                  post_column = code_file[:file].post_column
+                  post_id = post.id
+                  user_id = post.user.id
 
                   #Saving each uploaded file to a specific directory
                   File.open( Rails.root.join("storage/#{name}"), 'wb') do |file|
@@ -162,12 +161,9 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
-  # def code_file_params
-  #   params.require(:code_file).permit(:name, :fileid, :size, :file_type, :post_column)
-  # end
-
   def post_params
-    params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database, :instruction, :slug, :module_type, :tag_ids)
+    params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database, :instruction, :slug, :module_type, :tag_ids,
+    code_files_attributes: [:id, :post_column])
   end
 
   def set_cookie
