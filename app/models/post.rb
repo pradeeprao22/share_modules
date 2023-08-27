@@ -15,8 +15,10 @@ class Post < ApplicationRecord
     post.has_many :categories
     post.has_many :notifications
     post.has_many :code_files
-  end 
+  end
 
+  accepts_nested_attributes_for :code_files
+  # after_save :post_published
   #Backend implementation
   #has_many :columns_for_fake_databases
   #through: :database_tables if self.module_type == "1"
@@ -56,5 +58,10 @@ class Post < ApplicationRecord
     else
       nil
     end
- end
+  end
+
+  # def post_published
+  #   self.published = true
+  #   self.save!
+  # end
 end
