@@ -36,7 +36,7 @@
               <label>HTML</label>
               <%= f.text_area :frontend, style: "white-space: pre-wrap;", class: "html-area form-control border-0" %>
             </div>
-            <div class="btn">
+            <div>
               <label>UPLOAD HTML</label>
               <%= file_field_tag "post[code_files][][file]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
               <%= hidden_field_tag "post[code_files][][post_column]", "html" %>
@@ -48,7 +48,7 @@
               <label>CSS</label>
               <%= f.text_area :frontend_css, style: "white-space: pre-wrap;", class: "css-area form-control border-0" %>
             </div>
-            <div class="btn">
+            <div>
               <label>UPLOAD CSS</label>
               <%= file_field_tag "post[code_files][][file]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
               <%= hidden_field_tag "post[code_files][][post_column]", "css" %>
@@ -60,7 +60,7 @@
               <label>JAVASCRIPT</label>
               <%= f.text_area :javascript, style: "white-space: pre-wrap;", class: "javascript-area form-control border-0" %>
             </div>
-            <div class="btn">
+            <div>
               <label>UPLOAD JAVASCRIPT</label>
               <%= file_field_tag "post[code_files][][file]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
               <%= hidden_field_tag "post[code_files][][post_column]", "javascript" %>
