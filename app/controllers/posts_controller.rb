@@ -44,13 +44,13 @@ class PostsController < ApplicationController
                   byebug
                   name = code_file[:file].original_filename
                   file_type = code_file[:file].content_type
-                  post_column = code_file[:file].post_column
-                  post_id = post.id
-                  user_id = post.user.id
+                  post_column = "test"
+                  post_id = @post.id
+                  user_id = @post.user.id
 
                   #Saving each uploaded file to a specific directory
-                  File.open( Rails.root.join("storage/#{name}"), 'wb') do |file|
-                    file.write(tempfile.read)
+                  File.open( Rails.root.join("app/assets/code_files/#{name}"), 'wb') do |file|
+                    file.write(code_file[:file].tempfile.read)
                   end
 
                   @post.code_files.new(name: name, file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
@@ -162,7 +162,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database, :instruction, :slug, :module_type, :tag_ids,
+    params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database, :instruction, :slug, :module_type, :tags_id,
     code_files_attributes: [:id, :post_column])
   end
 
