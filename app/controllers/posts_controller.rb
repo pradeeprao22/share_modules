@@ -44,7 +44,7 @@ class PostsController < ApplicationController
                   byebug
                   name = code_file[:file].original_filename
                   file_type = code_file[:file].content_type
-                  post_column = "test"
+                  post_column = code_file[:post_column]
                   post_id = @post.id
                   user_id = @post.user.id
 
