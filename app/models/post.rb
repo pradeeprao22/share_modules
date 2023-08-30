@@ -18,7 +18,7 @@ class Post < ApplicationRecord
   end
 
   accepts_nested_attributes_for :code_files
-  # after_save :post_published
+  before_create :post_published
   #Backend implementation
   #has_many :columns_for_fake_databases
   #through: :database_tables if self.module_type == "1"
@@ -60,8 +60,11 @@ class Post < ApplicationRecord
     end
   end
 
-  # def post_published
-  #   self.published = true
-  #   self.save!
+  # def tags_allocate
+
   # end
+
+  def post_published
+    self.published = true
+  end
 end
