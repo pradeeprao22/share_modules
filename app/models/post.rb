@@ -5,6 +5,7 @@ class Post < ApplicationRecord
 
   friendly_id :content, use: [:slugged, :finders]
   validates :content, presence: true
+  validates :html, presence: true
   with_options dependent: :destroy do |post|
     post.has_many :photos
     post.has_many :likes, -> {order(:created_at => :desc)}
@@ -19,6 +20,7 @@ class Post < ApplicationRecord
 
   accepts_nested_attributes_for :code_files
   before_create :post_published
+
   #Backend implementation
   #has_many :columns_for_fake_databases
   #through: :database_tables if self.module_type == "1"
