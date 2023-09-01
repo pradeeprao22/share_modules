@@ -5,7 +5,8 @@ class Post < ApplicationRecord
 
   friendly_id :content, use: [:slugged, :finders]
   validates :content, presence: true
-  validates :html, presence: true
+  validates :frontend, presence: true
+  validates :backend, presence: true
   with_options dependent: :destroy do |post|
     post.has_many :photos
     post.has_many :likes, -> {order(:created_at => :desc)}
