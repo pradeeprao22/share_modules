@@ -27,21 +27,23 @@ class PostsController < ApplicationController
         # For getting user details
         action = params[:action]
         getdetails(action)
-
+        byebug
         # Quick bug fix (remove this)
         params[:post][:tags_id][0] = params[:post][:tags_id][1]
 
         @post = current_user.posts.build(post_params)
+        begin
+        ActiveRecord::Base.transaction do
+        byebug
         if @post.save
       
           # For creating notification
           notify(action, @post)
            
-            @post.update(tags_id: params[:post][:tags_id], published: true)      
+            @post.update(tags_id: params[:post][:tags_id])      
             
             if params[:post][:code_files]
                 params[:post][:code_files].each do |code_file|
-                  byebug
                   name = code_file[:file].original_filename
                   file_type = code_file[:file].content_type
                   post_column = code_file[:post_column]
@@ -53,23 +55,29 @@ class PostsController < ApplicationController
                     file.write(code_file[:file].tempfile.read)
                   end
 
-                  @post.code_files.new(name: name, file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
+                  @post.code_files.new(name: , file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
                   @post.save!
                 end
             end
-            
-            if params[:images]
-                params[:images].each do |img|
-                  @post.photos.create(image: img)
-                  ActionCable.server.broadcast('post_channel', {post: ( render @post)})
-                  flash[:success] = "Module created succesfully"
-                  head :ok
-                end
-            end
-        else
-            flash[:alert] = "Unable to create module"
-            respond_to :js
-            redirect_to posts_path
+          end
+          rescue ActiveRecord::RecordInvalid => e
+            puts e 
+            flash[:warning] = "Module not saved #{e}"
+          rescue StandardError => e
+            puts e
+            flash[:warning] = "Module not saved #{e}"
+          end
+          if params[:images]
+              params[:images].each do |img|
+                @post.photos.create(image: img)
+                ActionCable.server.broadcast('post_channel', {post: ( render @post)})
+                flash[:success] = "Module created succesfully"
+                head :ok
+              end
+          end
+          # flash[:alert] = "Unable to create module"
+          # respond_to :js
+          redirect_to posts_path
         end
   end
 
@@ -163,7 +171,7 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database, :instruction, :slug, :module_type, :tags_id,
-    code_files_attributes: [:id, :post_column])
+    code_file_attributes: [:id, :name, :file_type, :post_id, :user_id, :post_column])
   end
 
   def set_cookie
