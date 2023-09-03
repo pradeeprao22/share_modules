@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   def create
-        # For getting user details
+      # For getting user details
         action = params[:action]
         getdetails(action)
         byebug
@@ -32,17 +32,16 @@ class PostsController < ApplicationController
         params[:post][:tags_id][0] = params[:post][:tags_id][1]
 
         @post = current_user.posts.build(post_params)
-        begin
+      begin
         ActiveRecord::Base.transaction do
-        byebug
-        if @post.save
-      
-          # For creating notification
-          notify(action, @post)
+          byebug
+         if @post.save!
+            # For creating notification
+            notify(action, @post)
            
             @post.update(tags_id: params[:post][:tags_id])      
             
-            if params[:post][:code_files]
+           if params[:post][:code_files]
                 params[:post][:code_files].each do |code_file|
                   name = code_file[:file].original_filename
                   file_type = code_file[:file].content_type
@@ -60,6 +59,7 @@ class PostsController < ApplicationController
                 end
             end
           end
+
           rescue ActiveRecord::RecordInvalid => e
             puts e 
             flash[:warning] = "Module not saved #{e}"
@@ -67,6 +67,7 @@ class PostsController < ApplicationController
             puts e
             flash[:warning] = "Module not saved #{e}"
           end
+
           if params[:images]
               params[:images].each do |img|
                 @post.photos.create(image: img)
@@ -75,10 +76,9 @@ class PostsController < ApplicationController
                 head :ok
               end
           end
-          # flash[:alert] = "Unable to create module"
-          # respond_to :js
-          redirect_to posts_path
+          # redirect_to posts_path
         end
+      end
   end
 
   def update
