@@ -29,7 +29,7 @@ class PostsController < ApplicationController
         getdetails(action)
         byebug
         # Quick bug fix (remove this)
-        params[:post][:tags_id][0] = params[:post][:tags_id][1]
+        params[:post][:tags_id].shift
 
         @post = current_user.posts.build(post_params)
         begin
