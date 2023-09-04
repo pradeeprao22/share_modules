@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   def create
-      # For getting user details
+        # For getting user details
         action = params[:action]
         getdetails(action)
         byebug
@@ -32,17 +32,17 @@ class PostsController < ApplicationController
         params[:post][:tags_id][0] = params[:post][:tags_id][1]
 
         @post = current_user.posts.build(post_params)
-      begin
+        begin
         ActiveRecord::Base.transaction do
           byebug
-         if @post.save!
+          if @post.save!
             # For creating notification
             notify(action, @post)
            
             @post.update(tags_id: params[:post][:tags_id])      
             
-           if params[:post][:code_files]
-                params[:post][:code_files].each do |code_file|
+            if params[:post][:code_files]
+              params[:post][:code_files].each do |code_file|
                   name = code_file[:file].original_filename
                   file_type = code_file[:file].content_type
                   post_column = code_file[:post_column]
@@ -57,15 +57,15 @@ class PostsController < ApplicationController
                   @post.code_files.new(name: , file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
                   @post.save!
                 end
+              end
             end
-          end
 
-          rescue ActiveRecord::RecordInvalid => e
-            puts e 
-            flash[:warning] = "Module not saved #{e}"
-          rescue StandardError => e
-            puts e
-            flash[:warning] = "Module not saved #{e}"
+            rescue ActiveRecord::RecordInvalid => e
+              puts e 
+              flash[:warning] = "Module not saved #{e}"
+            rescue StandardError => e
+              puts e
+              flash[:warning] = "Module not saved #{e}"
           end
 
           if params[:images]
@@ -77,8 +77,7 @@ class PostsController < ApplicationController
               end
           end
           # redirect_to posts_path
-        end
-      end
+       end
   end
 
   def update
