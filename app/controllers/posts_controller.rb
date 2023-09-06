@@ -27,20 +27,19 @@ class PostsController < ApplicationController
         # For getting user details
         action = params[:action]
         getdetails(action)
-        byebug
-        # Quick bug fix (remove this)
-        params[:post][:tags_id].shift
+        #Removing the empty elements in array
+        tags = params[:post][:tags_id].delete_if { |element| element.empty? }
 
         @post = current_user.posts.build(post_params)
+        #Tags allocate
+        @post.tags_id = tags
         begin
         ActiveRecord::Base.transaction do
           byebug
           if @post.save!
             # For creating notification
             notify(action, @post)
-           
-            @post.update(tags_id: params[:post][:tags_id])      
-            
+                      
             if params[:post][:code_files]
               params[:post][:code_files].each do |code_file|
                   name = code_file[:file].original_filename
@@ -159,6 +158,9 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def code_fileupload
+  end
 
   def find_post
     @post = Post.friendly.find_by_slug(params[:slug])
