@@ -145,12 +145,12 @@
 
 <!-- Conditions according to the tags-->
 <!-- It will be always empty insted of case just try to loop the tags-->
+
 <div class="d-flex flex-column mt-3">
 <label><i>Tags selected</i></label>
-<% @post.tags_id.map do |t| %>
-    <% tag = Tag.find(t) %>
+<% @post.tags_id.map do |tag| %>
     <div class="col-sm">
-      <span class="badge bg-success"><b><%= tag.name %></b></span>
+      <span class="badge bg-success"><b><%= tag %></b></span>
     </div>
 <% end %>
 
