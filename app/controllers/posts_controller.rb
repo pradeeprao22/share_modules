@@ -35,7 +35,6 @@ class PostsController < ApplicationController
         @post.tags_id = tags
         begin
         ActiveRecord::Base.transaction do
-          byebug
           if @post.save!
             # For creating notification
             notify(action, @post)
@@ -101,6 +100,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @is_liked = @post.is_liked(current_user)
     @is_bookmarked = @post.is_bookmarked(current_user)
+    @image_path = Rails.root.join("app/assets/images/module_screenshots/#{@post.slug}.png")
   end
 
   def destroy
@@ -126,9 +126,9 @@ class PostsController < ApplicationController
 
   def build_module
     if ImageRepo.find_by(post_id: @post.id) == nil
-      # slug = @post.slug
-      # post_id = @post.id
-      # ImgkitWorker.perform_async(slug, post_id)
+      slug = @post.slug
+      post_id = @post.id
+      ImgkitWorker.perform_async(slug, post_id)
     end
     # for getting user details
     action = params[:action]
