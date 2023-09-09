@@ -14,7 +14,7 @@
 
 # Future:
 
-## Every coding language (technology) is going to have a different process or worker. Initially: Ruby, Python, PHP, JAVA
+## Every coding language (technology) is going to have a different process or worker. Initially: Ruby, Javascript
 
 ### Things needs to cover:
 2) Making the UI more user-friendly.
@@ -33,3 +33,10 @@
 
 # Test Cases
 * 70% of the test cases are covered
+
+# Background processing
+## For Redis setup
+```
+sudo sysctl -w kern.ipc.somaxconn=511
+
+```
