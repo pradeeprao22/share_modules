@@ -24,7 +24,11 @@
       <div class="col-lg-8 col-md-7 d-flex post-show-img">
           <!-- Render Photos  -->
           <div class="align-self-center">
-            <%= render "photos", {post: @post} %>
+            <% if @post.image_repo != nil %>
+            <%= image_tag 'module_screenshots/'+ @image_path +'.png', class: "card-img-top" %>
+            <% else %>
+            <img class="card-img-top" src= "#" >
+            <% end %>
           </div>
       </div>
 
