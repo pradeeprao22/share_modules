@@ -16,12 +16,12 @@
             </div>
           </div>
 
+          <!--
           <center>
             <div class="fileUpload btn btn-danger">
               <label>UPLOAD SNAPSHOT</label>
               <%= file_field_tag "post[images][]", type: :file, multiple: true, class: "upload form-control border-0", id: "file", required: "true" %>
             </div>
-            <!-- SHOW RESULT HERE -->
           </center>
 
           <div><p id="fp"></p></div>
@@ -31,6 +31,7 @@
             <input type="button" value="Show Details" onclick="fileDetails()" class="btn btn-primary">
           </div>
           </center>
+          -->
 
           <!-- File uploads for code files -->
           <div class="form-group row mt-2">
@@ -107,3 +108,33 @@
     </div>
   </div>
 </div>
+<!-- Code mirror javascript -->
+<script type="text/javascript">
+  $(document).ready(function() {
+      var htmlcode = $(".html-area")[0];
+      var editor = CodeMirror.fromTextArea(htmlcode, {
+          lineNumbers : true,
+          mode: "htmlmixed",
+          htmlMode: true,
+          tabMode: "indent"
+      });
+  });
+
+  $(document).ready(function() {
+      var csscode = $(".css-area")[0];
+      var editor = CodeMirror.fromTextArea(csscode, {
+          lineNumbers : true,
+          mode: "css",
+          tabMode: "indent"
+      });
+  });
+
+  $(document).ready(function() {
+      var baccode = $(".javascript-area")[0];
+      var editor = CodeMirror.fromTextArea(baccode, {
+          lineNumbers : true,
+          mode: "javascript",
+          tabMode: "indent"
+      });
+  });
+</script>
