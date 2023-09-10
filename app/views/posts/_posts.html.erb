@@ -25,9 +25,13 @@
     </div>  
     </div>
     <%= link_to post_path(post) do %>
-    <%= render "photos", {post: post} %>
+      <% if post.image_repo != nil %>
+       <% @slug = post.slug %>
+       <%= image_tag 'module_screenshots/'+ @slug +'.png', class: "card-img-top" %>
+       <% else %>
+      <img src= "#" alt="Image not generated please wait">
+      <% end %>
     <% end %>
-
       <div class="card-body">
         <div class="row actions">
           <!-- Likes button render -->
