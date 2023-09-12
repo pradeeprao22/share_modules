@@ -1,8 +1,8 @@
 <div class="container">
-<h3>Inbox</h3>
+<h6>Inbox</h6>
 
-<div class="form-control">
-   <h4>Following</h4>
+<div>
+   <h6>Following</h6>
       <% @follows.each do |follow| %>
          <% if follow.following.id != current_user.id %>
             <div class="row">
@@ -13,8 +13,8 @@
       <% end %>
 </div>
 <br>
-<div class="form-control">
-   <h4>Messages From</h4>
+<div>
+   <h6>Messages From</h6>
    <div class="row">
         <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
@@ -23,12 +23,15 @@
         <% else %>
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
-        <div class="col-2">
-           <h4><%= image_tag avatar_url(recipient), class: "card-type-icon with-border material-icons" %></h4>
-        </div>
-        <div class="col-3"> 
-           <h4><%= link_to recipient.name, conversation_messages_path(conversation)%></h4>
-        </div>
+        <ol class="list-group list-group-numbered">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+         <div class="ms-2 me-auto">
+         <div class="fw-bold"><%= image_tag avatar_url(recipient), class: "card-type-icon with-border material-icons" %></div>
+          <%= link_to recipient.name, conversation_messages_path(conversation)%>
+         </div>
+         <span class="badge bg-primary rounded-pill" alt="Number">14</span>
+        </li>
+        </ol>
         <% end %>
         <% end %>
    </div>
