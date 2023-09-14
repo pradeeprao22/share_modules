@@ -16,8 +16,8 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: ENV['secrets.POSTGRES_USERNAME']
-          POSTGRES_PASSWORD: ENV['secrets.POSTGRES_PASSWORD']
+          POSTGRES_USER: ${{ secrets.POSTGRES_USERNAME }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_USERNAME }}
           POSTGRES_DB: module_test
         ports:
           - 5432:5432
@@ -26,8 +26,8 @@ jobs:
       secondary_postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: ENV['secrets.POSTGRES_USERNAME']
-          POSTGRES_PASSWORD: ENV['secrets.POSTGRES_PASSWORD']
+          POSTGRES_USER: ${{ secrets.POSTGRES_USERNAME }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_USERNAME }}
           POSTGRES_DB: module_backend
         ports:
           - 5433:5432
