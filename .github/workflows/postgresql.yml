@@ -15,6 +15,9 @@ jobs:
     services:
       postgres:
         image: postgres:latest
+        run: |
+          echo "POSTGRES_USERNAME: ${{ secrets.POSTGRES_USERNAME }}"
+          echo "POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}"
         env:
           POSTGRES_USER: ${{ secrets.POSTGRES_USERNAME }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_USERNAME }}
