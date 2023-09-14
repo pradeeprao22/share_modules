@@ -5,7 +5,7 @@ test:
     database: module_test
     pool: 5
     username: ${{ secrets.POSTGRES_USERNAME }}
-    password: ${{ secrets.POSTGRES_USERNAME }}
+    password: ${{ secrets.POSTGRES_PASSWORD }}
     host: localhost
     port: 5432
   primary_replica:
@@ -14,7 +14,7 @@ test:
     database: module_test
     pool: 5
     username: ${{ secrets.POSTGRES_USERNAME }}
-    password: ${{ secrets.POSTGRES_USERNAME }}
+    password: ${{ secrets.POSTGRES_PASSWORD }}
     host: localhost
     port: 5432
   module:
@@ -23,7 +23,7 @@ test:
     database: module_backend
     pool: 5
     username: ${{ secrets.POSTGRES_USERNAME }}
-    password: ${{ secrets.POSTGRES_USERNAME }}
+    password: ${{ secrets.POSTGRES_PASSWORD }}
     host: localhost
     port: 5432
   module_replica:
@@ -32,7 +32,7 @@ test:
     database: module_backend
     pool: 5
     username: ${{ secrets.POSTGRES_USERNAME }}
-    password: ${{ secrets.POSTGRES_USERNAME }}
+    password: ${{ secrets.POSTGRES_PASSWORD }}
     host: localhost
     port: 5432
 
