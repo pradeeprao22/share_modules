@@ -42,14 +42,7 @@ jobs:
       - name: Debug Docker Containers
         run: |
           docker ps
-
-      - name: Restart PostgreSQL Service
-        run: |
-          # Stop the PostgreSQL service container
-          docker stop postgres
-
-          # Start the PostgreSQL service container
-          docker start postgres
+          docker restart 52118f921eb3 5564bc70bf75
           
       - name: Checkout code
         uses: actions/checkout@v2
