@@ -38,6 +38,10 @@ jobs:
         run: |
           echo "POSTGRES_USERNAME: ${{ secrets.POSTGRES_USERNAME }}"
           echo "POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}"
+      
+      - name: Debug Docker Containers
+        run: |
+          docker ps
 
       - name: Restart PostgreSQL Service
         run: |
