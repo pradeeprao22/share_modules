@@ -23,13 +23,13 @@
         <% else %>
           <% recipient = User.find(conversation.sender_id) %>
         <% end %>
-        <ol class="list-group list-group-numbered">
+        <ol class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-start">
          <div class="ms-2 me-auto">
          <div class="fw-bold"><%= image_tag avatar_url(recipient), class: "card-type-icon with-border material-icons" %></div>
           <%= link_to recipient.name, conversation_messages_path(conversation)%>
          </div>
-         <span class="badge bg-primary rounded-pill" alt="Number">14</span>
+         <span class="badge bg-primary rounded-pill" alt="Unread Messages">14</span>
         </li>
         </ol>
         <% end %>
