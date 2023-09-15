@@ -16,7 +16,7 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: ${{ secrets.POSTGRES_USERNAME }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_DB: module_test
         ports:
@@ -26,7 +26,7 @@ jobs:
       secondary_postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: ${{ secrets.POSTGRES_USERNAME }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           POSTGRES_DB: module_backend
         ports:
@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: Debug Secrets
         run: |
-          echo "POSTGRES_USER: ${{ secrets.POSTGRES_USERNAME }}"
+          echo "POSTGRES_USER: ${{ secrets.POSTGRES_USER }}"
           echo "POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}"
       
       - name: Debug Docker Containers
