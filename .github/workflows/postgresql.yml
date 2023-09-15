@@ -42,7 +42,8 @@ jobs:
       - name: Debug Docker Containers
         run: |
           docker ps
-          docker restart 52118f921eb3 5564bc70bf75
+          docker run --name postgres-container -d postgres:latest
+          docker restart postgres-container
           
       - name: Checkout code
         uses: actions/checkout@v2
