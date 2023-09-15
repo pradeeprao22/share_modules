@@ -38,14 +38,6 @@ jobs:
         run: |
           echo "POSTGRES_USERNAME: ${{ secrets.POSTGRES_USERNAME }}"
           echo "POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}"
-
-      - name: Restart PostgreSQL Service
-        run: |
-          # Stop the PostgreSQL service container
-          docker stop postgres
-
-          # Start the PostgreSQL service container
-          docker start postgres
           
       - name: Checkout code
         uses: actions/checkout@v2
