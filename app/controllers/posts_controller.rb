@@ -100,7 +100,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @is_liked = @post.is_liked(current_user)
     @is_bookmarked = @post.is_bookmarked(current_user)
-    @image_path = Rails.root.join("app/assets/images/module_screenshots/#{@post.slug}.png")
+    @image_path = @post.slug
   end
 
   def destroy
