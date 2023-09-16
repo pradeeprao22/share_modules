@@ -5,10 +5,14 @@
    <h6>Following</h6>
       <% @follows.each do |follow| %>
          <% if follow.following.id != current_user.id %>
-            <div class="row">
-            <%= image_tag avatar_url(follow.following), class: "card-type-icon with-border material-icons" %>
-            <%= link_to follow.following.name, conversations_path(sender_id: current_user.id, recipient_id: follow.following.id), method: "post"%>
-            </div>
+         <ol class="list-group">
+         <li class="list-group-item d-flex justify-content-between align-items-start">
+         <div class="ms-2 me-auto">
+           <%= image_tag avatar_url(follow.following), class: "card-type-icon with-border material-icons" %>
+           <%= link_to follow.following.name, conversations_path(sender_id: current_user.id, recipient_id: follow.following.id), method: "post"%>
+         </div>
+         </li>
+         </ol>
       <% end %>
       <% end %>
 </div>
