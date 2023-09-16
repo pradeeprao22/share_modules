@@ -16,8 +16,8 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: ${{ secrets.PSQLUSER }}
-          POSTGRES_PASSWORD: ${{ secrets.PSQLPASSWORD }}
+          POSTGRES_USER: pradeep
+          POSTGRES_PASSWORD: password
           POSTGRES_DB: module_test
         ports:
           - 5432:5432
@@ -26,19 +26,14 @@ jobs:
       secondary_postgres:
         image: postgres:latest
         env:
-          POSTGRES_USER: ${{ secrets.PSQLUSER }}
-          POSTGRES_PASSWORD: ${{ secrets.PSQLPASSWORD }}
+          POSTGRES_USER: pradeep
+          POSTGRES_PASSWORD: password
           POSTGRES_DB: module_backend
         ports:
           - 5433:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
-    steps:
-      - name: Debug Secrets
-        run: |
-          echo "POSTGRES_USER: ${{ secrets.PSQLUSER }}"
-          echo "POSTGRES_PASSWORD: ${{ secrets.PSQLPASSWORD }}"
-      
+    steps:      
       - name: Debug Docker Containers
         run: |
           docker ps
