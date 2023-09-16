@@ -4,8 +4,8 @@ test:
     encoding: unicode
     database: module_test
     pool: 5
-    username: <%= ENV['POSTGRES_USER'] %>
-    password: <%= ENV['POSTGRES_PASSWORD'] %>
+    username: <%= ENV['PSQLUSER'] %>
+    password: <%= ENV['PSQLPASSWORD'] %>
     host: localhost
     port: 5432
   primary_replica:
@@ -13,8 +13,8 @@ test:
     encoding: unicode
     database: module_test
     pool: 5
-    username: <%= ENV['POSTGRES_USER'] %>
-    password: <%= ENV['POSTGRES_PASSWORD'] %>
+    username: <%= ENV['PSQLUSER'] %>
+    password: <%= ENV['PSQLPASSWORD'] %>
     host: localhost
     port: 5432
   module:
@@ -22,8 +22,8 @@ test:
     encoding: unicode
     database: module_backend
     pool: 5
-    username: <%= ENV['POSTGRES_USER'] %>
-    password: <%= ENV['POSTGRES_PASSWORD'] %>
+    username: <%= ENV['PSQLUSER'] %>
+    password: <%= ENV['PSQLPASSWORD'] %>
     host: localhost
     port: 5432
   module_replica:
@@ -31,8 +31,8 @@ test:
     encoding: unicode
     database: module_backend
     pool: 5
-    username: <%= ENV['POSTGRES_USER'] %>
-    password: <%= ENV['POSTGRES_PASSWORD'] %>
+    username: <%= ENV['PSQLUSER'] %>
+    password: <%= ENV['PSQLPASSWORD'] %>
     host: localhost
     port: 5432
 
