@@ -21,6 +21,15 @@ class PostsController < ApplicationController
     #   format.js {render layout: false}
     #   format.html { render 'index'} 
     # end
+    if @posts != nil
+     @posts.map do |post|
+        if ImageRepo.find_by(post_id: post.id) == nil
+          ImgkitWorker.perform_async(post.slug, post.id)
+        end
+     end
+    else
+      flash[:warning] = "No Posts"
+    end
   end
 
   def create
