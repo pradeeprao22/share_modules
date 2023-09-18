@@ -19,6 +19,8 @@ class Post < ApplicationRecord
     post.has_many :code_files
   end
 
+  has_one :image_repo
+
   accepts_nested_attributes_for :code_files
   before_create :post_published
 
@@ -63,8 +65,9 @@ class Post < ApplicationRecord
     end
   end
 
-  # def tags_allocate
-
+  # def tags_allocate(tags)
+  #   self.tags_id = tags 
+  #   self.save!
   # end
 
   def post_published
