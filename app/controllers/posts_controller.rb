@@ -57,11 +57,13 @@ class PostsController < ApplicationController
                   user_id = @post.user.id
 
                   #Saving each uploaded file to a specific directory
-                  File.open( Rails.root.join("app/assets/code_files/#{name}"), 'wb') do |file|
+                  File.open(Rails.root.join("app/assets/code_files/#{name}"), 'wb') do |file|
                     file.write(code_file[:file].tempfile.read)
                   end
 
-                  @post.code_files.new(name: , file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
+                  #Extracting the file size
+                  size = File.size(Rails.root.join("app/assets/code_files/#{name}"))
+                  @post.code_files.new(name: name, size: size, file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
                   @post.save!
                 end
               end
