@@ -4,9 +4,12 @@ class Post < ApplicationRecord
   belongs_to :user
 
   friendly_id :content, use: [:slugged, :finders]
-  validates :content, presence: true
-  validates :frontend, presence: true
-  validates :frontend_css, presence: true
+  
+  #Validations
+  # validates :content, presence: true
+  # validates :frontend, presence: true
+  # validates :frontend_css, presence: true
+
   with_options dependent: :destroy do |post|
     post.has_many :photos
     post.has_many :likes, -> {order(:created_at => :desc)}
@@ -64,11 +67,6 @@ class Post < ApplicationRecord
       nil
     end
   end
-
-  # def tags_allocate(tags)
-  #   self.tags_id = tags 
-  #   self.save!
-  # end
 
   def post_published
     self.published = true
