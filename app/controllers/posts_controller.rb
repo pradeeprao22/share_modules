@@ -47,7 +47,7 @@ class PostsController < ApplicationController
           if @post.save!
             # For creating notification
             notify(action, @post)
-                      
+            # Code File Module
             if params[:post][:code_files]
               params[:post][:code_files].each do |code_file|
                   name = code_file[:file].original_filename
@@ -63,6 +63,22 @@ class PostsController < ApplicationController
 
                   #Extracting the file size
                   size = File.size(Rails.root.join("app/assets/code_files/#{name}"))
+                  # total_lines = 0
+                  files = []
+
+                  File.foreach(Rails.root.join("app/assets/code_files/#{name}")) do |file|
+                    files << file.chomp
+
+                    f = files.join()
+                    if post_column == "html"
+                      @post.frontend = f
+                    elsif post_column == "css"
+                      @post.frontend_css = f
+                    elsif post_column == "javascript"
+                      @post.javascript = f       
+                    end
+                  end
+
                   @post.code_files.new(name: name, size: size, file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
                   @post.save!
                 end
@@ -77,14 +93,10 @@ class PostsController < ApplicationController
               flash[:warning] = "Module not saved #{e}"
           end
 
-          if params[:images]
-              params[:images].each do |img|
-                @post.photos.create(image: img)
-                ActionCable.server.broadcast('post_channel', {post: ( render @post)})
-                flash[:success] = "Module created succesfully"
-                head :ok
-              end
-          end
+          ActionCable.server.broadcast('post_channel', {post: ( render @post)})
+          flash[:success] = "Module created succesfully"
+          head :ok
+    
           # redirect_to posts_path
        end
   end
