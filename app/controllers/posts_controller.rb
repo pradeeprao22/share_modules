@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   include BackendRunner
   include VisitorDetail
   include CreateNotification  
+  include CodeFilesource
   #layout "frontpage"
   before_action :authenticate_user!, only: [:destroy, :create, :module_post]
   before_action :find_post, only: [:show, :destroy, :build_module]
@@ -43,60 +44,26 @@ class PostsController < ApplicationController
         #Tags allocate
         @post.tags_id = tags
         begin
-        ActiveRecord::Base.transaction do
-          if @post.save!
-            # For creating notification
-            notify(action, @post)
-            # Code File Module
-            if params[:post][:code_files]
-              params[:post][:code_files].each do |code_file|
-                  name = code_file[:file].original_filename
-                  file_type = code_file[:file].content_type
-                  post_column = code_file[:post_column]
-                  post_id = @post.id
-                  user_id = @post.user.id
+          ActiveRecord::Base.transaction do
+              if @post.save!
+                # For creating notification
+                notify(action, @post)
 
-                  #Saving each uploaded file to a specific directory
-                  File.open(Rails.root.join("app/assets/code_files/#{name}"), 'wb') do |file|
-                    file.write(code_file[:file].tempfile.read)
-                  end
-
-                  #Extracting the file size
-                  size = File.size(Rails.root.join("app/assets/code_files/#{name}"))
-                  # total_lines = 0
-                  files = []
-
-                  File.foreach(Rails.root.join("app/assets/code_files/#{name}")) do |file|
-                    files << file.chomp
-
-                    f = files.join()
-                    if post_column == "html"
-                      @post.frontend = f
-                    elsif post_column == "css"
-                      @post.frontend_css = f
-                    elsif post_column == "javascript"
-                      @post.javascript = f       
-                    end
-                  end
-
-                  @post.code_files.new(name: name, size: size, file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
-                  @post.save!
-                end
+                # Code File Module
+                code_file_create(@post)
               end
-            end
 
-            rescue ActiveRecord::RecordInvalid => e
-              puts e 
-              flash[:warning] = "Module not saved #{e}"
-            rescue StandardError => e
-              puts e
-              flash[:warning] = "Module not saved #{e}"
+              rescue ActiveRecord::RecordInvalid => e
+                puts e 
+                flash[:warning] = "Module not saved #{e}"
+              rescue StandardError => e
+                puts e
+                flash[:warning] = "Module not saved #{e}"
           end
 
           ActionCable.server.broadcast('post_channel', {post: ( render @post)})
           flash[:success] = "Module created succesfully"
           head :ok
-    
           # redirect_to posts_path
        end
   end
