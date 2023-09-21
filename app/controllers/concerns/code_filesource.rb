@@ -3,7 +3,6 @@ module CodeFilesource
     
     def code_file_create(post)
         if params[:post][:code_files]
-            byebug
             params[:post][:code_files].each do |code_file|
                 name = code_file[:file].original_filename
                 file_type = code_file[:file].content_type
@@ -36,8 +35,6 @@ module CodeFilesource
 
                     post.save!
                 end
-
-                byebug
 
                 post.code_files.new(name: name, size: size, file_type: file_type, post_column: post_column, post_id: post_id, user_id: user_id)
                 post.save!
