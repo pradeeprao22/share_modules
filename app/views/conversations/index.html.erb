@@ -33,7 +33,11 @@
          <div class="fw-bold"><%= image_tag avatar_url(recipient), class: "card-type-icon with-border material-icons" %></div>
           <%= link_to recipient.name, conversation_messages_path(conversation)%>
          </div>
-         <span class="badge bg-primary rounded-pill" alt="Unread Messages">14</span>
+
+         <!-- Counting the messages -->
+         <% @messages = conversation.messages.count %>
+         <span class="badge bg-primary rounded-pill" alt="Unread Messages"><%= @messages %></span>
+        
         </li>
         </ol>
         <% end %>
