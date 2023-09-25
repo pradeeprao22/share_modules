@@ -1,48 +1,56 @@
 <div class="container">
-<h6>Inbox</h6>
+  <h6>Inbox</h6>
 
-<div>
-   <h6>Following</h6>
+  <div class="row">
+    <div class="col-md-4">
+      <h6>Following</h6>
       <% @follows.each do |follow| %>
-         <% if follow.following.id != current_user.id %>
-         <ol class="list-group">
-         <li class="list-group-item d-flex justify-content-between align-items-start">
-         <div class="ms-2 me-auto">
-           <%= image_tag avatar_url(follow.following), class: "card-type-icon with-border material-icons" %>
-           <%= link_to follow.following.name, conversations_path(sender_id: current_user.id, recipient_id: follow.following.id), method: "post"%>
-         </div>
-         </li>
-         </ol>
+        <% if follow.following.id != current_user.id %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="d-flex align-items-center">
+                <%= image_tag avatar_url(follow.following), class: "card-type-icon with-border material-icons me-3" %>
+                <%= link_to follow.following.name, conversations_path(sender_id: current_user.id, recipient_id: follow.following.id), method: "post", class: "text-decoration-none" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-      <% end %>
-</div>
-<br>
-<div>
-   <h6>Messages From</h6>
-   <div class="row">
-        <% @conversations.each do |conversation| %>
+    </div>
+
+    <div class="col-md-8">
+      <h6>Messages</h6>
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Search conversations...">
+      </div>
+
+      <% @conversations.each do |conversation| %>
         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-        <% if conversation.sender_id == current_user.id %>
-          <% recipient = User.find(conversation.recipient_id) %>
-        <% else %>
-          <% recipient = User.find(conversation.sender_id) %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+      
+          <div class="card mb-3 <%= 'bg-light' unless conversation.messages.last.read || conversation.messages.last.user_id == current_user.id %>">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <%= image_tag avatar_url(recipient), class: "card-type-icon with-border material-icons me-3" %>
+                  <div>
+                    <%= link_to recipient.name, conversation_messages_path(conversation), class: "text-decoration-none" %>
+                    <div class="small text-muted"><%= conversation.messages.last.created_at.strftime("%b %d, %Y %I:%M %p") %></div>
+                  </div>
+                </div>
+                <% unread_count = conversation.unread_messages_count(current_user) %>
+                <% if unread_count > 0 %>
+                  <div class="badge bg-primary"><%= unread_count %></div>
+                <% end %>
+              </div>
+            </div>
+          </div>
         <% end %>
-        <ol class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-         <div class="ms-2 me-auto">
-         <div class="fw-bold"><%= image_tag avatar_url(recipient), class: "card-type-icon with-border material-icons" %></div>
-          <%= link_to recipient.name, conversation_messages_path(conversation)%>
-         </div>
-
-         <!-- Counting the messages -->
-         <% @messages = conversation.messages.count %>
-         <span class="badge bg-primary rounded-pill" alt="Unread Messages"><%= @messages %></span>
-        
-        </li>
-        </ol>
-        <% end %>
-        <% end %>
-   </div>
-</div> 
-
+      <% end %>
+    </div>
+  </div>
 </div>
