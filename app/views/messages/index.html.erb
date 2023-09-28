@@ -39,7 +39,7 @@
                   <div class="chat_ib">
                     <h5><%= link_to recipient.name, conversation_messages_path(conversation)%>
                     
-                    <span class="chat_date"><%= recipient.created_at %></span></h5>
+                    <span class="chat_date"><%= recipient.created_at.strftime("%b %d, %Y %I:%M %p") %></span></h5>
      
                   </div>
                 </div>
@@ -64,7 +64,7 @@
                         <div class="received_msg">
                           <div class="received_withd_msg">
                             <p><%= message.body %></p>
-                            <span class="time_date"><%= message.created_at %></span>
+                            <span class="time_date"><%= message.created_at.strftime("%b %d, %Y %I:%M %p") %></span>
                           </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                   <div class="outgoing_msg">
                     <div class="sent_msg">
                       <p><%= message.body %></p>
-                      <span class="time_date"><%= message.created_at %></span> 
+                      <span class="time_date"><%= message.created_at.strftime("%b %d, %Y %I:%M %p") %></span> 
                     </div>
                   </div>
                   <% end %>
