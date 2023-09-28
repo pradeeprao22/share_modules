@@ -5,6 +5,18 @@ class ConversationsController < ApplicationController
     # @users = User.all
     @follows = Follow.all
     @conversations = Conversation.all
+    if @conversations
+      @conversations.map do |conversation|
+        conversation.messages.map do |message|
+          if message.user != current_user
+            if message.read == false
+              message.read = true
+              message.save!
+            end
+          end
+        end
+      end
+    end
   end
   
   def create
