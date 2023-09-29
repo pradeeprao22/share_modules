@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
         @conversations = Conversation.all
         @messages = @conversation.messages
         @message = @conversation.messages.new
+        @user_id = @conversation.recipient_id
       end 
 
       def messages_index
@@ -51,7 +52,6 @@ class MessagesController < ApplicationController
       
       private
       def set_cookie
-        byebug
         cookies[:verified_user] = current_user.id
         verified_user = cookies[:verified_user]
       end
