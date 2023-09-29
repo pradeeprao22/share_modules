@@ -6,11 +6,6 @@ class MessagesController < ApplicationController
         @conversation = Conversation.find_by_id(params[:conversation_id])
       end
       
-      def set_cookie
-        cookies[:verified_user] = current_user.id
-        verified_user = cookies[:verified_user]
-      end
-
       def index
         @conversations = Conversation.all
         @messages = @conversation.messages
@@ -55,6 +50,12 @@ class MessagesController < ApplicationController
       end
       
       private
+      def set_cookie
+        byebug
+        cookies[:verified_user] = current_user.id
+        verified_user = cookies[:verified_user]
+      end
+
       def message_params
         params.permit(:body, :user_id, :conversation_id)
       end
