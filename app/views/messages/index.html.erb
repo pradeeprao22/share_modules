@@ -1,5 +1,4 @@
-<% user_id = Conversation.find(params[:conversation_id]).recipient_id %>
-<% user = User.find(user_id) %>
+<% user = User.find(@user_id) %>
 <div class="container">
 <h4>Messaging</h4>
 <br>
@@ -12,6 +11,7 @@
             <div class="recent_heading">
               <h4>Conversation</h4>
             </div>
+            
             <div class="srch_bar">
               <div class="stylish-input-group">
                 <input type="text" class="search-bar">
@@ -20,6 +20,7 @@
                 </span> 
               </div>
             </div>
+
           </div>
           <div class="inbox_chat">
 
@@ -95,6 +96,7 @@
        <!-- <%= f.submit "Send Reply", class: "btn msg_send_btn"%> -->
         <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
     <% end %>
+    
           </div>
         </div>
         </div>
