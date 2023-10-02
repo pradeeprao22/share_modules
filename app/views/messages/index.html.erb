@@ -8,22 +8,15 @@
       <div class="inbox_msg">
         <div class="inbox_people">
           <div class="headind_srch">
-            <div class="recent_heading">
-              <h4>Conversation</h4>
-            </div>
             
-            <!--<%= form_for conversation_messages_path, method: :get, class: "search-bar", role: "search", id: "search-messages", remote: true do %>
-            
-            <% end %>-->
-
-            <div class="srch_bar">
+            <%= form_for conversation_messages_path, method: :get, role: "search", id: "search-messages", remote: true do %>
               <div class="stylish-input-group">
-                <input type="text" class="search-bar">
-                <span class="input-group-addon">
-                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                </span> 
+              <%= text_field_tag :message_term, params[:message_term], class: "form-control search-bar", placeholder: "Search", autocomplete: "off" %>
+              <span class="input-group-addon">
+                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i></button>
+              </span> 
               </div>
-            </div>
+            <% end %>
 
           </div>
           <div class="inbox_chat">
