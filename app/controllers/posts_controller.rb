@@ -2,70 +2,68 @@ class PostsController < ApplicationController
   include ActionController::Cookies
   include BackendRunner
   include VisitorDetail
-  include CreateNotification  
+  include CreateNotification
   include CodeFilesource
-  #layout "frontpage"
-  before_action :authenticate_user!, only: [:destroy, :create, :module_post]
-  before_action :find_post, only: [:show, :destroy, :build_module]
+  # layout "frontpage"
+  before_action :authenticate_user!, only: %i[destroy create module_post]
+  before_action :find_post, only: %i[show destroy build_module]
   before_action :set_cookie, only: [:index]
-  #Quick fix
-  skip_before_action :verify_authenticity_token, :only => [:create]
+  # Quick fix
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def index
     # For getting user details
     action = params[:action]
     getdetails(action)
 
-    @posts = Post.where(published: true).paginate(:page => params[:page], :per_page => 9).includes(:photos, :user, :likes, :bookmarks).order('created_at asc')
+    @posts = Post.where(published: true).paginate(page: params[:page], per_page: 9).includes(:photos, :user,
+                                                                                             :likes, :bookmarks).order('created_at asc')
     # redirect_to posts_path
     # respond_to do |format|
     #   format.js {render layout: false}
-    #   format.html { render 'index'} 
+    #   format.html { render 'index'}
     # end
-    if @posts != nil
-     @posts.map do |post|
-        if ImageRepo.find_by(post_id: post.id) == nil
-          ImgkitWorker.perform_async(post.slug, post.id)
-        end
-     end
+    if !@posts.nil?
+      @posts.map do |post|
+        ImgkitWorker.perform_async(post.slug, post.id) if ImageRepo.find_by(post_id: post.id).nil?
+      end
     else
-      flash[:warning] = "No Posts"
+      flash[:warning] = 'No Posts'
     end
   end
 
   def create
-        # For getting user details
-        action = params[:action]
-        getdetails(action)
-        #Removing the empty elements in array
-        tags = params[:post][:tags_id].delete_if { |element| element.empty? }
+    # For getting user details
+    action = params[:action]
+    getdetails(action)
+    # Removing the empty elements in array
+    tags = params[:post][:tags_id].delete_if { |element| element.empty? }
 
-        @post = current_user.posts.build(post_params)
-        #Tags allocate
-        @post.tags_id = tags
-        begin
-          ActiveRecord::Base.transaction do
-              if @post.save!
-                # For creating notification
-                notify(action, @post)
+    @post = current_user.posts.build(post_params)
+    # Tags allocate
+    @post.tags_id = tags
+    begin
+      ActiveRecord::Base.transaction do
+        if @post.save!
+          # For creating notification
+          notify(action, @post)
 
-                # Code File Module
-                code_file_create(@post)
-              end
+          # Code File Module
+          code_file_create(@post)
+        end
+      rescue ActiveRecord::RecordInvalid => e
+        puts e
+        flash[:warning] = "Module not saved #{e}"
+      rescue StandardError => e
+        puts e
+        flash[:warning] = "Module not saved #{e}"
+      end
 
-              rescue ActiveRecord::RecordInvalid => e
-                puts e 
-                flash[:warning] = "Module not saved #{e}"
-              rescue StandardError => e
-                puts e
-                flash[:warning] = "Module not saved #{e}"
-          end
-
-          ActionCable.server.broadcast('post_channel', {post: ( render @post)})
-          flash[:success] = "Module created succesfully"
-          head :ok
-          # redirect_to posts_path
-       end
+      ActionCable.server.broadcast('post_channel', { post: (render @post) })
+      flash[:success] = 'Module created succesfully'
+      head :ok
+      # redirect_to posts_path
+    end
   end
 
   def update
@@ -73,10 +71,10 @@ class PostsController < ApplicationController
     action = params[:action]
     getdetails(action)
 
-     @post = current_user.posts.find_by(slug: params[:slug])
-     @post.update(post_params)
-     redirect_to post_path
-     flash[:notice] = "Module updated succesfully."
+    @post = current_user.posts.find_by(slug: params[:slug])
+    @post.update(post_params)
+    redirect_to post_path
+    flash[:notice] = 'Module updated succesfully.'
   end
 
   def show
@@ -98,15 +96,15 @@ class PostsController < ApplicationController
     action = params[:action]
     getdetails(action)
 
-    if @post.user == current_user
-      if @post.update(published: false)
-        flash[:notice] = "Post deleted!"
-      else
-        flash[:notice] = "Something went wrong ..."
-      end
-     else
-      flash[:notice] = "You don't have permission to do that!"
-    end
+    flash[:notice] = if @post.user == current_user
+                       if @post.update(published: false)
+                         'Post deleted!'
+                       else
+                         'Something went wrong ...'
+                       end
+                     else
+                       "You don't have permission to do that!"
+                     end
     redirect_to user_path(current_user)
   end
 
@@ -115,7 +113,7 @@ class PostsController < ApplicationController
   end
 
   def build_module
-    if ImageRepo.find_by(post_id: @post.id) == nil
+    if ImageRepo.find_by(post_id: @post.id).nil?
       slug = @post.slug
       post_id = @post.id
       ImgkitWorker.perform_async(slug, post_id)
@@ -124,8 +122,8 @@ class PostsController < ApplicationController
     action = params[:action]
     getdetails(action)
 
-    #under dev
-    get_backend_code(@post.id)   
+    # under dev
+    get_backend_code(@post.id)
 
     @photos = @post.photos
     @likes = @post.likes.includes(:user)
@@ -134,7 +132,7 @@ class PostsController < ApplicationController
     @is_bookmarked = @post.is_bookmarked(current_user)
   end
 
-  #under dev
+  # under dev
   def import_module
     post = @post
 
@@ -142,34 +140,33 @@ class PostsController < ApplicationController
     @import = Import.create(import_client: params[:import_client], user_id: current_user.id, post_id: @post.id)
   end
 
-  #under dev
+  # under dev
   def backend_module_execution
     code_execute
   end
 
   private
 
-  def code_fileupload
-  end
+  def code_fileupload; end
 
   def find_post
     @post = Post.friendly.find_by_slug(params[:slug])
 
     return if @post
-    flash[:danger] = "Post not exist!"
+
+    flash[:danger] = 'Post not exist!'
     redirect_to root_path
   end
 
   def post_params
     params.require(:post).permit(:content, :frontend, :javascript, :backend, :frontend_css, :database, :instruction, :slug, :module_type, :tags_id,
-    code_file_attributes: [:id, :name, :file_type, :post_id, :user_id, :post_column])
+                                 code_file_attributes: %i[id name file_type post_id user_id post_column])
   end
 
   def set_cookie
-    if cookies[:verified_user] && current_user
-      cookies[:verified_user] = current_user.id
-      verified_user = cookies[:verified_user]
-    end
-  end
+    return unless cookies[:verified_user] && current_user
 
+    cookies[:verified_user] = current_user.id
+    verified_user = cookies[:verified_user]
+  end
 end

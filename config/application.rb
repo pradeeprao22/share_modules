@@ -23,9 +23,9 @@ module LondevApp
     config.assets.precompile += ['application.tailwind.css']
     config.load_defaults 7.0
     config.action_cable.mount_path = '/websocket'
-    #config.exceptions_app = ->(env) { ExceptionController.action(:show).call(env) }
-    #path for fonts
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    # config.exceptions_app = ->(env) { ExceptionController.action(:show).call(env) }
+    # path for fonts
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.unknown_asset_fallback = false
 
     # Settings in config/environments/* take precedence over those specified here.

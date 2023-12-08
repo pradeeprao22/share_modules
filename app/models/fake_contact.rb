@@ -1,3 +1,2 @@
 class FakeContact < ModuleRecord
-    
 end

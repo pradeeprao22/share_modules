@@ -37,14 +37,14 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  #gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -60,17 +60,17 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'devise'
 gem 'jquery-rails', '~> 4.4'
-gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'omniauth', '~>1.6'
-gem 'omniauth-twitter'
+gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'omniauth-twitter'
 gem 'cloudinary', '~> 1.11', '>= 1.11.1'
-gem 'figaro'
 gem 'dropzonejs-rails'
+gem 'figaro'
 gem 'mini_magick', '~> 4.2', '>= 4.2.4'
 gem 'will_paginate', '~> 4.0'
 
@@ -80,24 +80,26 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 
 # FOR ML
-#gem 'decisiontree', '~> 0.5.0'
+# gem 'decisiontree', '~> 0.5.0'
 
-gem 'geocoder'
 gem 'faker'
-gem 'rails-erd'
+gem 'geocoder'
 gem 'imgkit'
-gem 'wkhtmltoimage-binary'
+gem 'rails-erd'
 gem 'sidekiq-limit_fetch'
+gem 'wkhtmltoimage-binary'
 gem 'rspec-core', github: 'rspec/rspec-core', branch: 'master'
-gem 'rspec-support', github: 'rspec/rspec-support', branch: 'master'
 gem 'rspec-expectations', github: 'rspec/rspec-expectations', branch: 'master'
+gem 'rspec-support', github: 'rspec/rspec-support', branch: 'master'
 gem 'rspec-mocks', github: 'rspec/rspec-mocks', branch: 'master'
-gem 'rspec-rails', github: 'rspec/rspec-rails', branch: 'master'
 gem 'rack-cors'
+gem 'rspec-rails', github: 'rspec/rspec-rails', branch: 'master'
 gem 'jwt'
 gem 'jsbundling-rails'
-gem 'tailwindcss-rails'
 gem 'sassc-rails'
+gem 'tailwindcss-rails'
 gem 'bundler-audit', require: false
 gem 'factory_bot_rails'
+gem 'rubocop', '~> 1.58'
 gem 'uuid', '~> 2.3', '>= 2.3.9'
+

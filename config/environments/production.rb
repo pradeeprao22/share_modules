@@ -46,8 +46,8 @@ Rails.application.configure do
   # config.web_socket_server_url = 'wss://modulerrr.herokuapp.com/api/v1/cable'
   config.action_cable.url = 'wss://localhost:3001/cable'
   config.action_cable.allowed_request_origins = ['http://localhost:3001', 'https://localhost:3001']
-  #config.action_cable.allowed_request_origins = [%r{https?://\S+}]
-  #config.action_cable.allowed_request_origins = ['http://ai.londevs.com','http://modulerrr.herokuapp.com']
+  # config.action_cable.allowed_request_origins = [%r{https?://\S+}]
+  # config.action_cable.allowed_request_origins = ['http://ai.londevs.com','http://modulerrr.herokuapp.com']
 
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
@@ -59,7 +59,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -88,7 +88,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
@@ -99,16 +99,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.default_url_options = { :host => 'ai.londevs.com' }
+  config.action_mailer.default_url_options = { host: 'ai.londevs.com' }
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-    address:       'smtpout.secureserver.net',
-    port:           80,
-    user_name:     ENV['user_name'],
-    password:      ENV['password'],
+    address: 'smtpout.secureserver.net',
+    port: 80,
+    user_name: ENV['user_name'],
+    password: ENV['password'],
     authentication: :login,
     enable_starttls_auto: true
   }
-
 end

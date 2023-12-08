@@ -1,18 +1,16 @@
-describe "User delets the module", :type => :feature do
-   
-    before :each do
-        @user = FactoryBot.create(:user)
-        @post = FactoryBot.build(:post)
-        @post.user = @user
-        @post.save!
-    end
-    
-    it "Delete the module" do
-        login_as @user
+describe 'User delets the module', type: :feature do
+  before :each do
+    @user = FactoryBot.create(:user)
+    @post = FactoryBot.build(:post)
+    @post.user = @user
+    @post.save!
+  end
 
-        visit posts_path
+  it 'Delete the module' do
+    login_as @user
 
-        trash = find('.fa-trash-alt')
-    end
+    visit posts_path
 
+    trash = find('.fa-trash-alt')
+  end
 end

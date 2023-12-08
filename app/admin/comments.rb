@@ -1,5 +1,4 @@
 ActiveAdmin.register Comment do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -10,9 +9,8 @@ ActiveAdmin.register Comment do
   # or
   #
   permit_params do
-    permitted = [:content, :post_id, :user_id]
+    permitted = %i[content post_id user_id]
     permitted << :other if params[:action] == 'create' && current_user.admin?
     permitted
   end
-  
 end

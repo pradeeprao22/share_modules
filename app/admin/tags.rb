@@ -1,5 +1,4 @@
 ActiveAdmin.register Tag do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -10,9 +9,8 @@ ActiveAdmin.register Tag do
   # or
   #
   permit_params do
-    permitted = [:name, :post_id]
+    permitted = %i[name post_id]
     permitted << :other if params[:action] == 'create' && current_user.admin?
     permitted
   end
-  
 end

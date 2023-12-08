@@ -1,15 +1,15 @@
 class FeedsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @feeds = Feed.all
   end
 
   def create
     @feed = Feed.new(feeds_params)
-    if @feed.save
-      flash[:notice] = "Feeds created"
-    end
+    return unless @feed.save
+
+    flash[:notice] = 'Feeds created'
   end
 
   def new
@@ -17,8 +17,8 @@ class FeedsController < ApplicationController
   end
 
   private
+
   def feeds_params
     params.permit :user_id, :post_id, :feedable_id, :feedable_type
   end
-
 end

@@ -1,5 +1,3 @@
 module CodeUpload
-    extend ActiveSupport::Concern
-    
-
+  extend ActiveSupport::Concern
 end

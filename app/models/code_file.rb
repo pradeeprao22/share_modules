@@ -9,7 +9,6 @@ class CodeFile < ApplicationRecord
     random = UUID.new
     file_id = random.generate
     self.fileid = file_id
-    self.save!
+    save!
   end
-  
 end

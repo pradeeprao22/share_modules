@@ -4,4 +4,3 @@ class AddSlugToUsers < ActiveRecord::Migration[5.2]
     add_index :users, :slug, unique: true
   end
 end
-

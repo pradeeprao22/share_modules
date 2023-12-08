@@ -1,21 +1,21 @@
 class PagesController < ApplicationController
-include VisitorDetail
+  include VisitorDetail
 
-# layout "frontpage"
+  # layout "frontpage"
   def userlanding
     action = params[:action]
     getdetails(action)
-    if user_signed_in?
-      redirect_to posts_path
-    end
+    return unless user_signed_in?
+
+    redirect_to posts_path
   end
 
   def home
     action = params[:action]
     getdetails(action)
-    if !user_signed_in?
-      redirect_to new_user_session_path
-    end
+    return if user_signed_in?
+
+    redirect_to new_user_session_path
   end
 
   def about
@@ -34,25 +34,18 @@ include VisitorDetail
     @contact_table = ContactTable.new
   end
 
-  def howto 
-  end
+  def howto; end
 
-  def innovation
-  end
+  def innovation; end
 
-  def help
-  end
+  def help; end
 
-  def whyjoinus
-  end
+  def whyjoinus; end
 
-  def userlandingtesting
-    
-  end
+  def userlandingtesting; end
 
   def term
     action = params[:action]
     getdetails(action)
   end
-  
 end

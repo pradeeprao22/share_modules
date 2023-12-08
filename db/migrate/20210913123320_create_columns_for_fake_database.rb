@@ -10,5 +10,4 @@ class CreateColumnsForFakeDatabase < ActiveRecord::Migration[6.1]
   end
 end
 
-
 # array: true, default: []

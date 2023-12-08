@@ -18,9 +18,9 @@ class CommentsController < ApplicationController
       # end
       respond_to :js
       redirect_to post_path(@post.slug)
-    else 
-      flash[:alert] = "Something went wrong ...."
-    end  
+    else
+      flash[:alert] = 'Something went wrong ....'
+    end
   end
 
   def destroy
@@ -29,11 +29,12 @@ class CommentsController < ApplicationController
     if @comment.destroy
       respond_to :js
     else
-      flash[:alert] ="Something went wrong ..."
+      flash[:alert] = 'Something went wrong ...'
     end
   end
 
   private
+
   def comment_params
     params.required(:comment).permit :user_id, :post_id, :content, :post_slug, :form_authenticity_token
   end

@@ -1,3 +1,2 @@
 class FakeLike < ModuleRecord
-    
 end

@@ -1,14 +1,12 @@
 class CodefileWorker
-    include Sidekiq::Worker
-    sidekiq_options retry: true
+  include Sidekiq::Worker
+  sidekiq_options retry: true
 
-    def perform(code_files, type)
-      code_files.each do |code_file|
+  def perform(code_files, _type)
+    code_files.each do |code_file|
+      code_file.readline
 
-        code_file.readline
-
-        content
-      end
+      content
     end
-
+  end
 end
