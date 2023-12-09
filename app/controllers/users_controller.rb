@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.search(params[:term])
+    @posts = Post.search(params[:term]).limit(10).order(created_at: :desc)
     respond_to :js
   end
 
