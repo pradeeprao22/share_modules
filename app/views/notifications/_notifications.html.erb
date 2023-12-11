@@ -21,7 +21,7 @@
       <!-- which post user liked -->
       <p>Claped on your module:</p>
       <p class="title">Post: <%= like.post.content %></p>
-      <p class="caption">Date: <%= like.created_at %></p>
+      <p class="caption"><span>Date: <%= like.created_at.strftime("%b %d, %Y %I:%M %p") %></span></p>
   </div>
   
   <div class="min-gap"></div>
