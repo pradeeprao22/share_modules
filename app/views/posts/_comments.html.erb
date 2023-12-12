@@ -1,12 +1,11 @@
-            <%= form_for [post, Comment.new], :html => {:class => "w-100"} do |f| %>
-              <%= f.hidden_field :user_id, value: current_user.id if current_user %>
-              <%= f.hidden_field :post_id, value: post.id %>
-              <% if current_user %>
-              <%= f.text_field :content, class: "form-control comment-input border-0",
-                placeholder: "Add a comment ...", autocomplete: :off %>
-              <%= f.submit "Submit", class: "btn btn-success form-control border-0" %>  
-              <% else %>
-              <p>Please <%= link_to "login", new_user_session_path %> to comment</p>
-              <% end %>  
-              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/> 
-            <% end %>
+<%= form_for [post, Comment.new], :html => {:class => "w-100"} do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id if current_user %>
+  <%= f.hidden_field :post_id, value: post.id %>
+  <% if current_user %>
+    <%= f.text_field :content, class: "form-control comment-input border-0", placeholder: "Add a comment ...", autocomplete: :off, required: true %>
+    <%= f.submit "Submit", class: "btn btn-success form-control border-0 mt-3" %>  
+  <% else %>
+    <p>Please <%= link_to "login", new_user_session_path %> to comment</p>
+  <% end %>
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/> 
+<% end %>
