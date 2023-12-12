@@ -50,7 +50,7 @@
 
         <!-- Messages box -->
         <div class="mesgs">
-          <div class="msg_history">
+          <div class="msg_history", id="msg_history">
             <div id="messages">
               <% @messages.each do |message| %>
                 <% if message.body %>
@@ -239,28 +239,6 @@ img{ max-width:100%;}
 </style>
 
 <script>
-
-// Checking whether form submission is success or not
-
-window.addEventListener("load", () => {
-
-    const element = document.querySelector("#new-message");
-    console.log(element)
-    
-    element.addEventListener("ajax:success", (event) => {
-
-    console.log("inside")
-      const [_data, _status, xhr] = event.detail;
-      element.insertAdjacentHTML("beforeend", xhr.responseText);
-    
-    });
-
-    element.addEventListener("ajax:error", () => {
-
-      element.insertAdjacentHTML("beforeend", "<p>ERROR CREATING MESSAGE</p>");
-    
-    });
-
-});
-
+  var messagebox = document.getElementById('msg_history');
+  messagebox.scrollTop = messagebox.scrollHeight;
 </script>
