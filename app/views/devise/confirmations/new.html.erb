@@ -10,11 +10,11 @@
                 <hr>
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-      <div class="form-group">
+      <div class="form-group mt-2">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) , placeholder: "Email", class: "form-control"%>
       </div>
 
-      <div class="actions">
+      <div class="actions mt-2">
         <%= f.submit "Resend confirmation instructions", class: "btn btn-dark" %>
       </div>
       <% end %>
