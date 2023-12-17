@@ -45,7 +45,7 @@ class MessagesController < ApplicationController
                                    current_user: @user_rec,
                                    # user_rec: @user_rec,
                                    verified_user: @verified_user,
-                                   created: @message.created_at
+                                   created: @message.created_at.strftime("%b %d, %Y %I:%M %p")
                                  })
     head :ok
     # redirect_to conversation_messages_path(@conversation)

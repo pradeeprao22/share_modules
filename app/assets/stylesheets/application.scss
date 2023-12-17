@@ -3,15 +3,16 @@
 @import "toastr";
 @import "dropzone/dropzone";
 // @import "*";
-@import "animate";
-@import "font-awesome";
+@import "./animate";
+@import "./font-awesome";
 @import "jquery-ui/themes/base/all";
-@import "magnific-popup.min";
-@import "nice-select";
-@import 'owl.carousel/dist/assets/owl.carousel.css';
-@import "reset";
-@import "responsive";
-@import "slicknav.min";
+@import "./magnific-popup.min";
+@import "./nice-select";
+@import "owl.carousel/dist/assets/owl.carousel.css";
+@import "./reset";
+@import "./responsive";
+@import "./slicknav.min";
+@import "./messages";
 
 body {
  background-color: #fafafa;
