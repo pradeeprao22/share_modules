@@ -11,7 +11,6 @@ import "@rails/actioncable"
 // Import Font Awesome styles
 import "@fortawesome/fontawesome-free/css/all.css"
 // import "@activeadmin/activeadmin"
-// import "./testing"
 
 import "./channels"
 import "./toastr"
@@ -31,3 +30,4 @@ window.$ = window.jQuery = require("jquery");
 // window.$ = toastr.options
 import "./user_search"
 import "./cookies"
+import "./conversation"
